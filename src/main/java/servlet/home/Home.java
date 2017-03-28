@@ -1,14 +1,18 @@
 package servlet.home;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servlet.core.Controller;
+import utils.Auth;
+import utils.Check;
+import utils.Cookies;
+import utils.Error;
 
 @WebServlet(
         name = "Home",
@@ -16,19 +20,67 @@ import servlet.core.Controller;
     )
 public class Home extends Controller {
 
+    private final String[][] routes = new String[][] {
+        {},
+        {"login"},
+        {"logout"}
+    };
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        PrintWriter out = res.getWriter();
 
-        out.println("Home" +
-        this.getUrlParameter(req, 0) +
-        this.getUrlParameter(req, 1));
-        out.close();
+        String[] params = this.getUrlParameters(req);
+
+        if (!Check.containsRoute(this.routes, params)) {
+            Error.send404(req, res);
+            return;
+        }
+
+        if (params.length == 0) {
+            this.Index(req, res);
+            return;
+        }
+
+        switch (params[0]) {
+            case "login":
+                this.Login(req, res);
+                break;
+            case "logout":
+                this.Logout(req, res);
+                break;
+            default:
+                Error.send404(req, res);
+                break;
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         this.doGet(req, res);
+    }
+
+    private void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        if (access_token == null || !Auth.validate(access_token))
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+        else
+            req.getRequestDispatcher("/views/home/home.jsp").forward(req, res);
+
+    }
+
+    private void Login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        String access_token = Auth.createToken(req);
+
+        res.addCookie(new Cookie("access_token", access_token));
+
+        res.sendRedirect("/");
+    }
+
+    private void Logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+        res.sendRedirect("/");
     }
 
 }

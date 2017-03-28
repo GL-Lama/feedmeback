@@ -7,13 +7,17 @@ public abstract class Controller extends HttpServlet {
 
     public String[] getUrlParameters(HttpServletRequest req) {
 
-        String url = req.getPathInfo();
+        String url = req.getRequestURL().toString();
 
-        if (url.charAt(0) == "/".charAt(0))
+        String prefix = "http://" + req.getServerName() + ":" + req.getLocalPort();
+
+        url = url.substring(prefix.length());
+
+        if (url == null || url.length() == 1)
+            return new String[0];
+
+        if (url.length() >= 1 && url.charAt(0) == "/".charAt(0))
             url = url.substring(1);
-
-        if (url == null)
-            return null;
 
         return url.split("/");
     }

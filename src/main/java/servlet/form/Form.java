@@ -23,6 +23,10 @@ public class Form extends Controller {
             req.getRequestDispatcher("/views/error/404.jsp").forward(req, res);
 
         // else if (this.getUrlParameter(req, 0))
+
+        PrintWriter out = res.getWriter();
+        out.println("Form");
+        out.close();
     }
 
     @Override
