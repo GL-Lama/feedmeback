@@ -1,15 +1,14 @@
 # Lama Feedmeback
 
-## How to launch the project ?
+## What do you need
 
-+ install java 1.8 (setup JAVA_HOME for windows)
++ install java 1.8 JDK (setup JAVA_HOME for windows)
 + install maven (setup PATH for windows)
 
-### Compilation
+## Libraries
 
-```sh
-$ mvn compile
-```
++ Material Bootstrap [here](https://mdbootstrap.com/components/inputs/)
++ VueJS [here](https://vuejs.org/v2/guide/)
 
 ### Build
 
@@ -19,6 +18,14 @@ $ mvn package
 
 ### Launch the application
 
+#### Windows
+
 ```sh
-$ java -jar target/feedmeback-1.0-jar-with-dependencies.jar
+$ target/bin/webapp.bat
+```
+
+#### Unix
+
+```sh
+$ sh target/bin/webapp
 ```
