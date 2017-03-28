@@ -8,10 +8,6 @@
     </head>
 
     <script src="/static/libs/vue/dist/vue.js"></script>
-    <script src="/static/libs/mdbootstrap/js/mdb.js"></script>
-    <script src="/static/libs/mdbootstrap/js/bootstrap.js"></script>
-    <script src="/static/libs/mdbootstrap/js/tether.js"></script>
-    <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
 
     <body>
         <div id="app">
@@ -46,7 +42,15 @@
         <!-- Indicates a dangerous or potentially negative action -->
         <button type="button" class="btn btn-danger">Danger</button>
 
+
+        <div class="md-form">
+            <input type="text" id="form1" class="form-control">
+            <label for="form1" class="">Example label</label>
+        </div>
+
     </body>
 
+    <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
+    <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
     <script src="/static/app/home.js"></script>
 </html>
