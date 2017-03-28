@@ -1,4 +1,4 @@
-package servlet.form;
+package servlet.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;

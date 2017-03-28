@@ -1,4 +1,4 @@
-package servlet.home;
+package servlet.controllers;
 
 import java.io.IOException;
 
