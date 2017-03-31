@@ -1,14 +1,19 @@
 package utils;
 
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import database.Database;
+import database.Student;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
 
 public class Auth {
 
@@ -16,31 +21,64 @@ public class Auth {
         return Jwts.builder()
             .setIssuer(req.getServerName())
             .setSubject("clement.vanhecke@gmail.com")
-            .setExpiration(new Date(1491640000000l))
             .claim("scope", "student")
+            .claim("username", "cvanhecke")
+            .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 24 * 365 * 10 * 1000))
             .signWith(SignatureAlgorithm.HS256, Conf.getProperty("jwt_key"))
             .compact();
     }
 
-    public static Jws<Claims> getTokenClaims(String token) {
+    public static String getTokenClaim(String token, String _claim) {
 
-        Jws<Claims> jwt = null;
+        String claim = null;
 
         try {
-            jwt = Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(token);
-        } catch (SignatureException e) {}
+            Jws<Claims> jwt = Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(token);
+            claim = (String) jwt.getBody().get(_claim);
+        } catch (Exception e) {}
 
-        return jwt;
-
+        return claim;
     }
 
-    public static boolean validate(String access_token) {
+    public static boolean validate(String access_token, HttpServletRequest req, HttpServletResponse res) {
 
         try {
             Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(access_token);
-            return true;
-        } catch (SignatureException e) {
-            return false;
+        } catch (Exception e) {
+
+            String db_access_token = getAccessToken(getTokenClaim(access_token, "username"));
+
+            if (access_token != db_access_token) {
+                if (!validateUsername(access_token, db_access_token))
+                    return false;
+
+                else {
+                    res.addCookie(new Cookie("access_token", createToken(req)));
+                    return true;
+                }
+            }
         }
+
+        return true;
+    }
+
+    private static String getAccessToken(String username) {
+
+        Database db = new Database();
+
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", username);
+
+        Student student = (Student) db.selectOne("Student", params);
+
+        if (student == null)
+            return null;
+
+        return student.getAccessToken();
+    }
+
+    public static boolean validateUsername(String acces_token, String db_access_token) {
+        return getTokenClaim(acces_token, "username") == getTokenClaim(db_access_token, "username");
     }
 }

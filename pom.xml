@@ -46,6 +46,21 @@
         <artifactId>jjwt</artifactId>
         <version>0.7.0</version>
     </dependency>
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>4.3.11.Final</version>
+    </dependency>
+    <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+        <version>42.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>5.1.6</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>embeddedTomcatSample</finalName>
@@ -81,6 +96,19 @@
             <target>1.8</target>
             </configuration>
         </plugin>
+        <!--<plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>launch.Main</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+            </configuration>
+        </plugin>-->
     </plugins>
   </build>
 </project>

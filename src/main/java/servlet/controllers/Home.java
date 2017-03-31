@@ -1,7 +1,6 @@
 package servlet.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -63,7 +62,7 @@ public class Home extends Controller {
 
         String access_token = Cookies.getCookieValue(req, "access_token");
 
-        if (access_token == null || !Auth.validate(access_token))
+        if (access_token == null || !Auth.validate(access_token, req, res))
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
         else
@@ -74,7 +73,10 @@ public class Home extends Controller {
     private void Login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         String access_token = Auth.createToken(req);
 
-        res.addCookie(new Cookie("access_token", access_token));
+        Cookie cookie = new Cookie("access_token", access_token);
+        cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
+
+        res.addCookie(cookie);
 
         res.sendRedirect("/");
     }
