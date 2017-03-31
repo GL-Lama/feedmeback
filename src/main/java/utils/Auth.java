@@ -17,12 +17,12 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class Auth {
 
-    public static String createToken(HttpServletRequest req) {
+    public static String createToken(HttpServletRequest req, String username) {
         return Jwts.builder()
             .setIssuer(req.getServerName())
-            .setSubject("clement.vanhecke@gmail.com")
+            .setSubject(username)
             .claim("scope", "student")
-            .claim("username", "cvanhecke")
+            .claim("username", username)
             .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 24 * 365 * 10 * 1000))
             .signWith(SignatureAlgorithm.HS256, Conf.getProperty("jwt_key"))
             .compact();
@@ -42,21 +42,23 @@ public class Auth {
 
     public static boolean validate(String access_token, HttpServletRequest req, HttpServletResponse res) {
 
+        Claims claims = null;
+
         try {
-            Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(access_token);
+            claims = Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(access_token).getBody();
         } catch (Exception e) {
+            return false;
+            // String db_access_token = getAccessToken(getTokenClaim(access_token, "username"));
 
-            String db_access_token = getAccessToken(getTokenClaim(access_token, "username"));
+            // if (access_token != db_access_token) {
+            //     if (!validateUsername(access_token, db_access_token))
+            //         return false;
 
-            if (access_token != db_access_token) {
-                if (!validateUsername(access_token, db_access_token))
-                    return false;
-
-                else {
-                    res.addCookie(new Cookie("access_token", createToken(req)));
-                    return true;
-                }
-            }
+            //     else {
+            //         res.addCookie(new Cookie("access_token", createToken(req)));
+            //         return true;
+            //     }
+            // }
         }
 
         return true;

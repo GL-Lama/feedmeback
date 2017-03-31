@@ -3,7 +3,11 @@ package servlet.core;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import database.Database;
+
 public abstract class Controller extends HttpServlet {
+
+    public Database db = new Database();
 
     public String[] getUrlParameters(HttpServletRequest req) {
 

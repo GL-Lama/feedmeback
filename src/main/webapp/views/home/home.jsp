@@ -4,7 +4,10 @@
     <head>
         <title>FeedMEback</title>
         <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.css"></link>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/login/home.css"></link>
     </head>
 
     <script src="/static/libs/vue/dist/vue.js"></script>
@@ -52,5 +55,5 @@
 
     <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
     <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
-    <script src="/static/app/home.js"></script>
+    <script src="/static/app/home/home.js"></script>
 </html>
