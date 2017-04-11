@@ -11,11 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.Student;
+import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
 import utils.Auth;
 import utils.Check;
 import utils.Cookies;
 import utils.Error;
+import utils.console;
 
 @WebServlet(
         name = "Home",
@@ -115,7 +117,48 @@ public class Home extends Controller {
     }
 
     private void Logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        res.sendRedirect("/");
+
+        // Update cookie max age
+        Cookie[] cookies = req.getCookies();
+
+        Cookie cookie_token = null;
+
+        for (Cookie cookie: cookies) {
+            if (cookie.getName().equals("access_token"))
+                cookie_token = cookie;
+        }
+
+        if (cookie_token == null)
+            return;
+
+        String access_token = cookie_token.getValue();
+
+        Claims claims = Auth.getTokenClaims(access_token);
+
+        String username = (String) claims.get("username");
+        String scope = (String) claims.get("scope");
+
+        if (scope.equals("student")) {
+
+            // Query the student
+            Map<String, String> params = new HashMap<String, String>();
+
+            params.put("username", username);
+
+            Student student = (Student) this.db.selectOne("Student", params);
+
+            student.setAccessToken(null);
+
+            this.db.update("Student", student);
+        }
+
+        else {
+            // TODO
+        }
+
+        cookie_token.setMaxAge(0);
+
+        res.addCookie(cookie_token);
     }
 
 }

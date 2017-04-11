@@ -1,18 +1,17 @@
-<!DOCTYPE HTML>
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
-    <head>
-        <title>FeedMEback</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
-        <link rel="stylesheet" type="text/css" href="/static/app/login/home.css"></link>
-    </head>
+<tag:wrapper>
 
-    <script src="/static/libs/vue/dist/vue.js"></script>
+    <jsp:attribute name="head">
+        <link rel="stylesheet" type="text/css" href="/static/app/home/home.css"></link>
+    </jsp:attribute>
 
-    <body>
+    <jsp:attribute name="scripts">
+        <script src="/static/app/home/home.js"></script>
+    </jsp:attribute>
+
+    <jsp:body>
         <div id="app">
             {{ message }}
         </div>
@@ -50,10 +49,6 @@
             <input type="text" id="form1" class="form-control">
             <label for="form1" class="">Example label</label>
         </div>
+    </jsp:body>
 
-    </body>
-
-    <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
-    <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
-    <script src="/static/app/home/home.js"></script>
-</html>
+</tag:wrapper>

@@ -28,6 +28,18 @@ public class Auth {
             .compact();
     }
 
+    public static Claims getTokenClaims(String token) {
+
+        Claims claims = null;
+
+        try {
+            Jws<Claims> jwt = Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(token);
+            claims = jwt.getBody();
+        } catch (Exception e) {}
+
+        return claims;
+    }
+
     public static String getTokenClaim(String token, String _claim) {
 
         String claim = null;

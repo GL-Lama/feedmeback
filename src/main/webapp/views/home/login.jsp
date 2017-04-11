@@ -1,18 +1,17 @@
-<!DOCTYPE HTML>
-<html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
-    <head>
-        <title>FeedMEback</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
+<tag:wrapper>
+
+    <jsp:attribute name="head">
         <link rel="stylesheet" type="text/css" href="/static/app/login/login.css"></link>
-    </head>
+    </jsp:attribute>
 
-    <script src="/static/libs/vue/dist/vue.js"></script>
+    <jsp:attribute name="scripts">
+        <script src="/static/app/login/login.js"></script>
+    </jsp:attribute>
 
-    <body>
+    <jsp:body>
 
         <div class="mt-6 col-md-6 offset-md-3 col-sm-10 offset-sm-1">
 
@@ -58,9 +57,6 @@
 
         </div>
 
-    </body>
+    </jsp:body>
 
-    <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
-    <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
-    <script src="/static/app/login/login.js"></script>
-</html>
+</tag:wrapper>

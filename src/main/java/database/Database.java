@@ -181,4 +181,22 @@ public class Database {
         return true;
     }
 
+    public boolean update(String name, Object obj) {
+
+        Session session = factory.openSession();
+        Transaction tx = null;
+
+        try {
+            tx = session.beginTransaction();
+
+            session.update(obj);
+
+            tx.commit();
+        } catch (Exception e) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
