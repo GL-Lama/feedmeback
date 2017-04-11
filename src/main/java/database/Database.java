@@ -18,7 +18,18 @@ public class Database {
 
     public Database() {
         try{
-            factory = new Configuration().configure().buildSessionFactory();
+            Configuration cfg = new Configuration().configure();
+
+            String production = System.getenv("production");
+
+            if (production != null && production.equals("heroku")) {
+                cfg.setProperty("hibernate.connection.url", "jdbc:mysql://wvulqmhjj9tbtc1w.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/vzxphm4y1e5b1dlp");
+                cfg.setProperty("hibernate.connection.username", "t1bnzg3ih33jdae8");
+                cfg.setProperty("hibernate.connection.password", "t2j0tm4e0r6vls9z");
+            }
+
+            factory = cfg.buildSessionFactory();
+
         }catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);

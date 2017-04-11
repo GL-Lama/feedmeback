@@ -13,7 +13,10 @@ public abstract class Controller extends HttpServlet {
 
         String url = req.getRequestURL().toString();
 
-        String prefix = "http://" + req.getServerName() + ":" + req.getLocalPort();
+        String prefix = "http://" + req.getServerName();
+
+        if (req.getServerName().equals("localhost"))
+            prefix += ":" + req.getLocalPort();
 
         url = url.substring(prefix.length());
 
