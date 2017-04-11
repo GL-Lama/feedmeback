@@ -11,6 +11,7 @@
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/css/feedmeback.css"></link>

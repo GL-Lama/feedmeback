@@ -44,7 +44,8 @@ input:focus {
 }
 
 .fmb-font-title {
-    font-size: 4.3rem;
+    font-family: 'Amatic SC', cursive;
+    font-size: 5rem;
     font-weight: bold;
     letter-spacing: 2px;
 }

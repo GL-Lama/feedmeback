@@ -21,8 +21,11 @@
                         <p class="col-12 text-center">Cliquez sur le lien ci-dessous pour accéder à une page existante</p>
                     </div>
 
-                    <div class="col-12 text-center">
-                        <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Mettez-vous à l'aise</button></a>
+                    <!--Footer-->
+                    <div class="modal-footer">
+                        <div class="text-center">
+                            <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Mettez-vous à l'aise</button></a>
+                        </div>
                     </div>
 
                 </div>
