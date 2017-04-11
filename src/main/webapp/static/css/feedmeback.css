@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Avenir Next";
+    src: url(/static/libs/fonts/AvenirNextLTPro-Cn.otf) format("truetype");
+}
+
+body {
+    font-family: "Avenir Next";
+    color: white;
+    background-color: #1f6f4c
+}
+
+p {
+    font-size: 1.6rem
+}
+
+.fmb-font-sm {
+    font-size: 1.5rem;
+}
+
+.fmb-font-md {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.fmb-font-title {
+    font-size: 4.3rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.fmb-bg-primary {
+    background-color: #38ca8b;
+}
+
+.fmb-bg-secondary {
+    background-color: #33b67d
+}
+
+.fmb-btn-primary {
+    background-color: #1f6f4c
+}
+
+.fmb-btn-primary:hover {
+    background-color: #33b67d
+}
