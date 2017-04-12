@@ -7,14 +7,17 @@ import java.util.Set;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
 
 import utils.console;
 
 public class Database {
 
-    private static SessionFactory factory;
+    private static SessionFactory  factory;
 
     public Database() {
         try{
@@ -28,7 +31,9 @@ public class Database {
                 cfg.setProperty("hibernate.connection.password", "t2j0tm4e0r6vls9z");
             }
 
-            factory = cfg.buildSessionFactory();
+            ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(cfg.getProperties()).build();
+
+            factory = cfg.buildSessionFactory(serviceRegistry);
 
         }catch (Throwable ex) {
             System.err.println("Failed to create sessionFactory object." + ex);
