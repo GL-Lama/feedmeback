@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.Student;
 import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
+import servlet.models.DashboardModel;
 import utils.Auth;
 import utils.Check;
 import utils.Cookies;
@@ -54,9 +55,11 @@ public class Dashboard extends Controller {
         if (access_token == null || !Auth.validate(access_token, req, res))
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
-        else
-            req.getRequestDispatcher("/views/dashboard/dashboard.jsp").forward(req, res);
+        else {
+            req.setAttribute("dashboard", new DashboardModel());
 
+            req.getRequestDispatcher("/views/dashboard/dashboard.jsp").forward(req, res);
+        }
     }
 
 }

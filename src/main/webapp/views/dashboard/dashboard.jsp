@@ -1,6 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
+<jsp:useBean id="dashboard" type="servlet.models.DashboardModel" class="servlet.models.DashboardModel"/>
+
 <tag:wrapper>
 
     <jsp:attribute name="head">
