@@ -16,10 +16,10 @@
       jdbc:mysql://localhost:3306/feedmeback
    </property>
    <property name="hibernate.connection.username">
-      clement
+      root
    </property>
    <property name="hibernate.connection.password">
-      clement
+      root
    </property>
 
    <!-- List of XML mapping files -->
