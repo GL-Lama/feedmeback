@@ -19,7 +19,7 @@ public class Form extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        if (this.getUrlParameters(req).length >= 1)
+        if (this.getUrlParameters(req, "form").length >= 1)
             req.getRequestDispatcher("/views/error/404.jsp").forward(req, res);
 
         // else if (this.getUrlParameter(req, 0))

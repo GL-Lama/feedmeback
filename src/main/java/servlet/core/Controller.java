@@ -9,7 +9,7 @@ public abstract class Controller extends HttpServlet {
 
     public Database db = new Database();
 
-    public String[] getUrlParameters(HttpServletRequest req) {
+    public String[] getUrlParameters(HttpServletRequest req, String controller) {
 
         String url = req.getRequestURL().toString();
 
@@ -17,6 +17,8 @@ public abstract class Controller extends HttpServlet {
 
         if (req.getServerName().equals("localhost"))
             prefix += ":" + req.getLocalPort();
+
+        prefix += controller;
 
         url = url.substring(prefix.length());
 
@@ -29,8 +31,8 @@ public abstract class Controller extends HttpServlet {
         return url.split("/");
     }
 
-    public String getUrlParameter(HttpServletRequest req, int index) {
+    public String getUrlParameter(HttpServletRequest req, String controller, int index) {
 
-        return this.getUrlParameters(req)[index];
+        return this.getUrlParameters(req, controller)[index];
     }
 }

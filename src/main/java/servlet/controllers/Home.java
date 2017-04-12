@@ -34,7 +34,7 @@ public class Home extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String[] params = this.getUrlParameters(req);
+        String[] params = this.getUrlParameters(req, "");
 
         if (!Check.containsRoute(this.routes, params)) {
             Error.send404(req, res);

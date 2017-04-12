@@ -22,11 +22,11 @@ a:hover {
 }
 
 .fa {
-    color: #1f6f4c !important;
+    color: #1f6f4c;
 }
 
 .active {
-    color: #1f6f4c !important;
+    color: #1f6f4c;
 }
 
 input:focus {
