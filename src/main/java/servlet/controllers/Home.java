@@ -14,6 +14,7 @@ import database.Student;
 import database.Teacher;
 import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
+import servlet.models.TeacherModel;
 import utils.Auth;
 import utils.Check;
 import utils.Cookies;
@@ -72,8 +73,23 @@ public class Home extends Controller {
         if (access_token == null || !Auth.validate(access_token, req, res))
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
-        else
-            req.getRequestDispatcher("/views/home/home.jsp").forward(req, res);
+        else {
+            String scope = Auth.getTokenClaim(access_token, "scope");
+
+            if (scope.equals("teacher")) {
+                req.setAttribute("dashboard", new TeacherModel());
+
+                req.getRequestDispatcher("/views/home/teacher.jsp").forward(req, res);
+            }
+
+            else if (scope.equals("student")) {
+                req.getRequestDispatcher("/views/home/student.jsp").forward(req, res);
+            }
+
+            else {
+                res.sendError(400);
+            }
+        }
 
     }
 

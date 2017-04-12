@@ -2,7 +2,7 @@ package servlet.models;
 
 import servlet.core.Model;
 
-public class DashboardModel extends Model {
+public class TeacherModel extends Model {
 
     private String test = "Hello";
 
