@@ -17,11 +17,11 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class Auth {
 
-    public static String createToken(HttpServletRequest req, String username) {
+    public static String createToken(HttpServletRequest req, String username, String scope) {
         return Jwts.builder()
             .setIssuer(req.getServerName())
             .setSubject(username)
-            .claim("scope", "student")
+            .claim("scope", scope)
             .claim("username", username)
             .setExpiration(new Date(System.currentTimeMillis() + 60 * 60 * 24 * 365 * 10 * 1000))
             .signWith(SignatureAlgorithm.HS256, Conf.getProperty("jwt_key"))

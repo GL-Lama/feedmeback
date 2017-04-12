@@ -43,6 +43,11 @@
                 <div class="options">
                     <p>Not a member? <a href="#">Sign Up</a></p>
                     <p>Forgot <a href="#">Password?</a></p>
+                    <label class="custom-control custom-checkbox">
+                        <input v-model="isTeacher" type="checkbox" class="custom-control-input">
+                        <span class="custom-control-indicator"></span>
+                        <p class="custom-control-description">I'm a teacher</p>
+                    </label>
                 </div>
             </div>
 

@@ -2,7 +2,8 @@ let LoginForm = new Vue({
     el: '#login',
     data: {
         username: '',
-        password: ''
+        password: '',
+        isTeacher: false
     },
     methods: {
         submit: function (event) {
@@ -14,7 +15,7 @@ let LoginForm = new Vue({
             var params = {
                 method: 'POST',
                 headers: myHeaders,
-                body: jQuery.param({username: this.username, password: this.password}),
+                body: jQuery.param({username: this.username, password: this.password, isTeacher: this.isTeacher}),
                 credentials: "include",
                 redirect: "follow"
             };

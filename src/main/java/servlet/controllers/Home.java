@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.Student;
+import database.Teacher;
 import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
 import utils.Auth;
@@ -80,6 +81,7 @@ public class Home extends Controller {
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
+        Boolean isTeacher = Boolean.parseBoolean(req.getParameter("isTeacher"));
 
         // If the username has not been sent redirect to "/login"
         if (username == null || password == null) {
@@ -93,20 +95,46 @@ public class Home extends Controller {
             return;
         }
 
-        // Query the student
-        Map<String, String> params = new HashMap<String, String>();
+        String access_token;
 
-        params.put("username", username);
+        if (isTeacher) {
 
-        Student student = (Student) this.db.selectOne("Student", params);
+            // Query the Teacher
+            Map<String, String> params = new HashMap<String, String>();
 
-        // create his access_token
-        String access_token = Auth.createToken(req, username);
+            params.put("username", username);
 
-        // If we haven't found the student, register him
-        if (student == null) {
-            Student newStudent = new Student(username, password, access_token);
-            this.db.insert("Student", newStudent);
+            Teacher teacher = (Teacher) this.db.selectOne("Teacher", params);
+
+            // create his access_token
+            access_token = Auth.createToken(req, username, "teacher");
+
+            // If we haven't found the student, register him
+            if (teacher == null) {
+                Teacher newTeacher = new Teacher(username, password, access_token);
+                this.db.insert("Teacher", newTeacher);
+            }
+
+        }
+
+        else {
+
+            // Query the student
+            Map<String, String> params = new HashMap<String, String>();
+
+            params.put("username", username);
+
+            Student student = (Student) this.db.selectOne("Student", params);
+
+            // create his access_token
+            access_token = Auth.createToken(req, username, "student");
+
+            // If we haven't found the student, register him
+            if (student == null) {
+                Student newStudent = new Student(username, password, access_token);
+                this.db.insert("Student", newStudent);
+            }
+
         }
 
         // Store the access_token in cookies
