@@ -102,7 +102,7 @@ public class AuthModel extends Model {
 
     }
 
-    public void doLogout(HttpServletRequest req, HttpServletResponse res) {
+    public void doLogout(HttpServletRequest req, HttpServletResponse res) throws IOException{
 
         // Update cookie max age
         Cookie[] cookies = req.getCookies();
@@ -139,11 +139,23 @@ public class AuthModel extends Model {
         }
 
         else {
-            // TODO
+
+            // Query the Teacher
+            Map<String, String> params = new HashMap<String, String>();
+
+            params.put("username", username);
+
+            Teacher teacher = (Teacher) this.db.selectOne("Teacher", params);
+
+            teacher.setAccessToken(null);
+
+            this.db.update("Student", teacher);
         }
 
         cookie_token.setMaxAge(0);
 
         res.addCookie(cookie_token);
+
+        res.sendRedirect("/");
     }
 }
