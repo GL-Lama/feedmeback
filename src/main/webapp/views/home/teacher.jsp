@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
-<jsp:useBean id="dashboard" type="servlet.models.TeacherModel" class="servlet.models.TeacherModel"/>
+<jsp:useBean id="teacher" class="servlet.models.TeacherModel" scope="request"/>
 
 <tag:wrapper>
 
@@ -18,6 +18,8 @@
         <div id="dashboard" class="card fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card-block">
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
+
+                <p>${teacher.username}</p>
 
                 <div class="list-group">
                     <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">

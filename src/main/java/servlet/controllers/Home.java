@@ -77,7 +77,15 @@ public class Home extends Controller {
             String scope = Auth.getTokenClaim(access_token, "scope");
 
             if (scope.equals("teacher")) {
-                req.setAttribute("dashboard", new TeacherModel());
+
+                TeacherModel teacherModel = new TeacherModel();
+
+                if (!teacherModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+                    res.sendError(400);
+                    return;
+                }
+
+                req.setAttribute("teacher", teacherModel);
 
                 req.getRequestDispatcher("/views/home/teacher.jsp").forward(req, res);
             }
