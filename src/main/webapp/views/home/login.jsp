@@ -41,13 +41,16 @@
             <!--Footer-->
             <div class="modal-footer">
                 <div class="options">
-                    <p>Not a member? <a href="#">Sign Up</a></p>
-                    <p>Forgot <a href="#">Password?</a></p>
-                    <label class="custom-control custom-checkbox">
-                        <input v-model="isTeacher" type="checkbox" class="custom-control-input">
-                        <span class="custom-control-indicator"></span>
-                        <p class="custom-control-description">I'm a teacher</p>
-                    </label>
+                <p>
+                    <div class="btn-group" data-toggle="buttons">
+                        <label class="btn fmb-btn-primary" v-bind:class="{ active: isNotTeacher }">
+                            <input type="checkbox" autocomplete="off" v-model="isNotTeacher"> Student
+                        </label>
+                        <label class="btn fmb-btn-primary" v-bind:class="{ active: isTeacher }">
+                            <input type="checkbox" autocomplete="off" v-model="isTeacher"> Teacher
+                        </label>
+                    </div>
+                </p>
                 </div>
             </div>
 
