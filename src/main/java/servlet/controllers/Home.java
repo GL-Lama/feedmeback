@@ -14,12 +14,12 @@ import database.Student;
 import database.Teacher;
 import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
+import servlet.models.AuthModel;
 import servlet.models.TeacherModel;
 import utils.Auth;
 import utils.Check;
 import utils.Cookies;
 import utils.Error;
-import utils.console;
 
 @WebServlet(
         name = "Home",
@@ -119,53 +119,10 @@ public class Home extends Controller {
             return;
         }
 
-        String access_token;
+        AuthModel login = new AuthModel();
+        login.init(this.db, username, password, isTeacher);
 
-        if (isTeacher) {
-
-            // Query the Teacher
-            Map<String, String> params = new HashMap<String, String>();
-
-            params.put("username", username);
-
-            Teacher teacher = (Teacher) this.db.selectOne("Teacher", params);
-
-            // create his access_token
-            access_token = Auth.createToken(req, username, "teacher");
-
-            // If we haven't found the student, register him
-            if (teacher == null) {
-                Teacher newTeacher = new Teacher(username, password, access_token);
-                this.db.insert("Teacher", newTeacher);
-            }
-
-        }
-
-        else {
-
-            // Query the student
-            Map<String, String> params = new HashMap<String, String>();
-
-            params.put("username", username);
-
-            Student student = (Student) this.db.selectOne("Student", params);
-
-            // create his access_token
-            access_token = Auth.createToken(req, username, "student");
-
-            // If we haven't found the student, register him
-            if (student == null) {
-                Student newStudent = new Student(username, password, access_token);
-                this.db.insert("Student", newStudent);
-            }
-
-        }
-
-        // Store the access_token in cookies
-        Cookie cookie = new Cookie("access_token", access_token);
-        cookie.setMaxAge(60 * 60 * 24 * 365 * 10);
-
-        res.addCookie(cookie);
+        login.doLogin(req, res);
     }
 
     private void Logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

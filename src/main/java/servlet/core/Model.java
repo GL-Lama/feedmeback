@@ -1,5 +1,9 @@
 package servlet.core;
 
-public class Model {
+import database.Database;
+
+public abstract class Model {
+
+    public Database db;
 
 }
