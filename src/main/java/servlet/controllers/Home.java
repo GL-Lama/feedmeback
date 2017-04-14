@@ -107,67 +107,20 @@ public class Home extends Controller {
         String password = req.getParameter("password");
         Boolean isTeacher = Boolean.parseBoolean(req.getParameter("isTeacher"));
 
-        // If the username has not been sent redirect to "/login"
-        if (username == null || password == null) {
+        AuthModel authModel = new AuthModel();
+        if (!authModel.init(this.db, username, password, isTeacher))
             res.sendError(400);
-            return;
-        }
 
-        // if the user already has a token, redirtect to "/"
-        if (Cookies.getCookieValue(req, "access_token") != null) {
-            res.sendRedirect("/");
-            return;
-        }
-
-        AuthModel login = new AuthModel();
-        login.init(this.db, username, password, isTeacher);
-
-        login.doLogin(req, res);
+        authModel.doLogin(req, res);
     }
 
     private void Logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        // Update cookie max age
-        Cookie[] cookies = req.getCookies();
+        AuthModel authModel = new AuthModel();
+        if (!authModel.init(this.db))
+            res.sendError(400);
 
-        Cookie cookie_token = null;
-
-        for (Cookie cookie: cookies) {
-            if (cookie.getName().equals("access_token"))
-                cookie_token = cookie;
-        }
-
-        if (cookie_token == null)
-            return;
-
-        String access_token = cookie_token.getValue();
-
-        Claims claims = Auth.getTokenClaims(access_token);
-
-        String username = (String) claims.get("username");
-        String scope = (String) claims.get("scope");
-
-        if (scope.equals("student")) {
-
-            // Query the student
-            Map<String, String> params = new HashMap<String, String>();
-
-            params.put("username", username);
-
-            Student student = (Student) this.db.selectOne("Student", params);
-
-            student.setAccessToken(null);
-
-            this.db.update("Student", student);
-        }
-
-        else {
-            // TODO
-        }
-
-        cookie_token.setMaxAge(0);
-
-        res.addCookie(cookie_token);
+        authModel.doLogout(req, res);
     }
 
 }

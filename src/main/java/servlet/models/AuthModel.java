@@ -1,5 +1,6 @@
 package servlet.models;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,14 +11,22 @@ import javax.servlet.http.HttpServletResponse;
 import database.Database;
 import database.Student;
 import database.Teacher;
+import io.jsonwebtoken.Claims;
 import servlet.core.Model;
 import utils.Auth;
+import utils.Cookies;
 
 public class AuthModel extends Model {
 
     public String username;
     public String password;
     public Boolean isTeacher;
+
+    public boolean init(Database db) {
+
+        this.db = db;
+        return true;
+    }
 
     public boolean init(Database db, String username, String password, Boolean isTeacher) {
 
@@ -29,7 +38,19 @@ public class AuthModel extends Model {
         return true;
     }
 
-    public void doLogin(HttpServletRequest req, HttpServletResponse res) {
+    public void doLogin(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
+        // If the username has not been sent redirect to "/login"
+        if (username == null || password == null) {
+            res.sendError(400);
+            return;
+        }
+
+        // if the user already has a token, redirtect to "/"
+        if (Cookies.getCookieValue(req, "access_token") != null) {
+            res.sendRedirect("/");
+            return;
+        }
 
         String access_token;
 
@@ -79,5 +100,50 @@ public class AuthModel extends Model {
 
         res.addCookie(cookie);
 
+    }
+
+    public void doLogout(HttpServletRequest req, HttpServletResponse res) {
+
+        // Update cookie max age
+        Cookie[] cookies = req.getCookies();
+
+        Cookie cookie_token = null;
+
+        for (Cookie cookie: cookies) {
+            if (cookie.getName().equals("access_token"))
+                cookie_token = cookie;
+        }
+
+        if (cookie_token == null)
+            return;
+
+        String access_token = cookie_token.getValue();
+
+        Claims claims = Auth.getTokenClaims(access_token);
+
+        String username = (String) claims.get("username");
+        String scope = (String) claims.get("scope");
+
+        if (scope.equals("student")) {
+
+            // Query the student
+            Map<String, String> params = new HashMap<String, String>();
+
+            params.put("username", username);
+
+            Student student = (Student) this.db.selectOne("Student", params);
+
+            student.setAccessToken(null);
+
+            this.db.update("Student", student);
+        }
+
+        else {
+            // TODO
+        }
+
+        cookie_token.setMaxAge(0);
+
+        res.addCookie(cookie_token);
     }
 }
