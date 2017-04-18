@@ -1,5 +1,5 @@
 let LoginForm = new Vue({
-    el: '#dashboard',
+    el: '#teacher',
     data: {},
     methods: {
         modify: function (formName) {
