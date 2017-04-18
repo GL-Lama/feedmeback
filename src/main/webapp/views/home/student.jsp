@@ -12,42 +12,55 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div id="app">
-            {{ message }}
-        </div>
+        <!--Body-->
 
-        <div id="app-2">
-            <span v-bind:title="message">
-                Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
-            </span>
-        </div>
+        <div class="d-flex justify-content-center mt-6"> 
+            <div id="dashboard" class="card fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
+                <div class="card-block">
 
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-primary">Primary</button>
+                    <p class="fmb-font-title text-center">FEEDMEBACK</p>
 
-        <!-- Indicates a dangerous or potentially negative action -->
-        <button type="button" class="btn btn-default">Default</button>
+                    <div class="fmb-bg-message fmb-border-message">
+                    <p class="text-center">Bon retour parmis nous, machin !<p>
+                    </div>
 
-        <!-- Secondary, outline button -->
-        <button type="button" class="btn btn-secondary">Secondary</button>
+                    <div>
+                        <div>
+                            <div class="fmb-bg-message fmb-border-message">
+                                <p class="text-center">En attente<p>
+                            </div>
 
-        <!-- Indicates a successful or positive action -->
-        <button type="button" class="btn btn-success">Success</button>
+                            <div class="list-group fmb-border-item">
+                                <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
+                                    <div class="d-flex w-100 align-items-start">
+                                        <div class="w-25">
+                                            <small>Date</small>
+                                            <p class="text-truncate m-0">20/03/2017</p>
+                                        </div>
+                                        <div class="w-50 pl-3 pr-3">
+                                            <small>Nom du formulaire</small>
+                                            <p class="text-truncat m-0">Sciences Fondamentales</p>
+                                        </div>
+                                        <div class="d-flex w-25">
+                                            <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+                                        </div>
+                                    </div>
+                                </a>
+                
+                            </div>
+                        </div>
 
-        <!-- Contextual button for informational alert messages -->
-        <button type="button" class="btn btn-info">Info</button>
+                        <div class="fmb-bg-message fmb-border-message">
+                            <p class="text-center">Mes modules<p>
+                        </div>
 
-        <!-- Indicates caution should be taken with this action -->
-        <button type="button" class="btn btn-warning">Warning</button>
+                        
 
-        <!-- Indicates a dangerous or potentially negative action -->
-        <button type="button" class="btn btn-danger">Danger</button>
-
-
-        <div class="md-form">
-            <input type="text" id="form1" class="form-control">
-            <label for="form1" class="">Example label</label>
+           
+                    
+                 
+                </div>
+            </div>
         </div>
     </jsp:body>
 

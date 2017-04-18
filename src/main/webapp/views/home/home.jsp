@@ -12,43 +12,25 @@
     </jsp:attribute>
 
     <jsp:body>
-        <div id="app">
-            {{ message }}
+
+        <!--Form without header-->
+       <div class="d-flex justify-content-center mt-6"> 
+            <div id="login" class="card fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
+                <div class="card-block">
+
+                    <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                    <div class="fmb-bg-primary">
+                    <p class="text-center">Bon retour parmis nous, machin<p>
+                    </div>
+           
+                    <!--Body-->
+                 <div class="d-flex justify-content-center mt-1">
+                     <div class="card-block">
+
+            </div>
         </div>
+        <!--/Form without header-->
 
-        <div id="app-2">
-            <span v-bind:title="message">
-                Hover your mouse over me for a few seconds
-                to see my dynamically bound title!
-            </span>
-        </div>
-
-        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-primary">Primary</button>
-
-        <!-- Indicates a dangerous or potentially negative action -->
-        <button type="button" class="btn btn-default">Default</button>
-
-        <!-- Secondary, outline button -->
-        <button type="button" class="btn btn-secondary">Secondary</button>
-
-        <!-- Indicates a successful or positive action -->
-        <button type="button" class="btn btn-success">Success</button>
-
-        <!-- Contextual button for informational alert messages -->
-        <button type="button" class="btn btn-info">Info</button>
-
-        <!-- Indicates caution should be taken with this action -->
-        <button type="button" class="btn btn-warning">Warning</button>
-
-        <!-- Indicates a dangerous or potentially negative action -->
-        <button type="button" class="btn btn-danger">Danger</button>
-
-
-        <div class="md-form">
-            <input type="text" id="form1" class="form-control">
-            <label for="form1" class="">Example label</label>
-        </div>
     </jsp:body>
 
 </tag:wrapper>

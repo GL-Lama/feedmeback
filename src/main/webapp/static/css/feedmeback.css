@@ -50,6 +50,8 @@ input:focus {
     letter-spacing: 2px;
 }
 
+
+
 .fmb-bg-primary {
     background-color: #38ca8b;
 }
@@ -58,10 +60,26 @@ input:focus {
     background-color: #33b67d
 }
 
+.fmb-bg-item{
+    background-color: #1f6f4c
+}
+
+.fmb-bg-message {
+    background-color: #33b67d;
+}
+
 .fmb-btn-primary {
     background-color: #1f6f4c
 }
 
 .fmb-btn-primary:hover {
     background-color: #33b67d
+}
+
+.fmb-border-message {
+    border-radius: 10px;
+}
+
+.fmb-border-item {
+    border-radius: 5px;
 }
