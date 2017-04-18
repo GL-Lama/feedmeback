@@ -15,7 +15,7 @@
 
     <jsp:body>
 
-        <div id="dashboard" class="card fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div id="teacher" class="card fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card-block">
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
 
