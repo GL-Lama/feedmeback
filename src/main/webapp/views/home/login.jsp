@@ -43,12 +43,8 @@
                 <div class="options">
                 <p>
                     <div class="btn-group" data-toggle="buttons">
-                        <label class="btn fmb-btn-primary" v-bind:class="{ active: isNotTeacher }">
-                            <input type="checkbox" autocomplete="off" v-model="isNotTeacher"> Student
-                        </label>
-                        <label class="btn fmb-btn-primary" v-bind:class="{ active: isTeacher }">
-                            <input type="checkbox" autocomplete="off" v-model="isTeacher"> Teacher
-                        </label>
+                        <button type="button" v-on:click="selectStudent" class="btn btn-md fmb-btn-primary" v-bind:class="{ active: isNotTeacher }">Student</button>
+                        <button type="button" v-on:click="selectTeacher"class="btn btn-md fmb-btn-primary" v-bind:class="{ active: isTeacher }">Teacher</button>
                     </div>
                 </p>
                 </div>

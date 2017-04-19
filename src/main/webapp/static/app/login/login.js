@@ -5,17 +5,20 @@ let LoginForm = new Vue({
         password: '',
         isTeacher: false
     },
-    computed : {
+    computed:  {
         isNotTeacher: {
             get() {
-                return !this.isTeacher
-            },
-            set() {
-                this.isTeacher = !this.isTeacher;
+                return !this.isTeacher;
             }
         }
     },
     methods: {
+        selectStudent() {
+            this.isTeacher = false;
+        },
+        selectTeacher() {
+            this.isTeacher = true;
+        },
         submit(event) {
 
             var myHeaders = new Headers();
