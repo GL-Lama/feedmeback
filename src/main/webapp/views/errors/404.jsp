@@ -23,7 +23,7 @@
 
                     <!--Footer-->
                     <div class="modal-footer">
-                        <div class="text-center">
+                        <div class="text-center mx-auto">
                             <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Mettez-vous à l'aise</button></a>
                         </div>
                     </div>
