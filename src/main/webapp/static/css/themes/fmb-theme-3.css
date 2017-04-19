@@ -1,0 +1,89 @@
+:root {
+  --color-1: #29388B;
+  --color-2: #7A88C9;
+  --color-3: #A9AFD0 ;
+  --color-text: white;
+}
+
+/***********/
+/* GENERAL */
+/***********/
+
+body {
+    background-color: var(--color-1);
+}
+
+a {
+    color: var(--color-1);
+}
+
+a:hover {
+    color: var(--color-3);
+}
+
+.fa {
+    color: var(--color-1);
+}
+
+input:focus {
+    box-shadow: var(--color-1) !important;
+    border-bottom-color: var(--color-1) !important;
+}
+
+.fmb-bg-primary {
+    background-color: var(--color-2);
+}
+
+.fmb-bg-secondary {
+    background-color: var(--color-3)
+}
+
+.fmb-bg-item{
+    background-color: var(--color-3)
+}
+
+.fmb-bg-message {
+    background-color: var(--color-1);
+}
+
+.fmb-btn-primary {
+    background-color: var(--color-1)
+}
+
+.fmb-btn-primary:hover {
+    background-color: var(--color-3)
+}
+
+.fmb-font-title {
+    color: var(--color-text)
+}
+
+/***********/
+/* TEACHER */
+/***********/
+
+#teacher .list-group-item:hover {
+    background-color: var(--color-1);
+}
+
+#teacher .list-group-item:hover i {
+    color: var(--color-3);
+}
+
+
+/*********/
+/* LOGIN */
+/*********/
+
+#login .md-form .prefix.active,
+#login .md-form input {
+    color: var(--color-1)
+}
+
+#login .md-form label {
+    color: var(--color-text)
+}
+
+#login .fmb-btn-primary.active {
+    color: var(--color-3) !important;
+}

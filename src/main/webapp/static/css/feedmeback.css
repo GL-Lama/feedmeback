@@ -6,32 +6,15 @@
 body {
     font-family: "Avenir Next";
     color: white;
-    background-color: #1f6f4c
+}
+
+input:focus {
+    border-bottom: 1px solid !important;
+    box-shadow: 0 1px 0 0 !important;
 }
 
 p {
     font-size: 1.6rem
-}
-
-a {
-    color: #1f6f4c;
-}
-
-a:hover {
-    color: #33b67d;
-}
-
-.fa {
-    color: #1f6f4c;
-}
-
-.active {
-    color: #1f6f4c;
-}
-
-input:focus {
-    border-bottom: 1px solid #1f6f4c !important;
-    box-shadow: 0 1px 0 0 #1f6f4c !important;
 }
 
 .fmb-font-sm {
@@ -48,32 +31,6 @@ input:focus {
     font-size: 5rem;
     font-weight: bold;
     letter-spacing: 2px;
-}
-
-
-
-.fmb-bg-primary {
-    background-color: #38ca8b;
-}
-
-.fmb-bg-secondary {
-    background-color: #33b67d
-}
-
-.fmb-bg-item{
-    background-color: #1f6f4c
-}
-
-.fmb-bg-message {
-    background-color: #33b67d;
-}
-
-.fmb-btn-primary {
-    background-color: #1f6f4c
-}
-
-.fmb-btn-primary:hover {
-    background-color: #33b67d
 }
 
 .fmb-border-message {

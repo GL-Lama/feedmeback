@@ -1,12 +1,7 @@
-.md-form .prefix.active {
-    color: #1f6f4c
-}
-
 .modal-footer .btn + .btn {
     margin-bottom: 0px;
 }
 
 .fmb-btn-primary.active {
     background-color: white;
-    color: #1f6f4c !important;
 }
