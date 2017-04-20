@@ -15,63 +15,67 @@
 
     <jsp:body>
 
-        <div id="teacher" class="card fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-            <div class="card-block">
+        <div id="teacher" class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <div class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
 
                 <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
-                <p>${teacher.username}</p>
+                <div class="card-block">
 
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
-                        <div class="d-flex w-100 align-items-start">
-                            <div class="w-25">
-                                <small>Date</small>
-                                <p class="text-truncate m-0">20/03/2017</p>
+                    <p>${teacher.username}</p>
+
+                    <div class="list-group">
+                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
+                            <div class="d-flex w-100 align-items-start">
+                                <div class="w-25">
+                                    <small>Date</small>
+                                    <p class="text-truncate m-0">20/03/2017</p>
+                                </div>
+                                <div class="w-50 pl-3 pr-3">
+                                    <small>Nom du formulaire</small>
+                                    <p class="text-truncat m-0">Sciences Fondamentales</p>
+                                </div>
+                                <div class="d-flex w-25">
+                                    <div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
+                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+                                </div>
                             </div>
-                            <div class="w-50 pl-3 pr-3">
-                                <small>Nom du formulaire</small>
-                                <p class="text-truncat m-0">Sciences Fondamentales</p>
+                        </a>
+                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
+                            <div class="d-flex w-100 align-items-start">
+                                <div class="w-25">
+                                    <small>Date</small>
+                                    <p class="text-truncate m-0">20/03/2017</p>
+                                </div>
+                                <div class="w-50 pl-3 pr-3">
+                                    <small>Nom du formulaire</small>
+                                    <p class="text-truncat m-0">Sciences Fondamentales</p>
+                                </div>
+                                <div class="d-flex w-25">
+                                    <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
+                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+                                </div>
                             </div>
-                            <div class="d-flex w-25">
-                                <div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+                        </a>
+                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
+                            <div class="d-flex w-100 align-items-start">
+                                <div class="w-25">
+                                    <small>Date</small>
+                                    <p class="text-truncate m-0">20/03/2017</p>
+                                </div>
+                                <div class="w-50 pl-3 pr-3">
+                                    <small>Nom du formulaire</small>
+                                    <p class="text-truncat m-0">Sciences Fondamentales</p>
+                                </div>
+                                <div class="d-flex w-25">
+                                    <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
+                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+                                </div>
                             </div>
-                        </div>
-                    </a>
-                    <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
-                        <div class="d-flex w-100 align-items-start">
-                            <div class="w-25">
-                                <small>Date</small>
-                                <p class="text-truncate m-0">20/03/2017</p>
-                            </div>
-                            <div class="w-50 pl-3 pr-3">
-                                <small>Nom du formulaire</small>
-                                <p class="text-truncat m-0">Sciences Fondamentales</p>
-                            </div>
-                            <div class="d-flex w-25">
-                                <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                            </div>
-                        </div>
-                    </a>
-                    <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
-                        <div class="d-flex w-100 align-items-start">
-                            <div class="w-25">
-                                <small>Date</small>
-                                <p class="text-truncate m-0">20/03/2017</p>
-                            </div>
-                            <div class="w-50 pl-3 pr-3">
-                                <small>Nom du formulaire</small>
-                                <p class="text-truncat m-0">Sciences Fondamentales</p>
-                            </div>
-                            <div class="d-flex w-25">
-                                <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                            </div>
-                        </div>
-                    </a>
+                        </a>
+                    </div>
+
                 </div>
 
             </div>
