@@ -94,6 +94,6 @@ $ git push
 
 ```sh
 $ git checkout master
-$ git merge your pseudo
+$ git merge yourpseudo
 $ git push
 ```
