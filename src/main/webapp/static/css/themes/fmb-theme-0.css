@@ -2,6 +2,7 @@
   --color-1: #1f6f4c;
   --color-2: #38ca8b;
   --color-3: #33b67d;
+  --color-content: #60d5a2;
   --color-text: white;
 }
 
@@ -43,7 +44,8 @@ input:focus {
 }
 
 .fmb-bg-message {
-    background-color: var(--color-1);
+    background-color: var(--color-3);
+    
 }
 
 .fmb-btn-primary {
@@ -86,4 +88,20 @@ input:focus {
 
 #login .fmb-btn-primary.active {
     color: var(--color-3) !important;
+}
+
+/***********/
+/* STUDENT */
+/***********/
+
+#student .fmb-card-content{
+    background-color: var(--color-content);
+}
+
+#student .list-group-item:hover {
+    background-color: var(--color-2);
+}
+
+#student .list-group-item:hover i {
+    color: var(--color-1);
 }

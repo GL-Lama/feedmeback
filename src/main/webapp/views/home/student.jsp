@@ -15,19 +15,21 @@
         <!--Body-->
 
         <div class="d-flex justify-content-center mt-6">
-            <div id="dashboard" class="card fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
-                <div class="card-block">
+            <div id="student" class="card pr-0 pl-0 fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
+                <div class="card-block pr-0 pl-0 pb-0">
 
                     <p class="fmb-font-title text-center">FEEDMEBACK</p>
 
-                    <div class="fmb-bg-message fmb-border-message">
-                    <p class="text-center">Bon retour parmis nous, machin !<p>
+                    <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
+
+                    <div class="d-flex justify-content-center ">
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${teacher.username} !<p>
                     </div>
 
-                    <div>
+                    <div class="card-block fmb-card-content">
                         <div>
-                            <div class="d-flex justify-content-center">
-                                <p class="fmb-bg-message fmb-border-message text-center">En attente<p>
+                            <div class="d-flex justify-content-center ">
+                                <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">En attente<p>
                             </div>
 
                             <div class="list-group fmb-border-item">
@@ -50,8 +52,8 @@
                             </div>
                         </div>
 
-                        <div class="fmb-bg-message fmb-border-message">
-                            <p class="text-center">Mes modules<p>
+                        <div class="d-flex justify-content-center m-4">
+                            <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules<p>
                         </div>
 
 
