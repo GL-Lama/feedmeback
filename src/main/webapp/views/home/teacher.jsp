@@ -19,6 +19,8 @@
             <div class="card-block">
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
 
+                <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
+
                 <p>${teacher.username}</p>
 
                 <div class="list-group">

@@ -40,3 +40,14 @@ p {
 .fmb-border-item {
     border-radius: 5px;
 }
+
+.fmb-btn-logout {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 3em;
+}
+
+.fmb-btn-logout:hover {
+    color: white;
+}
