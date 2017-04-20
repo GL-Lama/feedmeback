@@ -36,6 +36,9 @@ public class Home extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+        if (req.getSession().getAttribute("theme") == null)
+            req.getSession().setAttribute("theme", (int) (Math.random() * 4));
+
         String[] params = this.getUrlParameters(req, "");
 
         if (!Check.containsRoute(this.routes, params)) {

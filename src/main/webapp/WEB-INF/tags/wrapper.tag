@@ -15,7 +15,7 @@
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/css/feedmeback.css"></link>
-        <link rel="stylesheet" type="text/css" href="/static/css/themes/fmb-theme-<%= (int) (Math.random() * 4) %>.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/css/themes/fmb-theme-${sessionScope.theme}.css"></link>
 
         <jsp:invoke fragment="head"/>
 
