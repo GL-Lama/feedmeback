@@ -14,7 +14,7 @@
     <jsp:body>
         <!--Body-->
 
-        <div class="d-flex justify-content-center mt-6"> 
+        <div class="d-flex justify-content-center mt-6">
             <div id="dashboard" class="card fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
                 <div class="card-block">
 
@@ -26,8 +26,8 @@
 
                     <div>
                         <div>
-                            <div class="fmb-bg-message fmb-border-message">
-                                <p class="text-center">En attente<p>
+                            <div class="d-flex justify-content-center">
+                                <p class="fmb-bg-message fmb-border-message text-center">En attente<p>
                             </div>
 
                             <div class="list-group fmb-border-item">
@@ -46,7 +46,7 @@
                                         </div>
                                     </div>
                                 </a>
-                
+
                             </div>
                         </div>
 
@@ -54,11 +54,11 @@
                             <p class="text-center">Mes modules<p>
                         </div>
 
-                        
 
-           
-                    
-                 
+
+
+
+
                 </div>
             </div>
         </div>
