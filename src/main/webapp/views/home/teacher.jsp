@@ -18,12 +18,14 @@
         <div id="teacher" class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
-
                 <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
                 <div class="card-block">
 
-                    <p>${teacher.username}</p>
+                    <div class="d-flex justify-content-between">
+                    <p>Bonjour "${teacher.username}"</p>
+                    <button type="button" class="btn fmb-btn-primary">Créer nouveau formulaire</button>
+                    </div>
 
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
