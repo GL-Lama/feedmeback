@@ -8,7 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.annotations.Check;
+
 import servlet.core.Controller;
+import utils.Error;
+import utils.console;
 
 @WebServlet(
         name = "Form",
@@ -19,18 +23,27 @@ public class Form extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        if (this.getUrlParameters(req, "form").length >= 1)
-            req.getRequestDispatcher("/views/error/404.jsp").forward(req, res);
+        String[] params = this.getUrlParameters(req, "form");
 
-        // else if (this.getUrlParameter(req, 0))
+        if (params.length == 0) {
+            this.Index(req, res);
+            return;
+        }
 
-        PrintWriter out = res.getWriter();
-        out.println("Form");
-        out.close();
+        switch (params[0]) {
+            default:
+                Error.send404(req, res);
+                break;
+        }
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         this.doGet(req, res);
+    }
+
+    public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/form.jsp").forward(req, res);
     }
 }
