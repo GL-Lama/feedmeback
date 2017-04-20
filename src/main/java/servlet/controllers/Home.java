@@ -1,23 +1,16 @@
 package servlet.controllers;
 
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import database.Student;
-import database.Teacher;
-import io.jsonwebtoken.Claims;
 import servlet.core.Controller;
 import servlet.models.AuthModel;
 import servlet.models.TeacherModel;
 import utils.Auth;
-import utils.Check;
 import utils.Cookies;
 import utils.Error;
 
@@ -27,12 +20,6 @@ import utils.Error;
     )
 public class Home extends Controller {
 
-    private final String[][] routes = new String[][] {
-        {},
-        {"login"},
-        {"logout"}
-    };
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
@@ -40,11 +27,6 @@ public class Home extends Controller {
             req.getSession().setAttribute("theme", (int) (Math.random() * 4));
 
         String[] params = this.getUrlParameters(req, "");
-
-        if (!Check.containsRoute(this.routes, params)) {
-            Error.send404(req, res);
-            return;
-        }
 
         if (params.length == 0) {
             this.Index(req, res);

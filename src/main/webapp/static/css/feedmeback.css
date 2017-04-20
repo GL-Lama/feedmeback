@@ -51,3 +51,7 @@ p {
 .fmb-btn-logout:hover {
     color: white;
 }
+
+.relative {
+    position: relative;
+}
