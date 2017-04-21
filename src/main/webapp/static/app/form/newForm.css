@@ -9,3 +9,8 @@
 .fmb-btn-arrow:hover {
     color: white;
 }
+
+.scroll {
+    height: 500px;
+    overflow: scroll;
+}
