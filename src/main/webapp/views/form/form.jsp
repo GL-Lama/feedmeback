@@ -12,7 +12,48 @@
     </jsp:attribute>
 
     <jsp:body>
-        <h1>HELLO</h1>
+                <!--Form without header-->
+       <div class="d-flex justify-content-center mt-6"> 
+            <div id="login" class="card fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
+                <div class="card-block">
+
+                    <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                    
+                    <div class="d-flex justify-content-center text-center">
+                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Création d'un formulaire<br>
+                        Informations générales</p>
+                    </div>
+                    <form>
+                        <div class="md-form d-flex w-100 justify-content-center">
+                            <div class="w-50 relative">
+                                <input type="text" id="form1" class="form-control">
+                                <label for="form1" class="">Nom du formulaire</label>
+                            </div>
+                        </div>
+                        <div class="md-form d-flex w-100 justify-content-center">
+                            <div class="w-50 relative">
+                                <input type="text" id="form2" class="form-control">
+                                <label for="form2" class="">Date (JJ/MM/AAAA)</label>
+                            </div>
+                        </div>
+
+                        <!--<div class="md-form form-group">
+                            <i class="fa fa-envelope prefix"></i>
+                            <input type="email" id="form91" class="form-control validate">
+                            <label for="form91" data-error="wrong" data-success="right">Type your email</label>
+                        </div>
+
+                        <div class="md-form form-group">
+                            <i class="fa fa-lock prefix"></i>
+                            <input type="password" id="form92" class="form-control validate">
+                            <label for="form92" data-error="wrong" data-success="right">Type your password</label>
+                        </div>
+
+                        <div class="md-form form-group">
+                        <a href="" class="btn btn-primary btn-lg">Login</a>
+                        </div>-->
+                        
+                </form>
     </jsp:body>
 
 </tag:wrapper>
