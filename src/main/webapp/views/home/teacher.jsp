@@ -20,12 +20,20 @@
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
                 <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
+                <div class="d-flex justify-content-center ">
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${teacher.username} !<p>
+                </div>
+
                 <div class="card-block fmb-card-content">
 
-                    <div class="d-flex justify-content-between">
-                    <p>Bonjour "${teacher.username}"</p>
+                    <div class="d-flex justify-content-center">
                     <button type="button" class="btn fmb-btn-primary">Créer nouveau formulaire</button>
                     </div>
+
+                    <div class="d-flex justify-content-center pt-2">
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires<p>
+                    </div>
+                    
 
                     <div class="list-group">
                         <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
@@ -60,22 +68,15 @@
                                 </div>
                             </div>
                         </a>
-                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
-                            <div class="d-flex w-100 align-items-start">
-                                <div class="w-25">
-                                    <small>Date</small>
-                                    <p class="text-truncate m-0">20/03/2017</p>
-                                </div>
-                                <div class="w-50 pl-3 pr-3">
-                                    <small>Nom du formulaire</small>
-                                    <p class="text-truncat m-0">Sciences Fondamentales</p>
-                                </div>
-                                <div class="d-flex w-25">
-                                    <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                                </div>
-                            </div>
-                        </a>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center ">
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules<p>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center ">
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Génie Logiciel<p>
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ml-2">Technologie Web<p>
                     </div>
 
                 </div>
