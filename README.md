@@ -97,4 +97,5 @@ $ git push
 $ git checkout master
 $ git merge yourpseudo
 $ git push
+$ git checkout yourpseudo
 ```

@@ -60,6 +60,10 @@ input:focus {
     color: var(--color-text)
 }
 
+.fmb-card-content{
+    background-color: var(--color-content);
+}
+
 /***********/
 /* TEACHER */
 /***********/
@@ -94,9 +98,7 @@ input:focus {
 /* STUDENT */
 /***********/
 
-#student .fmb-card-content{
-    background-color: var(--color-content);
-}
+
 
 #student .list-group-item:hover {
     background-color: var(--color-2);
@@ -104,4 +106,16 @@ input:focus {
 
 #student .list-group-item:hover i {
     color: var(--color-1);
+}
+
+/***********/
+/* NEWFORM */
+/***********/
+
+#newForm .list-group-item:hover {
+    background-color: var(--color-1);
+}
+
+#newForm .list-group-item:hover i {
+    color: var(--color-3);
 }

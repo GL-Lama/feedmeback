@@ -45,7 +45,7 @@ public class FormManager extends Controller {
 
     public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/form/formManager.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
     }
 }
 

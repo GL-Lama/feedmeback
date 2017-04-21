@@ -4,7 +4,7 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/form/formManager.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/formManager/formManager.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
@@ -17,10 +17,8 @@
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
                 <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
-                <div class="card-block">
+                <div class="card-block fmb-card-contenté">
                     <div class="d-flex justify-content-end">
-                        <%--<button type="button" class="btn fmb-btn-primary">Pourcentage de participation : 95%</button>--%>
-                        <%--<span class="badge">Pourcentage de participation : 95%</span>--%>
                         <p>Poucentage de participation : 95%</p>
                     </div>
                 
