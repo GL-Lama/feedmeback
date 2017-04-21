@@ -4,7 +4,7 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/form/form.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/form/newForm.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
@@ -44,14 +44,39 @@
                 <div class="modal-footer">
                     <div class="options d-flex justify-content-end">
                     <p>
-                        <div class="btn-group" data-toggle="buttons">
-                            <button type="button" v-on:click="selectExistantForm" class="btn btn-md fmb-btn-primary" style="right: 70px;">Utiliser un formulaire existant</button>
-                            <!--<button type="button" v-on:click="selectCreateForm"class="btn btn-md fmb-btn-primary">Créer</button>-->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn  btn-md fmb-btn-primary" data-toggle="modal" data-target="#myModal">
+                            Utiliser un formulaire existant
+                        </button>
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <!--Content-->
+                        <div class="modal-content fmb-bg-primary">
+                            <!--Header-->
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+                            </div>
+                            <!--Body-->
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <!--Footer-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
                         </div>
-                    </p>
-                    <i class="fa fa-arrow-circle-right fmb-btn-arrow mb-2 mr-5" aria-hidden="true"></i>
+                        <!--/.Content-->
                     </div>
-                    <!--<div class="d-flex justify-content-end">...</div>-->
+                </div>
+                <!-- /.Live preview-->
+                    </p>
+                    <i class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i>
+                    </div>
                 </div>
     </jsp:body>
 
