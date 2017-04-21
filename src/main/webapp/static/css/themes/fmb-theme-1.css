@@ -89,3 +89,19 @@ input:focus {
 #login .fmb-btn-primary.active {
     color: var(--color-3) !important;
 }
+
+/***********/
+/* STUDENT */
+/***********/
+
+#student .fmb-card-content{
+    background-color: var(--color-content);
+}
+
+#student .list-group-item:hover {
+    background-color: var(--color-2);
+}
+
+#student .list-group-item:hover i {
+    color: var(--color-1);
+}
