@@ -67,6 +67,7 @@ $ git push
 ### 4 - Always add you pseudo in front of your commit message
 
 ```sh
+$ git add .
 $ git commit -m "yourpseudo: my changes ...."
 $ git push
 ```
