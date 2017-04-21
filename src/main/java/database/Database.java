@@ -17,7 +17,7 @@ import utils.console;
 
 public class Database {
 
-    private static SessionFactory  factory;
+    public static SessionFactory  factory;
 
     public Database() {
         try{

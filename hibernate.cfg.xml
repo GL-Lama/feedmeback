@@ -25,6 +25,7 @@
    <!-- List of XML mapping files -->
    <mapping resource="src/main/java/database/Student.hbm.xml"/>
    <mapping resource="src/main/java/database/Teacher.hbm.xml"/>
+   <mapping resource="src/main/java/database/Module.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>

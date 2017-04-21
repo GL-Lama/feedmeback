@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import servlet.core.Controller;
 import servlet.models.AuthModel;
+import servlet.models.StudentModel;
 import servlet.models.TeacherModel;
 import utils.Auth;
 import utils.Cookies;
@@ -76,6 +77,16 @@ public class Home extends Controller {
             }
 
             else if (scope.equals("student")) {
+
+                StudentModel studentModel = new StudentModel();
+
+                if (!studentModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+                    res.sendError(400);
+                    return;
+                }
+
+                req.setAttribute("student", studentModel);
+
                 req.getRequestDispatcher("/views/home/student.jsp").forward(req, res);
             }
 

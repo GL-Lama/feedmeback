@@ -56,11 +56,12 @@
                             <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules<p>
                         </div>
 
-                        <div class="d-flex justify-content-around">
-                            <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">Architecture des SI</p>
-                            <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">Cybersécurité</p>
-                            <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">Génie Logiciel</p>
-                            <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">Technologies Web</p>
+                        <div class="d-flex justify-content-around text-center">
+                            
+                            <button v-on:click="submit" class="btn fmb-btn-primary">Architecture des SI</button>
+                            <button v-on:click="submit" class="btn fmb-btn-primary">Cybersécurité</button>
+                            <button v-on:click="submit" class="btn fmb-btn-primary">Génie Logiciel</button>
+                            <button v-on:click="submit" class="btn fmb-btn-primary">Techno Web</button>
                         <div>
 
 
