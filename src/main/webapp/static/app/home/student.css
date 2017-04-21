@@ -3,10 +3,5 @@
 }
 
 .list-group-item:hover {
-    background-color: #1f6f4c;
     color: white !important;
-}
-
-.list-group-item:hover i {
-    color: #1f6f4c;
 }
