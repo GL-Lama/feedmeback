@@ -19,10 +19,12 @@
 
                 <div class="card-block">
                     <div class="d-flex justify-content-end">
+                        <%--<button type="button" class="btn fmb-btn-primary">Pourcentage de participation : 95%</button>--%>
+                        <%--<span class="badge">Pourcentage de participation : 95%</span>--%>
                         <p>Poucentage de participation : 95%</p>
                     </div>
                 
-                    <div class="col-sm-9">
+                    <div class="scrollspy-example z-depth-1" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
                         <div class="list-group">
                             <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">
                                 <div class="d-flex w-100 align-items-start">
