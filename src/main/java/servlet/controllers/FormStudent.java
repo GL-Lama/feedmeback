@@ -16,16 +16,16 @@ import utils.console;
 
 
 @WebServlet(
-        name = "FormManager",
-        value = "/formManager/*"
+        name = "FormStudent",
+        value = "/formStudent/*"
     )
 
-public class FormManager extends Controller {
+public class FormStudent extends Controller {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String[] params = this.getUrlParameters(req, "formManager");
+        String[] params = this.getUrlParameters(req, "formStudent");
 
         if (params.length == 0) {
             this.Index(req, res);
@@ -45,8 +45,6 @@ public class FormManager extends Controller {
 
     public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/formStudent/formStudent.jsp").forward(req, res);
     }
 }
-
-    
