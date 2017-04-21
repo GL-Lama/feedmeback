@@ -19,6 +19,8 @@
 
                     <p class="fmb-font-title text-center">FEEDMEBACK</p>
                     
+                    <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
+
                     <div class="d-flex justify-content-center text-center">
                         <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Création d'un formulaire<br>
                         Informations générales</p>
@@ -36,24 +38,21 @@
                                 <label for="form2" class="">Date (JJ/MM/AAAA)</label>
                             </div>
                         </div>
-
-                        <!--<div class="md-form form-group">
-                            <i class="fa fa-envelope prefix"></i>
-                            <input type="email" id="form91" class="form-control validate">
-                            <label for="form91" data-error="wrong" data-success="right">Type your email</label>
-                        </div>
-
-                        <div class="md-form form-group">
-                            <i class="fa fa-lock prefix"></i>
-                            <input type="password" id="form92" class="form-control validate">
-                            <label for="form92" data-error="wrong" data-success="right">Type your password</label>
-                        </div>
-
-                        <div class="md-form form-group">
-                        <a href="" class="btn btn-primary btn-lg">Login</a>
-                        </div>-->
-                        
+                    
                 </form>
+                    <!--Footer-->
+                <div class="modal-footer">
+                    <div class="options d-flex justify-content-end">
+                    <p>
+                        <div class="btn-group" data-toggle="buttons">
+                            <button type="button" v-on:click="selectExistantForm" class="btn btn-md fmb-btn-primary" style="right: 70px;">Utiliser un formulaire existant</button>
+                            <!--<button type="button" v-on:click="selectCreateForm"class="btn btn-md fmb-btn-primary">Créer</button>-->
+                        </div>
+                    </p>
+                    <i class="fa fa-arrow-circle-right fmb-btn-arrow mb-2 mr-5" aria-hidden="true"></i>
+                    </div>
+                    <!--<div class="d-flex justify-content-end">...</div>-->
+                </div>
     </jsp:body>
 
 </tag:wrapper>

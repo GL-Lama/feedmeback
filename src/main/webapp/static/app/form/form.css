@@ -1,0 +1,14 @@
+.modal-footer .btn + .btn {
+    margin-bottom: 0px;
+}
+
+.fmb-btn-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    font-size: 3em;
+}
+
+.fmb-btn-arrow:hover {
+    color: white;
+}
