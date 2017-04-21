@@ -4,7 +4,7 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/form/formManager.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/formManager/formManager.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
