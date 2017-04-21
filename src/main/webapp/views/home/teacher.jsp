@@ -20,7 +20,7 @@
                 <p class="fmb-font-title text-center">FEEDMEBACK</p>
                 <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
-                <div class="card-block">
+                <div class="card-block fmb-card-content">
 
                     <div class="d-flex justify-content-between">
                     <p>Bonjour "${teacher.username}"</p>
