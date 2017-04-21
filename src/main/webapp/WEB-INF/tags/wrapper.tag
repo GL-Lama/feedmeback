@@ -30,6 +30,8 @@
     <div>
         <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
         <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
+        <script src="/static/libs/mdbootstrap/js/tether.min.js"></script>
+        <script src="/static/libs/mdbootstrap/js/bootstrap.min.js"></script>
     </div>
 
     <jsp:invoke fragment="scripts"/>
