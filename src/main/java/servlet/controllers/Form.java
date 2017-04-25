@@ -55,6 +55,11 @@ public class Form extends Controller {
         req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
     }
 
+    public void FormManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
+    }
+
     public void GetForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         res.getWriter().println("hello");
