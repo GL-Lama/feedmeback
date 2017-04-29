@@ -27,8 +27,8 @@
                 <div class="card-block fmb-card-content">
 
                     <div class="d-flex justify-content-center pt-2">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires<p>
-                    <button type="button" class="btn fmb-btn-primary">Créer nouveau formulaire</button>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
+                    <button type="button" class="btn color-button mb-1 bt-1 mt-0"><i class="fa fa-plus pr-4 "></i>Nouveau</button>
                     </div>
                     
 
@@ -68,8 +68,8 @@
                     </div>
                     <br>
                     <div class="d-flex justify-content-center ">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules<p>
-                        <button type="button" class="btn fmb-btn-primary">Créer un nouveau module</button>
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
+                        <button type="button" class="btn color-button mb-1 bt-1 mt-0"><i class="fa fa-plus pr-4 "></i>Nouveau</button>
                     </div>
                     <br>
                     <div class="d-flex justify-content-center ">
