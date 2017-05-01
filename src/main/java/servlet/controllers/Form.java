@@ -43,6 +43,9 @@ public class Form extends Controller {
             case "formQuestion2":
                 this.FormQuestion2(req, res);
                 return;
+            case "formQuestion3":
+                this.FormQuestion3(req, res);
+                return;
             default:
                 Error.send404(req, res);
                 break;
@@ -82,6 +85,11 @@ public class Form extends Controller {
     public void FormQuestion2(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         req.getRequestDispatcher("/views/form/formQuestion2.jsp").forward(req, res);
+    }
+
+    public void FormQuestion3(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/formQuestion3.jsp").forward(req, res);
     }
 
     public void GetForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
