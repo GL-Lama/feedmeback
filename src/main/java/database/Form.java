@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Module")
+@Table(name = "Form")
 public class Form {
    private int idForm;
    private String name;

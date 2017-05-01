@@ -34,7 +34,7 @@ public class TeacherModel extends Model {
         Map<String, String> paramsForm = new HashMap<String, String>();
 
         paramsForm.put("idTeacher", "" + this.teacher.getId());
-        this.form = (Form) this.db.selectOne("Form",paramsForm);
+        this.form = (Form) this.db.selectOne("Form",paramsForm); 
 
         return true;
     }
