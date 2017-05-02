@@ -26,54 +26,21 @@
 
                 <div class="card-block fmb-card-content">
 
-                    <div class="d-flex justify-content-center pt-2 title-box ">
-                    <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Créer un nouveau module</button>
+                    <div class="d-flex justify-content-center title-box ">
+                    <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button>
                     </div>
                     
+                    <div class="d-flex justify-content-center title-box pt-1">
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
+                    </div>
 
-                    <div class="list-group fmb-border-item">
-                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
-                            <div class="d-flex w-100 align-items-start">
-                                <div class="w-25">
-                                    <small>Date</small>
-                                    <p class="text-truncate m-0">20/03/2017</p>
-                                </div>
-                                <div class="w-50 pl-3 pr-3">
-                                    <small>Nom du formulaire</small>
-                                    <p class="text-truncat m-0">${teacher.form.name}</p>
-                                </div>
-                                <div class="d-flex w-25">
-                                    <div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                                </div>
-                            </div>
-                        </a>
-                        <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
-                            <div class="d-flex w-100 align-items-start">
-                                <div class="w-25">
-                                    <small>Date</small>
-                                    <p class="text-truncate m-0">20/03/2017</p>
-                                </div>
-                                <div class="w-50 pl-3 pr-3">
-                                    <small>Nom du formulaire</small>
-                                    <p class="text-truncat m-0">${teacher.form.name}</p>
-                                </div>
-                                <div class="d-flex w-25">
-                                    <div class="w-50 text-center"><i class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                    <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-center title-box ">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
-                        <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4"></i>Nouveau</button>
-                    </div>
-                    <br>
                     <div class="d-flex justify-content-center">
                         <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Génie Logiciel<p>
                         <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Technologie Web<p>
+                    </div>
+
+                    <div class="d-flex justify-content-center title-box pt-3">
+                    <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new">Rechercher un module</button>
                     </div>
 
                 </div>

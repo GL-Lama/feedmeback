@@ -32,6 +32,9 @@ public class ModuleManager extends Controller {
         }
 
         switch (params[0]) {
+            case "newModule":
+                this.NewModule(req, res);
+                break;
             default:
                 Error.send404(req, res);
                 break;
@@ -52,6 +55,18 @@ public class ModuleManager extends Controller {
 
 
         req.getRequestDispatcher("/views/moduleManager/moduleManager.jsp").forward(req, res);
+
+    }
+
+    private void NewModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        if (access_token == null || !Auth.validate(access_token, req, res))
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+
+        req.getRequestDispatcher("/views/moduleManager/newModule.jsp").forward(req, res);
 
     }
 
