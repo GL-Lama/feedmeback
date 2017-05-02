@@ -1,5 +1,7 @@
 package servlet.models;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,10 +26,10 @@ public class StudentModel extends Model {
 
     public Database db;
     public Student student;
-    public Module[] modules;
+    public ArrayList<Module> modules;
     public Form[] forms;
     public String username;
-    public Module test;
+    public Module module;
 
     public Boolean init(Database db, String username) {
 
@@ -35,7 +37,6 @@ public class StudentModel extends Model {
         this.username = username;
 
         this.fetchModules();
-
 
         return true;
     }
@@ -49,7 +50,7 @@ public class StudentModel extends Model {
         try{
             tx = session.beginTransaction();
 
-            String query = "FROM Module WHERE idModule IN (SELECT module.idModule FROM Module, Student, JoinModule WHERE JoinModule.idTeacher=Module.isTeacher AND JoinModule.idModule=Module.idModule AND Student.username='student')";
+            String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Student stu, JoinModule jm WHERE stu.username='" + this.getUsername() + "' AND jm.idStudent=stu.idStudent AND jm.idModule=modu.idModule)";
 
             console.log("Query :", query);
 
@@ -65,21 +66,21 @@ public class StudentModel extends Model {
             session.close();
         }
 
-        this.modules = new Module[table.size()];
+        this.modules = new ArrayList<Module>();
 
         for (int i = 0; i < table.size(); i++) {
-            this.modules[i] = (Module) table.get(i);
+            Module module = (Module) table.get(i);
+            console.log("MODULE NAME", module.getName());
+            this.modules.add((Module) table.get(i));
         }
-
-        this.test = this.modules[0];
     }
 
     public String getUsername(){
         return this.username;
     }
 
-    public Module getTest(){
-        return this.test;
+    public ArrayList<Module> getModules(){
+        return this.modules;
     }
 
 }
