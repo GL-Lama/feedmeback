@@ -101,7 +101,7 @@
                         </div>
                         <p class="text-center mt-2 "> 3/5 </p>
                     </div>
-                    <%-- end of 2rd question --%>
+                    <%-- end of 3rd question --%>
 
                     <%-- 4th question --%>
                     <div v-if="isThisQuestion(3)" class="card-block fmb-card-content">
@@ -125,6 +125,46 @@
                     </div>
                     <%-- end of 4th question --%>
 
+                    <%-- 5th question --%>
+                     <div v-if="isThisQuestion(4)" class="card-block fmb-card-content">
+                       
+                        <div class="d-flex justify-content-center text-center">
+                            <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >
+                            <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow fa-rotate-180 pl-1" aria-hidden="true"></i>
+                            Avez-vous quelconques remarques concernant ce cours ?
+                            <i v-on:click="incrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i></p>
+                        </div>
+
+                        <div class="row d-flex justify-content-center text-center"> 
+
+                            <div class="d-flex justify-content-center text-center ">
+                                <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un cours passionnant, dommage que certains élèves bavardaient durant vos explications ...</p>
+                            </div> 
+
+                            <div class="text-center mx-auto">
+                                <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
+                            </div>
+
+                        </div>
+                        <p class="text-center mt-2 "> 5/5 </p>
+                    </div>
+                    
+                    <%-- end of 5th question --%>
+
+                    <%-- 6th question --%>
+                    <div v-if="isThisQuestion(5)" class="card-block fmb-card-content">
+
+                        <div class="row d-flex justify-content-center text-center"> 
+
+                            <div class="d-flex justify-content-center text-center ">
+                                <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" > Nous vous remercions de votre participation.</p>
+                            </div> 
+
+                        </div>
+                        <p class="text-center mt-2 "> 5/5 </p>
+                    </div>
+
+                    <%-- end of 5th question --%>
                 </div>
             </div>
     </jsp:body>

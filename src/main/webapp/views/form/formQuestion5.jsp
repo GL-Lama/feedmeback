@@ -33,7 +33,7 @@
 
                         </div>
                         <p class="text-center mt-2 "> 5/5 </p>
-                </div>
+                    </div>
              </div>
     </jsp:body>
 

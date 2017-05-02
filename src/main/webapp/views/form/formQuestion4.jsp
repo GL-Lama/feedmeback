@@ -36,13 +36,12 @@
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un cours passionnant, dommage que certains élèves bavardaient durant vos explications ...</p>
                             </div> 
 
-                        <div class="text-center mx-auto">
-                            <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
-                        </div>
-
-                        </div>
+                            <div class="text-center mx-auto">
+                                <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
+                            </div>
+                       </div>
                         <p class="text-center mt-2 "> 5/5 </p>
-                </div>
+                    </div>
              </div>
     </jsp:body>
 
