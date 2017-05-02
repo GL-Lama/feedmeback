@@ -4,29 +4,37 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Module")
+@Table(name = "Form")
 public class Form {
-   private int id;
+   private int idForm;
    private String name;
    private int date;
    private int idTeacher;
 
    public Form() {}
-   public Form(int id, String name) {
-      this.id = id;
+   public Form(int idForm, String name, int idTeacher) {
+      this.idForm = idForm;
       this.name = name;
    }
-   public int getId() {
-      return id;
+   
+   public int getIdTeacher() {
+       return idTeacher;
    }
-   public void setId(int id) {
-      this.id = id;
+    public void setIdTeacher(int idTeacher){
+        this.idTeacher = idTeacher;
+    }
+   
+   public int getIdForm() {
+      return idForm;
+   }
+   public void setIdForm(int idForm) {
+      this.idForm = idForm;
    }
 
    public String getName() {
        return this.name;
    }
-   public void setId(String name) {
+   public void setName(String name) {
       this.name = name;
    }
 }

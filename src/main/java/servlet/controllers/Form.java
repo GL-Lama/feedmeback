@@ -34,6 +34,18 @@ public class Form extends Controller {
             case "getForms":
                 this.GetForms(req, res);
                 return;
+            case "formQuestion":
+                this.FormQuestion(req, res);
+                return;
+            case "formQuestion1":
+                this.FormQuestion1(req, res);
+                return;
+            case "formQuestion2":
+                this.FormQuestion2(req, res);
+                return;
+            case "formQuestion3":
+                this.FormQuestion3(req, res);
+                return;
             default:
                 Error.send404(req, res);
                 break;
@@ -53,6 +65,31 @@ public class Form extends Controller {
     public void NewForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
+    }
+
+    public void FormManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
+    }
+
+    public void FormQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
+    }
+
+    public void FormQuestion1(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/formQuestion1.jsp").forward(req, res);
+    }
+
+    public void FormQuestion2(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/formQuestion2.jsp").forward(req, res);
+    }
+
+    public void FormQuestion3(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        req.getRequestDispatcher("/views/form/formQuestion3.jsp").forward(req, res);
     }
 
     public void GetForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {

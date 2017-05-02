@@ -8,7 +8,7 @@
       <meta attribute="class-description">
          This class contains the module detail.
       </meta>
-      <id name="id" type="int" column="idForm">
+      <id name="idForm" type="int" column="idForm">
          <generator class="native"/>
       </id>
       <property name="name" column="name" type="string"/>

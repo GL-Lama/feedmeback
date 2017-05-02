@@ -28,5 +28,7 @@
    <mapping resource="src/main/java/database/Module.hbm.xml"/>
    <mapping resource="src/main/java/database/JoinModule.hbm.xml"/>
 
+   <mapping resource="src/main/java/database/Form.hbm.xml"/>
+
 </session-factory>
 </hibernate-configuration>

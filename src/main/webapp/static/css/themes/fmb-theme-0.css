@@ -68,12 +68,14 @@ input:focus {
 /* TEACHER */
 /***********/
 
+
+
 #teacher .list-group-item:hover {
-    background-color: var(--color-1);
+    background-color: var(--color-2) !important;
 }
 
 #teacher .list-group-item:hover i {
-    color: var(--color-3);
+    color: var(--color-1);
 }
 
 
