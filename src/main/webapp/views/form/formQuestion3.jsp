@@ -40,7 +40,7 @@
                             </div> 
                         </div>
                         <p class="text-center mt-2 "> 4/5 </p>
-
+                    </div>
                 </div>
     </jsp:body>
 
