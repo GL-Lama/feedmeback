@@ -27,7 +27,7 @@ public class StudentModel extends Model {
     public Module[] modules;
     public Form[] forms;
     public String username;
-    public String moduleName;
+    public Module test;
 
     public Boolean init(Database db, String username) {
 
@@ -49,12 +49,11 @@ public class StudentModel extends Model {
         try{
             tx = session.beginTransaction();
 
-            String query = "SELECT module.name FROM module natural join student natural join joinModule WHERE student.username='student'";
-
+            String query = "FROM Module WHERE idModule IN (SELECT module.idModule FROM Module, Student, JoinModule WHERE JoinModule.idTeacher=Module.isTeacher AND JoinModule.idModule=Module.idModule AND Student.username='student')";
 
             console.log("Query :", query);
 
-            table = session.createSQLQuery(query).list();
+            table = session.createQuery(query).list();
 
             tx.commit();
         } catch (HibernateException e) {
@@ -68,20 +67,19 @@ public class StudentModel extends Model {
 
         this.modules = new Module[table.size()];
 
-        this.moduleName = (String) table.get(0);
+        for (int i = 0; i < table.size(); i++) {
+            this.modules[i] = (Module) table.get(i);
+        }
 
-        // this.modules[0] = (Module) table.get(0);
-
-        // console.log((String) table.get(0));
+        this.test = this.modules[0];
     }
 
     public String getUsername(){
         return this.username;
     }
 
-    public String getModuleName(){
-        List table = null;
-        return this.moduleName = (String) table.get(0);
+    public Module getTest(){
+        return this.test;
     }
 
 }
