@@ -41,6 +41,10 @@ p {
     border-radius: 5px;
 }
 
+.fmb-border-new {
+    border-radius: 50px;
+}
+
 .fmb-btn-logout {
     position: absolute;
     right: 0;
