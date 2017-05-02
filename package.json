@@ -1,0 +1,24 @@
+{
+  "name": "feedmeback",
+  "version": "1.0.0",
+  "description": "+ install java 1.8 JDK (setup JAVA_HOME for windows)\r + install maven (setup PATH for windows)",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "package": "mvn package",
+    "compile": "mvn compile",
+    "start:w": "npm run compile && .\\target\\bin\\webapp.bat",
+    "start:m": "npm run compile && sh ./target/bin/webapp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GL-Lama/feedmeback.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GL-Lama/feedmeback/issues"
+  },
+  "homepage": "https://github.com/GL-Lama/feedmeback#readme"
+}
