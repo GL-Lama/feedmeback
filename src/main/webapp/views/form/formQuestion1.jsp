@@ -24,7 +24,6 @@
                     </div>
 
                     <div class="card-block fmb-card-content">
-                       
                         <div class="d-flex justify-content-center text-center">
                             <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" > <i class="fa fa-arrow-circle-right fmb-btn-arrow fa-rotate-180 pl-1" aria-hidden="true"></i>Comment vous a paru la difficulté de ce cours ?
                             <i class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i></p>
@@ -35,14 +34,15 @@
                         </div> 
 
                         <div class="progress">
-                        <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                        <span class="sr-only">80% effectué</span>
+                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                <span class="sr-only">80% effectué</span>
+                            </div>
                         </div>
-                        </div>
-
                         <p class="text-center mt-2 "> 2/5 </p>
-
+                    </div>
                 </div>
+            </div>
+        </div>
     </jsp:body>
 
 </tag:wrapper>
