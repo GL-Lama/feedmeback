@@ -72,6 +72,11 @@ public class AuthModel extends Model {
                 this.db.insert("Teacher", newTeacher);
             }
 
+            else {
+                teacher.setAccessToken(access_token);
+                this.db.update("Teacher", teacher);
+            }
+
         }
 
         else {
@@ -90,6 +95,11 @@ public class AuthModel extends Model {
             if (student == null) {
                 Student newStudent = new Student(username, password, access_token);
                 this.db.insert("Student", newStudent);
+            }
+
+            else {
+                student.setAccessToken(access_token);
+                this.db.update("Student", student);
             }
 
         }
