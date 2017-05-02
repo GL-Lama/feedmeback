@@ -7,24 +7,27 @@ import javax.persistence.Table;
 @Table(name = "JoinModule")
 public class JoinModule {
    private int idModule;
-   private int idTeacher;
+   private int idStudent;
 
    public JoinModule() {}
-   public JoinModule(int idModule, int idTeacher) {
+   public JoinModule(int idModule, int idStudent) {
       this.idModule = idModule;
-      this.idTeacher = idTeacher;
+      this.idStudent = idStudent;
    }
+
    public int getIdModule() {
       return idModule;
    }
+
    public void setIdModule(int idModule) {
       this.idModule = idModule;
    }
 
-   public int getidTeacher() {
-       return this.idTeacher;
+   public int getIdStudent() {
+       return this.idStudent;
    }
-   public void setidTeacher(int idTeacher) {
-      this.idTeacher = idTeacher;
+
+   public void setIdStudent(int idStudent) {
+      this.idStudent = idStudent;
    }
 }

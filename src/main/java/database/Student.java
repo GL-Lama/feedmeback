@@ -6,7 +6,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Student")
 public class Student {
-   private int id;
+   private int idStudent;
    private String username;
    private String password;
    private String accessToken;
@@ -17,11 +17,11 @@ public class Student {
       this.password = password;
       this.accessToken = accessToken;
    }
-   public int getId() {
-      return id;
+   public int getIdStudent() {
+      return idStudent;
    }
-   public void setId( int id ) {
-      this.id = id;
+   public void setIdStudent( int idStudent ) {
+      this.idStudent = idStudent;
    }
    public String getUsername() {
       return username;
