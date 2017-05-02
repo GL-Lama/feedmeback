@@ -25,7 +25,7 @@
                     <i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i>
 
                     <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${student.username} !<p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${student.test.name} !<p>
                     </div>
 
                     <div class="card-block fmb-card-content">
