@@ -1,6 +1,8 @@
 package servlet.models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import database.Database;
@@ -13,7 +15,7 @@ public class TeacherModel extends Model {
 
     public Database db;
     public Teacher teacher;
-    public Form form;
+    public ArrayList<Form> forms;
     public String username;
 
     public Boolean init(Database db, String username) {
@@ -30,11 +32,19 @@ public class TeacherModel extends Model {
         if (this.teacher == null)
             return false;
 
+        List table;
+
         // Query the teacher
         Map<String, String> paramsForm = new HashMap<String, String>();
-
         paramsForm.put("idTeacher", "" + this.teacher.getId());
-        this.form = (Form) this.db.selectOne("Form",paramsForm); 
+
+        table = this.db.select("Form", paramsForm);
+
+        this.forms = new ArrayList<Form>();
+
+        for (Object form: table) {
+            this.forms.add((Form) form);
+        }
 
         return true;
     }
@@ -47,7 +57,7 @@ public class TeacherModel extends Model {
         return this.teacher;
     }
 
-    public Form getForm() {
-        return this.form;
+    public ArrayList<Form> getForms() {
+        return this.forms;
     }
 }

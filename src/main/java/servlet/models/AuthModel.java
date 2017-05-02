@@ -114,8 +114,10 @@ public class AuthModel extends Model {
                 cookie_token = cookie;
         }
 
-        if (cookie_token == null)
+        if (cookie_token == null) {
+            res.sendRedirect("/");
             return;
+        }
 
         String access_token = cookie_token.getValue();
 
