@@ -37,21 +37,6 @@ public class Form extends Controller {
             case "formQuestion":
                 this.FormQuestion(req, res);
                 return;
-            case "formQuestion1":
-                this.FormQuestion1(req, res);
-                return;
-            case "formQuestion2":
-                this.FormQuestion2(req, res);
-                return;
-            case "formQuestion3":
-                this.FormQuestion3(req, res);
-                return;
-            case "formQuestion4":
-                this.FormQuestion4(req, res);
-                return;
-            case "formQuestion5":
-                this.FormQuestion5(req, res);
-                return;
             default:
                 Error.send404(req, res);
                 break;
@@ -81,30 +66,6 @@ public class Form extends Controller {
     public void FormQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
-    }
-
-    public void FormQuestion1(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/views/form/formQuestion1.jsp").forward(req, res);
-    }
-
-    public void FormQuestion2(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/views/form/formQuestion2.jsp").forward(req, res);
-    }
-
-    public void FormQuestion3(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/views/form/formQuestion3.jsp").forward(req, res);
-    }
-
-    public void FormQuestion4(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/views/form/formQuestion4.jsp").forward(req, res);
-    }
-    public void FormQuestion5(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-        req.getRequestDispatcher("/views/form/formQuestion5.jsp").forward(req, res);
     }
 
     public void GetForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
