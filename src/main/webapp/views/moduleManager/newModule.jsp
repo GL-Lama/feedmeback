@@ -38,7 +38,7 @@
                     
 
                     <div class="d-flex justify-content-center title-box pt-3">
-                    <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new">Rechercher un module</button>
+                    <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Créer</button>
                     </div>
 
                 </div>

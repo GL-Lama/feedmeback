@@ -59,16 +59,10 @@
                     <br>
 
                     <div class="d-flex justify-content-center title-box ">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
-                        <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4"></i>Nouveau</button>
+                        <a href="/moduleManager/"><button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Gestionnaire de modules</button></a>
                     </div>
 
                     <br>
-
-                    <div class="d-flex justify-content-center">
-                        <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Génie Logiciel<p>
-                        <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Technologie Web<p>
-                    </div>
 
                 </div>
 
