@@ -23,12 +23,11 @@
    </property>
 
    <!-- List of XML mapping files -->
-   <mapping resource="src/main/java/database/Student.hbm.xml"/>
-   <mapping resource="src/main/java/database/Teacher.hbm.xml"/>
-   <mapping resource="src/main/java/database/Module.hbm.xml"/>
-   <mapping resource="src/main/java/database/JoinModule.hbm.xml"/>
-
-   <mapping resource="src/main/java/database/Form.hbm.xml"/>
+   <mapping resource="src/main/java/database/Student/Student.hbm.xml"/>
+   <mapping resource="src/main/java/database/Teacher/Teacher.hbm.xml"/>
+   <mapping resource="src/main/java/database/Module/Module.hbm.xml"/>
+   <mapping resource="src/main/java/database/JoinModule/JoinModule.hbm.xml"/>
+   <mapping resource="src/main/java/database/Form/Form.hbm.xml"/>
 
 </session-factory>
 </hibernate-configuration>
