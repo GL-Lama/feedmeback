@@ -27,7 +27,7 @@ public class FormManager extends Controller {
 
         String[] params = this.getUrlParameters(req, "formManager");
 
-        if (params.length == 0) {
+        if (params.length == 0 || params[0].equals("")) {
             this.Index(req, res);
             return;
         }
@@ -45,8 +45,7 @@ public class FormManager extends Controller {
 
     public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/form-manager/formManager.jsp").forward(req, res);
     }
 }
 
-    

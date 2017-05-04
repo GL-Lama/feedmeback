@@ -22,7 +22,7 @@ public class Form extends Controller {
 
         String[] params = this.getUrlParameters(req, "form/");
 
-        if (params.length == 0) {
+        if (params.length == 0 || params[0].equals("")) {
             this.Index(req, res);
             return;
         }

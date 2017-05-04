@@ -11,6 +11,7 @@ import servlet.core.Controller;
 import utils.Auth;
 import utils.Cookies;
 import utils.Error;
+import utils.console;
 
 @WebServlet(
         name = "ModuleManager",
@@ -26,7 +27,10 @@ public class ModuleManager extends Controller {
 
         String[] params = this.getUrlParameters(req, "moduleManager/");
 
-        if (params.length == 0) {
+        console.log(params);
+        console.log(params.length);
+
+        if (params.length == 0 || params[0].equals("")) {
             this.Index(req, res);
             return;
         }
@@ -54,7 +58,7 @@ public class ModuleManager extends Controller {
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
 
-        req.getRequestDispatcher("/views/moduleManager/moduleManager.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/module-manager/moduleManager.jsp").forward(req, res);
 
     }
 
@@ -66,7 +70,7 @@ public class ModuleManager extends Controller {
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
 
-        req.getRequestDispatcher("/views/moduleManager/newModule.jsp").forward(req, res);
+        req.getRequestDispatcher("/views/module-manager/newModule.jsp").forward(req, res);
 
     }
 

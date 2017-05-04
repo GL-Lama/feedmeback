@@ -29,7 +29,7 @@ public class Home extends Controller {
 
         String[] params = this.getUrlParameters(req, "");
 
-        if (params.length == 0) {
+        if (params.length == 0 || params[0].equals("")) {
             this.Index(req, res);
             return;
         }
