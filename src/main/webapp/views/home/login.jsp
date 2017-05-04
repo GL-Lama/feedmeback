@@ -17,7 +17,7 @@
         <div id="login" class="card fmb-bg-primary mt-6 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-12">
             <div class="card-block">
 
-                <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
                 <!--Body-->
                 <div class="md-form">

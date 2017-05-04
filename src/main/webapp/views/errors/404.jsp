@@ -13,7 +13,7 @@
 
                 <div class="card-block">
 
-                    <p class="fmb-font-title text-center">FEED404BACK</p>
+                    <p class="fmb-font-title text-center">FEED<span>404</span>BACK</p>
 
                     <div class="col-12 fmb-bg-secondary">
                         <p class="text-center fmb-font-md">Oups !</p>

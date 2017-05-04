@@ -22,7 +22,7 @@
 
                 <div class="card-block pr-0 pl-0 pb-0">
 
-                    <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                    <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
