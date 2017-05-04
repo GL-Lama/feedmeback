@@ -15,6 +15,7 @@ public class Form {
    public Form(int idForm, String name, int idTeacher) {
       this.idForm = idForm;
       this.name = name;
+    //   this.date = date;
    }
    
    public int getIdTeacher() {
@@ -37,4 +38,14 @@ public class Form {
    public void setName(String name) {
       this.name = name;
    }
+
+
+//    public int getDate() {
+//        return this.date;
+//    }
+//    public void setIdDate (int date){
+//         this.date = date;
+//    }
+
+
 }
