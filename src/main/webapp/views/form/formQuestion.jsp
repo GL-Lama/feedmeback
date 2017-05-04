@@ -4,11 +4,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/form/formQuestion.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/form/form-question/formQuestion.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/form/formQuestion.js"></script>
+        <script src="/static/app/form/form-question/formQuestion.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -16,7 +16,7 @@
                 <div id="formQuestion" class="card-block pr-0 pl-0 pb-0">
 
                     <p class="fmb-font-title text-center">FEEDMEBACK</p>
-                    
+
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                     <div class="d-flex justify-content-center text-center">
@@ -34,11 +34,11 @@
                             <form class="d-flex justify-content-around">
                                 <label for="smiley-1"><img src="/static/pictures/graySmiley/smiley-1.png"></label>
                                 <input type="radio" name="smiley" id="smiley-1" value="smiley-1" class='smiley'>
-                                
+
                                 <label for="smiley0"><img src="/static/pictures/graySmiley/smiley0.png"></label>
                                 <input type="radio" name="smiley" id="smiley0" value="smiley0" class='smiley'>
 
-                                <label for="smiley+1"><img src="/static/pictures/graySmiley/smiley+1.png"></label> 
+                                <label for="smiley+1"><img src="/static/pictures/graySmiley/smiley+1.png"></label>
                                 <input type="radio" name="smiley" id="smiley+1" value="smiley+1" class='smiley'>
                             </form>
                         </div>
@@ -59,7 +59,7 @@
 
                         <div class="d-flex justify-content-center text-center">
                             <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Difficile</p>
-                        </div> 
+                        </div>
 
                         <div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
@@ -82,11 +82,11 @@
                         <div class="row d-flex justify-content-center text-center">
                             <div class="d-flex justify-content-center text-center col-lg-4">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Trop de théorie pas assez de pratique</p>
-                            </div> 
+                            </div>
 
                             <div class="d-flex justify-content-center text-center col-lg-4">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un équilibre parfait</p>
-                            </div> 
+                            </div>
                         </div>
 
 
@@ -115,11 +115,11 @@
                         <div class="row d-flex justify-content-center text-center">
                             <div class="d-flex justify-content-center text-center col-lg-3">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >OUI</p>
-                            </div> 
+                            </div>
 
                             <div class="d-flex justify-content-center text-center col-lg-3">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >NON</p>
-                            </div> 
+                            </div>
                         </div>
                         <p class="text-center mt-2 "> 4/5 </p>
                     </div>
@@ -127,7 +127,7 @@
 
                     <%-- 5th question --%>
                      <div v-if="isThisQuestion(4)" class="card-block fmb-card-content">
-                       
+
                         <div class="d-flex justify-content-center text-center">
                             <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >
                             <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow fa-rotate-180 pl-1" aria-hidden="true"></i>
@@ -135,11 +135,11 @@
                             <i v-on:click="incrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i></p>
                         </div>
 
-                        <div class="row d-flex justify-content-center text-center"> 
+                        <div class="row d-flex justify-content-center text-center">
 
                             <div class="d-flex justify-content-center text-center ">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un cours passionnant, dommage que certains élèves bavardaient durant vos explications ...</p>
-                            </div> 
+                            </div>
 
                             <div class="text-center mx-auto">
                                 <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
@@ -148,17 +148,17 @@
                         </div>
                         <p class="text-center mt-2 "> 5/5 </p>
                     </div>
-                    
+
                     <%-- end of 5th question --%>
 
                     <%-- 6th question --%>
                     <div v-if="isThisQuestion(5)" class="card-block fmb-card-content">
 
-                        <div class="row d-flex justify-content-center text-center"> 
+                        <div class="row d-flex justify-content-center text-center">
 
                             <div class="d-flex justify-content-center text-center ">
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" > Nous vous remercions de votre participation.</p>
-                            </div> 
+                            </div>
 
                         </div>
                         <p class="text-center mt-2 "> 5/5 </p>

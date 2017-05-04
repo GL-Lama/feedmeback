@@ -7,11 +7,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/teacher.js"></script>
+        <script src="/static/app/home/teacher/teacher.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -31,7 +31,7 @@
                         <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
                         <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button>
                     </div>
-                    
+
 
                     <div class="list-group fmb-border-item">
 

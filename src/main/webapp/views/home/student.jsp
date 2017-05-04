@@ -7,11 +7,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/student.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/home/student/student.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/student.js"></script>
+        <script src="/static/app/home/student/student.js"></script>
     </jsp:attribute>
 
     <jsp:body>

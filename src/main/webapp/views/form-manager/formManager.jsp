@@ -4,11 +4,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/formManager/formManager.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/form-manager/form-manager/formManager.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/form/formManager.js"></script>
+        <script src="/static/app/form-manager/form-manager/formManager.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -21,7 +21,7 @@
                     <div class="d-flex justify-content-end">
                         <p>Poucentage de participation : 95%</p>
                     </div>
-                
+
                     <div class="scrollspy-example z-depth-1" data-spy="scroll" data-target="#navbar-example2" data-offset="0">
                         <div class="list-group">
                             <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary">

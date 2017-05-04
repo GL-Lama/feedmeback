@@ -4,11 +4,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/form/newForm.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/form/new-form/newForm.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/form/form.js"></script>
+        <script src="/static/app/form/new-form/newForm.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -16,7 +16,7 @@
                 <div class="card-block pr-0 pl-0 pb-0">
 
                     <p class="fmb-font-title text-center">FEEDMEBACK</p>
-                    
+
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                     <div class="d-flex justify-content-center text-center">
@@ -38,7 +38,7 @@
                                     <label for="form2" class="">Date (JJ/MM/AAAA)</label>
                                 </div>
                             </div>
-                        
+
                     </form>
                         <!--Footer-->
                     <div class="modal-footer">
@@ -115,14 +115,14 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <!--/.Content-->
                         </div>
                     </div>
                     <!-- /.Live preview-->
                         </p>
                         <i class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i>
-                        
+
                         </div>
                     </div>
                 </div>
