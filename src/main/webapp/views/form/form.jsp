@@ -57,7 +57,7 @@
                     </a>
                 </div>
                 <div class="text-center mx-auto">
-                    <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
+                    <a href="/form/formQuestion/"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
                 </div>
             
             </div>
