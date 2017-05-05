@@ -129,3 +129,16 @@ input:focus {
 #newForm .list-group-item:hover i {
     color: var(--color-3);
 }
+
+#newForm .md-form .prefix.active,
+#newForm .md-form input {
+    color: var(--color-1)
+}
+
+#newForm .md-form label {
+    color: var(--color-text)
+}
+
+#newForm .fmb-btn-primary.active {
+    color: var(--color-3) !important;
+}

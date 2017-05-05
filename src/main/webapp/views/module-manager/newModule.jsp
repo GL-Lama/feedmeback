@@ -6,7 +6,7 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
@@ -15,7 +15,7 @@
 
     <jsp:body>
 
-        <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div id="newForm" class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div id="teacher" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
@@ -29,7 +29,7 @@
                     <form>
                             <div class="md-form d-flex w-100 justify-content-center pt-2">
                                 <div class="w-50 relative">
-                                    <input type="text" id="form1" class="form-control">
+                                    <input type="text" id="form2" class="form-control">
                                     <label for="form1" class="">Nom du module</label>
                                 </div>
                             </div>
