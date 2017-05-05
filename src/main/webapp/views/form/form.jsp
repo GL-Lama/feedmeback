@@ -26,21 +26,50 @@
             </div>
 
             <div class="card-block fmb-card-content">
+
                 <div class="d-flex justify-content-center ">
                     <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Cybersécurité<p>
                 </div>
 
+
+                <div class="d-flex justify-content-center fmb-bg-message fmb-border-message">
+                    <div class="d-flex w-100 align-items-start">
+                        <div class="w-15 pl-4 pt-1 pb-1">
+                            <small>Nom du formulaire</small>
+                            <h1 class="text-truncate m-0">Cybersécurité</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center fmb-bg-message fmb-border-message mt-1">
+                    <div class="d-flex w-100 align-items-start pl-4 pt-1 pb-1 ">
+                        <div class="w-15">
+                            <small class="pl-5">Date</small>
+                            <p class="text-truncate m-0">20/03/2017</p>
+                        </div>
+                        <div class="w-50 pl-3 pr-3">
+                            <small class="pl-5">Horaires</small>
+                            <p class="text-truncat m-0">Sciences Fondamentales</p>
+                        </div>
+                        <div class="w-35">
+                            <small class="pl-5">Professeur</small>
+                            <p class="text-truncat m-0">Jacques Célère</p>
+                        </div>
+                </div>
+                </div>
+
+
                 <div class="list-group">
-                    <a class="list-group-item flex-column align-items-start fmb-bg-secondary" >
+                    <%--<a class="list-group-item flex-column align-items-start fmb-bg-secondary" >
                         <div class="d-flex w-100 align-items-start">
                             <div class="w-15">
                                 <small>Nom du formulaire</small>
                                 <p class="text-truncate m-0">Cybersécurité</p>
                             </div>
                         </div>
-                    </a>
-                    <a class="list-group-item  flex-column align-items-start fmb-bg-secondary">
-                        <div class="d-flex w-100 align-items-start">
+                    </a>--%>
+                    <%--<a class="list-group-item  flex-column align-items-start fmb-bg-secondary">
+                        <div class="d-flex w-100 align-items-start ">
                             <div class="w-15">
                                 <small class="pl-5">Date</small>
                                 <p class="text-truncate m-0">20/03/2017</p>
@@ -54,7 +83,7 @@
                                 <p class="text-truncat m-0">Jacques Célère</p>
                             </div>
                         </div>
-                    </a>
+                    </a>--%>
                 </div>
                 <div class="text-center mx-auto">
                     <a href="/form/formQuestion/"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
