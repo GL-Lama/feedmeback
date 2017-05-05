@@ -7,22 +7,22 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/teacher.js"></script>
+        <script src="/static/app/home/teacher/teacher.js"></script>
     </jsp:attribute>
 
     <jsp:body>
 
         <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div id="teacher" class="card-block pr-0 pl-0 pb-0">
-                <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                 <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${teacher.username} !<p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmi nous, ${teacher.username} !<p>
                 </div>
 
                 <div class="card-block fmb-card-content">
@@ -31,7 +31,7 @@
                         <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
                         <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button>
                     </div>
-                    
+
 
                     <div class="list-group fmb-border-item">
 

@@ -17,23 +17,23 @@
         <div id="login" class="card fmb-bg-primary mt-6 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-12">
             <div class="card-block">
 
-                <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
                 <!--Body-->
                 <div class="md-form">
                     <i class="fa fa-envelope prefix"></i>
                     <input type="text" id="form2" class="form-control" v-model="username">
-                    <label for="form2">Your email</label>
+                    <label for="form2">Identifiant</label>
                 </div>
 
                 <div class="md-form">
                     <i class="fa fa-lock prefix"></i>
                     <input type="password" id="form4" class="form-control" v-model="password">
-                    <label for="form4">Your password</label>
+                    <label for="form4">Mot de passe</label>
                 </div>
 
                 <div class="text-center">
-                    <button v-on:click="submit" class="btn fmb-btn-primary">Login</button>
+                    <button v-on:click="submit" class="btn fmb-btn-primary">Connexion</button>
                 </div>
 
             </div>

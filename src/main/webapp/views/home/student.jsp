@@ -7,11 +7,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/student.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/home/student/student.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/student.js"></script>
+        <script src="/static/app/home/student/student.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -22,12 +22,12 @@
 
                 <div class="card-block pr-0 pl-0 pb-0">
 
-                    <p class="fmb-font-title text-center">FEEDMEBACK</p>
+                    <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                     <div class="d-flex justify-content-center ">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmis nous, ${student.username} !<p>
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmi nous, ${student.username} !<p>
                     </div>
 
                     <div class="card-block fmb-card-content">
