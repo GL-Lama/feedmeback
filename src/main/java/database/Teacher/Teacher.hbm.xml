@@ -4,7 +4,7 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.Teacher" table="teacher">
+   <class name="database.Teacher.Teacher" table="teacher">
       <meta attribute="class-description">
          This class contains the teacher detail.
       </meta>

@@ -1,4 +1,4 @@
-package database;
+package database.Teacher;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

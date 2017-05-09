@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import database.Database;
-import database.Student;
-import database.Teacher;
+import database.Student.Student;
+import database.Teacher.Teacher;
 import io.jsonwebtoken.Claims;
 import servlet.core.Model;
 import utils.Auth;

@@ -16,9 +16,9 @@ import org.hibernate.Transaction;
 import org.hibernate.sql.ordering.antlr.Factory;
 
 import database.Database;
-import database.Form;
-import database.Module;
-import database.Student;
+import database.Form.Form;
+import database.Module.Module;
+import database.Student.Student;
 import servlet.core.Model;
 import utils.console;
 

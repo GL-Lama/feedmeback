@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import database.Database;
-import database.Form;
-import database.Teacher;
+import database.Form.Form;
+import database.Teacher.Teacher;
 import servlet.core.Model;
 import utils.console;
 
