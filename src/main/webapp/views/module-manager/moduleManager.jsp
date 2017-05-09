@@ -21,7 +21,7 @@
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                 <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Gestionnaire de modules<p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Gestionnaire de modules ${teacher.username}<p>
                 </div>
 
                 <div class="card-block fmb-card-content">
@@ -31,12 +31,13 @@
                     </div>
                     
                     <div class="d-flex justify-content-center title-box pt-1">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules ${teacher.modules.size()}</p>
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Génie Logiciel<p>
-                        <p class=" btn fmb-btn-primary fmb-bg-message fmb-border-message text-center">Technologie Web<p>
+                        <c:forEach items="${teacher.modules}" var="module">
+                            <button v-on:click="submit" class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
+                        </c:forEach>
                     </div>
 
                     <!--Footer-->
