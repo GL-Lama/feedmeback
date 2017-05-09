@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servlet.core.Controller;
+import servlet.models.TeacherModel;
 import utils.Auth;
 import utils.Cookies;
 import utils.Error;
@@ -57,6 +58,15 @@ public class ModuleManager extends Controller {
         if (access_token == null || !Auth.validate(access_token, req, res))
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
 
+        TeacherModel teacherModel = new TeacherModel();
+
+        if (!teacherModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+            res.sendError(400);
+            return;
+        }
+
+        req.setAttribute("teacher", teacherModel);
+
 
         req.getRequestDispatcher("/views/module-manager/moduleManager.jsp").forward(req, res);
 
@@ -68,7 +78,6 @@ public class ModuleManager extends Controller {
 
         if (access_token == null || !Auth.validate(access_token, req, res))
             req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
-
 
         req.getRequestDispatcher("/views/module-manager/newModule.jsp").forward(req, res);
 

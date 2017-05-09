@@ -3,6 +3,8 @@ package database.Module;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import utils.console;
+
 @Entity
 @Table(name = "Module")
 public class Module {

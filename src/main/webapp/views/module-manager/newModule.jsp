@@ -29,8 +29,8 @@
                     <form>
                             <div class="md-form d-flex w-100 justify-content-center pt-2">
                                 <div class="w-50 relative">
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form1" class="">Nom du module</label>
+                                    <input type="text" id="moduleName" class="form-control">
+                                    <label for="moduleName" class="">Nom du module</label>
                                 </div>
                             </div>
                     
