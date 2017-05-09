@@ -9,7 +9,6 @@ import database.Database;
 import database.Form.Form;
 import database.Teacher.Teacher;
 import servlet.core.Model;
-import utils.console;
 
 public class TeacherModel extends Model {
 

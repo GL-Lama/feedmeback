@@ -15,6 +15,7 @@
       </id>
 
       <property name="name" column="name" type="string"/>
+      <property name="idModule" column="idModule" type="int"/>
 
       <!--<property name="date" column="date" type="int"/>-->
 

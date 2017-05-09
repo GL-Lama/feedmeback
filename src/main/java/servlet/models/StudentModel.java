@@ -1,19 +1,11 @@
 package servlet.models;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import javax.print.DocFlavor.STRING;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.sql.ordering.antlr.Factory;
 
 import database.Database;
 import database.Form.Form;
@@ -27,7 +19,7 @@ public class StudentModel extends Model {
     public Database db;
     public Student student;
     public ArrayList<Module> modules;
-    public Form[] forms;
+    public ArrayList<Form> forms;
     public String username;
     public Module module;
 
@@ -37,6 +29,8 @@ public class StudentModel extends Model {
         this.username = username;
 
         this.fetchModules();
+
+        this.fetchForms();
 
         return true;
     }
@@ -69,9 +63,39 @@ public class StudentModel extends Model {
         this.modules = new ArrayList<Module>();
 
         for (int i = 0; i < table.size(); i++) {
-            Module module = (Module) table.get(i);
-            console.log("MODULE NAME", module.getName());
             this.modules.add((Module) table.get(i));
+        }
+    }
+
+    public void fetchForms() {
+        Session session = Database.factory.openSession();
+        Transaction tx = null;
+
+        List table = null;
+
+        try{
+            tx = session.beginTransaction();
+
+            String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.username + "')";
+
+            console.log("Query :", query);
+
+            table = session.createQuery(query).list();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null)
+                tx.rollback();
+
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        this.forms = new ArrayList<Form>();
+
+        for (int i = 0; i < table.size(); i++) {
+            this.forms.add((Form) table.get(i));
         }
     }
 
@@ -81,6 +105,10 @@ public class StudentModel extends Model {
 
     public ArrayList<Module> getModules(){
         return this.modules;
+    }
+
+    public ArrayList<Form> getForms(){
+        return this.forms;
     }
 
 }
