@@ -14,6 +14,7 @@ import database.Form.Form;
 import database.Module.Module;
 import database.Teacher.Teacher;
 import servlet.core.Model;
+import utils.console;
 
 public class TeacherModel extends Model {
 
@@ -27,7 +28,7 @@ public class TeacherModel extends Model {
 
         this.db = db;
         this.username = username;
-        
+
         this.fetchModules();
 
         // Query the student
