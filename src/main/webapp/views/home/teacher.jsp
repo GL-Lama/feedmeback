@@ -29,7 +29,7 @@
 
                     <div class="d-flex justify-content-center pt-2 title-box ">
                         <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
-                        <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button>
+                        <a href="/form/newForm/"> <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button></a>
                     </div>
 
 
