@@ -6,18 +6,18 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Form")
 public class Form {
-    private int idForm;
-    private String name;
-    private int date;
-    private int idTeacher;
+   private int idForm;
+   private String name;
+   private int date;
+   private int idTeacher;
     private int idModule;
 
-    public Form() {}
-    public Form(int idForm, String name, int idTeacher) {
-        this.idForm = idForm;
-        this.name = name;
-    //   this.date = date;
-    }
+   public Form() {}
+   public Form(int idForm, String name, int idTeacher, int date) {
+      this.idForm = idForm;
+      this.name = name;
+      this.date = date;
+   }
    
     public int getIdTeacher() {
         return idTeacher;
@@ -49,6 +49,14 @@ public class Form {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getDate() {
+        return this.getDate();
+    }
+
+    public void setDate(int date) {
+        this.date = date;
     }
 
 }

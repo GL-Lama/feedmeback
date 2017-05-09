@@ -36,7 +36,8 @@ public class Database {
             factory = cfg.buildSessionFactory(serviceRegistry);
 
         }catch (Throwable ex) {
-            System.err.println("Failed to create sessionFactory object." + ex);
+            ex.printStackTrace();
+            System.err.println("Failed to create sessionFactory object." +ex);
             throw new ExceptionInInitializerError(ex);
         }
     }
