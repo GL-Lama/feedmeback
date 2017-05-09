@@ -16,7 +16,7 @@
 
       <property name="name" column="name" type="string"/>
 
-      <!--<property name="date" column="date" type="int"/>-->
+      <property name="date" column="date" type="int"/>
 
    </class>
 </hibernate-mapping>

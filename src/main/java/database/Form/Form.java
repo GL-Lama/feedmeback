@@ -12,10 +12,10 @@ public class Form {
    private int idTeacher;
 
    public Form() {}
-   public Form(int idForm, String name, int idTeacher) {
+   public Form(int idForm, String name, int idTeacher, int date) {
       this.idForm = idForm;
       this.name = name;
-    //   this.date = date;
+      this.date = date;
    }
    
    public int getIdTeacher() {
@@ -39,13 +39,12 @@ public class Form {
       this.name = name;
    }
 
-
-//    public int getDate() {
-//        return this.date;
-//    }
-//    public void setIdDate (int date){
-//         this.date = date;
-//    }
+   public int getDate() {
+       return this.date;
+   }
+   public void setDate (int date){
+        this.date = date;
+   }
 
 
 }

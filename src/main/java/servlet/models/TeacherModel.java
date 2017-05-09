@@ -43,6 +43,8 @@ public class TeacherModel extends Model {
         this.forms = new ArrayList<Form>();
 
         for (Object form: table) {
+            Form _form = (Form) form;
+            console.log(_form.getDate());
             this.forms.add((Form) form);
         }
 
