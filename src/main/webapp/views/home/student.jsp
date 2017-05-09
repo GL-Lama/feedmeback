@@ -47,11 +47,11 @@
                                             <small>Nom du formulaire</small>
                                             <p class="text-truncat m-0">Sciences Fondamentales</p>
                                         </div>
-                                        <div class="d-flex w-25">
+                                        <div class="d-flex w-25 justify-content-end">
                                             <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
                                         </div>
                                     </div>
-                                </div>    
+                                </div>
                             </a>
                         </div>
 
