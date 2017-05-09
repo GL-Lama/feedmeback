@@ -106,10 +106,6 @@ public class TeacherModel extends Model {
     }
 
     public ArrayList<Module> getModules(){
-        console.log("LOL", this.modules.get(0).getName());
-        ArrayList<Module> test = new ArrayList<Module>();
-        test.add(new Module(1, "lol"));
-        return test;
-        // return this.modules;
+        return this.modules;
     }
 }

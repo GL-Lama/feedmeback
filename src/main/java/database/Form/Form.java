@@ -18,7 +18,7 @@ public class Form {
       this.name = name;
       this.date = date;
    }
-   
+
     public int getIdTeacher() {
         return idTeacher;
     }
@@ -26,7 +26,7 @@ public class Form {
     public void setIdTeacher(int idTeacher){
         this.idTeacher = idTeacher;
     }
-   
+
     public int getIdForm() {
         return idForm;
     }
@@ -34,7 +34,7 @@ public class Form {
     public void setIdForm(int idForm) {
         this.idForm = idForm;
     }
-   
+
     public int getIdModule() {
         return idModule;
     }
@@ -52,7 +52,7 @@ public class Form {
     }
 
     public int getDate() {
-        return this.getDate();
+        return this.date;
     }
 
     public void setDate(int date) {
