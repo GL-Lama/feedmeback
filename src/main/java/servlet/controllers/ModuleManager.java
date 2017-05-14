@@ -1,13 +1,17 @@
 package servlet.controllers;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import servlet.core.Controller;
+import servlet.models.ModuleManagerModel;
 import servlet.models.TeacherModel;
 import utils.Auth;
 import utils.Cookies;
@@ -39,6 +43,9 @@ public class ModuleManager extends Controller {
         switch (params[0]) {
             case "newModule":
                 this.NewModule(req, res);
+                break;
+            case "searchModule":
+                this.SearchModule(req, res);
                 break;
             default:
                 Error.send404(req, res);
@@ -81,6 +88,35 @@ public class ModuleManager extends Controller {
 
         req.getRequestDispatcher("/views/module-manager/newModule.jsp").forward(req, res);
 
+    }
+
+    private void SearchModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String moduleName = req.getParameter("moduleName");
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        if (access_token == null || !Auth.validate(access_token, req, res))
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+
+        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+            res.sendError(400);
+            return;
+        }
+
+        res.setContentType("application/json");
+        res.setCharacterEncoding("utf-8");
+        moduleManagerModel.searchModules(moduleName);
+
+        Gson gson = new Gson();
+        String json = gson.toJson(moduleManagerModel.modules);
+
+        PrintWriter out = res.getWriter();
+
+        out.println(json);
+
+        out.close();
     }
 
 }
