@@ -13,11 +13,13 @@ let LoginForm = new Vue({
         }
     },
     methods: {
-        selectStudent() {
-            this.isTeacher = false;
+        selectStudent(event) {
+            if (this.isTeacher)
+                this.isTeacher = false;
         },
-        selectTeacher() {
-            this.isTeacher = true;
+        selectTeacher(event) {
+            if (this.isNotTeacher)
+                this.isTeacher = true;
         },
         submit(event) {
 
