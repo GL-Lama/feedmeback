@@ -76,6 +76,7 @@ input:focus {
     color: var(--color-text) !important;
 }
 
+body .md-form .prefix.active,
 .md-form input {
     color: var(--color-1);
 }

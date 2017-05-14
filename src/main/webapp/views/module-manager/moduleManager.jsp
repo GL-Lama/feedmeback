@@ -6,11 +6,11 @@
 <tag:wrapper>
 
     <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/app/module-manager/module-manager.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/teacher.js"></script>
+        <script src="/static/app/module-manager/module-manager.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -36,14 +36,14 @@
 
                     <div class="d-flex justify-content-center">
                         <c:forEach items="${teacher.modules}" var="module">
-                            <button v-on:click="submit" class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
+                            <button class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
                         </c:forEach>
                     </div>
 
                     <!--Footer-->
                     <div class="modal-footer">
                         <div class="options d-flex justify-content-end">
-                            <button type="button" class="btn fmb-btn-primary fmb-bg-message fmb-border-message text-center" data-toggle="modal" data-target="#myModal">
+                            <button type="button" class="btn fmb-btn-primary fmb-bg-message fmb-border-message text-center" data-toggle="modal" data-target="#searchModule">
                                 Rechercher un module
                             </button>
                         </div>
@@ -51,7 +51,7 @@
                     </div>
 
                     <!-- Modal -->
-                    <div class="modal fade scroll" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal fade scroll" id="searchModule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <!--Content-->
                             <div class="modal-content fmb-bg-primary">
@@ -60,10 +60,22 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title w-100" id="myModalLabel">Formulaire existant</h4>
+                                    <h4 class="modal-title w-100" id="myModalLabel">Rechercher un module :</h4>
                                 </div>
                                 <!--Body-->
                                 <div class="modal-body">
+                                    <div class="md-form">
+                                        <i class="fa fa-search prefix"></i>
+                                        <input type="text" id="form2" class="form-control" v-model="moduleQuery">
+                                        <label for="form2">Module name</label>
+                                    </div>
+
+                                    <ul id="example-1">
+                                        <li v-for="module in modules">
+                                            {{ module.name }}
+                                        </li>
+                                    </ul>
+
                                 </div>
                             </div>
                         </div>
