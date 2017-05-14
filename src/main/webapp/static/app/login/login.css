@@ -3,5 +3,10 @@
 }
 
 .fmb-btn-primary.active {
-    background-color: white;
+    background-color: #33b67d;
+}
+
+.fmb-btn-primary.selected {
+    background-color: white !important;
+    color: #33b67d !important;
 }
