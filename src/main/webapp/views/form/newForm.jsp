@@ -18,7 +18,7 @@
                     <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
-
+                 
                     <div class="d-flex justify-content-center text-center">
                         <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Création d'un formulaire<br>
                         Informations générales</p>
