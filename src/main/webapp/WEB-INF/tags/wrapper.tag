@@ -12,6 +12,7 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/static/libs/jquery-ui/jquery-ui.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/css/feedmeback.css"></link>
@@ -29,6 +30,7 @@
 
     <div>
         <script src="/static/libs/mdbootstrap/js/jquery-3.1.1.js"></script>
+        <script src="/static/libs/jquery-ui/jquery-ui.min.js"></script>
         <script src="/static/libs/mdbootstrap/js/mdb.min.js"></script>
         <script src="/static/libs/mdbootstrap/js/tether.min.js"></script>
         <script src="/static/libs/mdbootstrap/js/bootstrap.min.js"></script>
