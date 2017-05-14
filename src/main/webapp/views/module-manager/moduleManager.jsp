@@ -27,11 +27,11 @@
                 <div class="card-block fmb-card-content">
 
                     <div class="d-flex justify-content-center title-box ">
-                    <a href="/moduleManager/newModule"><button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
+                        <a href="/moduleManager/newModule"><button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
                     </div>
-                    
+
                     <div class="d-flex justify-content-center title-box pt-1">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules ${teacher.modules.size()}</p>
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules ${teacher.modules.size()}</p>
                     </div>
 
                     <div class="d-flex justify-content-center">
@@ -46,6 +46,9 @@
                             <button type="button" class="btn fmb-btn-primary fmb-bg-message fmb-border-message text-center" data-toggle="modal" data-target="#myModal">
                                 Rechercher un module
                             </button>
+                        </div>
+
+                    </div>
 
                     <!-- Modal -->
                     <div class="modal fade scroll" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -61,15 +64,12 @@
                                 </div>
                                 <!--Body-->
                                 <div class="modal-body">
-                                    
                                 </div>
                             </div>
-
                         </div>
                     </div>
 
                 </div>
-
             </div>
         </div>
 
