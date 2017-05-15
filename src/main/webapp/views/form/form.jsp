@@ -1,8 +1,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
 
-<%--<jsp:useBean id="student" class="servlet.models.StudentModel" scope="request"/>
---%>
+<jsp:useBean id="student" class="servlet.models.StudentModel" scope="request"/>
+
 
 <tag:wrapper>
     <jsp:attribute name="head">
@@ -21,7 +21,7 @@
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                 <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Votre avis nous intéresse Machin !<p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Votre avis nous intéresse ${student.username} !<p>
                 </div>
             </div>
 
