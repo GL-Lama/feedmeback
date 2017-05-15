@@ -61,11 +61,14 @@
                             <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Difficile</p>
                         </div>
 
-                        <div class="progress">
+                        <%--<div class="progress">
                             <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
                                 <span class="sr-only">80% effectué</span>
                             </div>
-                        </div>
+                        </div>--%>
+                        
+                        <input class="w-100" name="html5shim-1" id="html5shim-1" type="range" min="0" max="100" step="1" title="Étendue : 0 à 100 avec les augmentations de 10" value="50" />
+
                         <p class="text-center mt-2 "> 2/5 </p>
                     </div>
                     <%-- end of 2nd question --%>
