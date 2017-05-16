@@ -1,5 +1,6 @@
 .modal-footer .btn + .btn {
     margin-bottom: 0px;
+    width:800px;
 }
 
 .fmb-btn-arrow {

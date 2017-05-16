@@ -1,19 +1,29 @@
-// var nbQuestion = 2;
-
-// for (i=0; i<nbQuestion; i++){
-//     var app1 = new Vue({
-//         el: '#app-' + i,
-//         data: {
-//         seen: true
-//         }
-//     })
-// }
-
 new Vue({
   el: '#formQuestion',
   data: {
-    nbQuestion: 0
+    nbQuestion: 0,
+    value: 50
   },
+
+
+  computed: {
+      getTextDifficulty: function () {
+        if (this.value < 30){
+          return ("facile");
+        }
+
+       else if (this.value > 31 && this.value < 70) {
+          return ("moyen");
+        }
+
+        else {
+          return ("difficile");
+        }
+
+      }
+  },
+
+
   methods: {
       isThisQuestion: function(nb) {
         return nb == this.nbQuestion;
@@ -27,4 +37,4 @@ new Vue({
           this.nbQuestion--;
       }
   }
-})
+});
