@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/home/teacher.js"></script>
+        <script src="/static/app/form-manager/new-module/newModule.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -30,19 +30,28 @@
                 <div class="card-block fmb-card-content">
 
                     <form>
-                            <div class="md-form d-flex w-100 justify-content-center pt-2">
-                                <div class="w-50 relative">
-                                    <input type="text" id="moduleName" class="form-control">
-                                    <label for="moduleName" class="">Nom du module</label>
+                           <div class="fmb-bg-message fmb-border-item "> 
+                                <div class="md-form d-flex w-100 justify-content-center pt-2">
+                                    <div class="w-50 relative">
+                                        <input type="text" id="moduleName" class="form-control">
+                                        <label for="moduleName" class="">Nom du module</label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="md-form d-flex w-100 justify-content-center pt-2  ">
-                                <div class="w-60 relative">
-                                    <input type="text" id="moduleName" class="form-control ">
-                                    <label for="moduleName" class="">Élève</label>
+                        
+                            <div id="inputs" class="md-form d-flex w-100 justify-content-center pt-2">
+                                <div class="fmb-bg-message fmb-border-item p-2 pl-4 pr-4 pt-1 m-1">
+                                    <div v-for="student in students" class="w-100 relative">
+                                        <input type="text" v-bind:id="'student-' + student.index" @keyup.enter="newInput(student.index)" @keyup.delete="deleteInput(student.index)" v-model="student.name" class="form-control">
+                                        <label v-bind:id="'student-' + student.ndex">Elève {{student.index + 1}}</label>
+                                    </div>
+                                    <p class="information-message">Appuyez sur <span>ENTRER</span> pour ajouter un élève.<p>
                                 </div>
+                                
                             </div>
+                            
+
                     
                     </form>
                     

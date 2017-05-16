@@ -64,3 +64,8 @@ p {
 .relative {
     position: relative;
 }
+
+.information-message{
+    font-size: 0.8em;
+    font-family: Arial, Helvetica, sans-serif;
+}
