@@ -16,6 +16,9 @@ public class Module {
       this.idModule = idModule;
       this.name = name;
    }
+   public Module(String name) {
+      this.name = name;
+   }
    public int getIdModule() {
       return idModule;
    }

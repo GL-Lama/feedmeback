@@ -147,3 +147,11 @@ body .md-form .prefix.active,
 #newForm .fmb-btn-primary.active {
     color: var(--color-3) !important;
 }
+
+/*****************/
+/* MODULEMANAGER */
+/*****************/
+
+#searchModule .list-group-item:hover {
+    background-color: var(--color-1);
+}
