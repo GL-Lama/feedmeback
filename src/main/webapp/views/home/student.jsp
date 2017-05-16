@@ -42,6 +42,10 @@
                                 <a href="/form/">
                                     <div class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
                                         <div class="d-flex w-100 align-items-start">
+                                            <%--<div class="w-25">
+                                                <small>Date</small>
+                                                <p>{{getDate(${form.date})}}</p>
+                                            </div>--%>
                                             <div class="w-25">
                                                 <small>Date</small>
                                                 <p class="text-truncate m-0">20/03/2017</p>
