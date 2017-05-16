@@ -53,7 +53,7 @@ input:focus {
 
 .fmb-bg-message {
     background-color: var(--color-3);
-    
+
 }
 
 .fmb-btn-primary {
@@ -70,6 +70,15 @@ input:focus {
 
 .fmb-card-content{
     background-color: var(--color-content);
+}
+
+.md-form label {
+    color: var(--color-text) !important;
+}
+
+body .md-form .prefix.active,
+.md-form input {
+    color: var(--color-1);
 }
 
 /***********/
@@ -94,10 +103,6 @@ input:focus {
 #login .md-form .prefix.active,
 #login .md-form input {
     color: var(--color-1)
-}
-
-#login .md-form label {
-    color: var(--color-text)
 }
 
 #login .fmb-btn-primary.active {

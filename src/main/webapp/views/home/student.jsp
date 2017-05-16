@@ -38,7 +38,7 @@
                         <div class="list-group fmb-border-item">
 
                             <c:forEach items="${student.forms}" var="form">
-                               
+
                                 <a href="/form/">
                                     <div class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
                                         <div class="d-flex w-100 align-items-start">
@@ -54,11 +54,11 @@
                                                 <small>Nom du formulaire</small>
                                                 <p class="text-truncat m-0"><c:out value="${form.name}"/></p>
                                             </div>
-                                            <div class="d-flex w-25">
+                                            <div class="d-flex w-25 justify-content-end">
                                                 <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
                                             </div>
                                         </div>
-                                    </div>    
+                                    </div>
                                 </a>
                             </c:forEach>
 

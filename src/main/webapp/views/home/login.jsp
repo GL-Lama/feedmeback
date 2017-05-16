@@ -43,8 +43,8 @@
                 <div class="options">
                 <p>
                     <div class="btn-group" data-toggle="buttons">
-                        <button type="button" v-on:click="selectStudent" class="btn btn-md fmb-btn-primary" v-bind:class="{ active: isNotTeacher }">Student</button>
-                        <button type="button" v-on:click="selectTeacher"class="btn btn-md fmb-btn-primary" v-bind:class="{ active: isTeacher }">Teacher</button>
+                        <button type="button" v-on:click="selectStudent" class="btn btn-md fmb-btn-primary" v-bind:class="{ selected: isNotTeacher }">Student</button>
+                        <button type="button" v-on:click="selectTeacher"class="btn btn-md fmb-btn-primary" v-bind:class="{ selected: isTeacher }">Teacher</button>
                     </div>
                 </p>
                 </div>
