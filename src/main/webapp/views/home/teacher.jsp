@@ -41,8 +41,6 @@
                                     <div class="w-25">
                                         <small>Date</small>
                                         <p>{{getDate(${form.date})}}</p>
-                                        
-                                        <%--<p class="text-truncate m-0">20/03/2017</p>--%>
                                     </div>
                                     <div class="w-50 pl-3 pr-3">
                                         <small>Nom du formulaire</small>

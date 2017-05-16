@@ -19,10 +19,13 @@
             <div id="teacher" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
+                
 
                 <div class="d-flex justify-content-center ">
                     <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Création d'un module<p>
                 </div>
+
+                
 
                 <div class="card-block fmb-card-content">
 
@@ -31,6 +34,13 @@
                                 <div class="w-50 relative">
                                     <input type="text" id="moduleName" class="form-control">
                                     <label for="moduleName" class="">Nom du module</label>
+                                </div>
+                            </div>
+
+                            <div class="md-form d-flex w-100 justify-content-center pt-2  ">
+                                <div class="w-60 relative">
+                                    <input type="text" id="moduleName" class="form-control ">
+                                    <label for="moduleName" class="">Élève</label>
                                 </div>
                             </div>
                     
