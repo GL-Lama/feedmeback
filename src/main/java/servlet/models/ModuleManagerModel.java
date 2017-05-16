@@ -1,7 +1,9 @@
 package servlet.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -12,6 +14,7 @@ import database.Form.Form;
 import database.Module.Module;
 import database.Student.Student;
 import database.Teacher.Teacher;
+import servlet.controllers.ModuleManager;
 import servlet.core.Model;
 import utils.console;
 
@@ -70,6 +73,29 @@ public class ModuleManagerModel extends Model {
 
     public ArrayList<Module> getModules(){
         return this.modules;
+    }
+
+    public void addModule(String moduleName){
+        Session session = Database.factory.openSession();
+        Transaction tx = null;
+        Module module = new Module(moduleName);
+
+        try{
+            tx = session.beginTransaction();
+
+        
+            this.db.insert("Module", module);
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null)
+                tx.rollback();
+
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+       
     }
 
 }

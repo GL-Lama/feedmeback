@@ -1,6 +1,7 @@
-let inputs = new Vue({
-  el: '#inputs',
+let newModule = new Vue({
+  el: '#newModule',
   data: {
+    moduleName: "",
     students: [ {index: 0, name: ""} ]
   },
   methods: {
@@ -22,6 +23,27 @@ let inputs = new Vue({
             }, 100);
           }
 
+      },
+
+      addModule: function() {
+
+            var myHeaders = new Headers();
+
+            myHeaders.append("Content-type", "application/x-www-form-urlencoded");
+
+            var params = {
+                method: 'POST',
+                headers: myHeaders,
+                body: jQuery.param({moduleName: this.moduleName, students: JSON.stringify(this.students)}),
+                credentials: "include",
+                redirect: "follow"
+            };
+
+            if (this.moduleName != "")
+                fetch('/moduleManager/addModule', params).then(
+                    res => console.log(res),
+                    err => err
+                )
       }
   }
 });
