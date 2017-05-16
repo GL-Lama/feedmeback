@@ -17,7 +17,6 @@
 
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
 
-
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
                  
                     <div class="d-flex justify-content-center text-center">
@@ -35,8 +34,8 @@
                             </div>
                             <div class="md-form d-flex w-100 justify-content-center">
                                 <div class="w-50 relative">
-                                    <input type="text" id="form2" class="form-control">
-                                    <label for="form2" class="">Date (JJ/MM/AAAA)</label>
+                                    <input type="text" id="datepicker" class="form-control">
+                                    <label for="datepicker" class="">Date</label>
                                 </div>
                             </div>
 
