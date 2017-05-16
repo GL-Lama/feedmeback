@@ -16,7 +16,7 @@
     <jsp:body>
 
         <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-            <div id="teacher" class="card-block pr-0 pl-0 pb-0">
+            <div id="moduleManager" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
@@ -27,7 +27,7 @@
                 <div class="card-block fmb-card-content">
 
                     <div class="d-flex justify-content-center title-box ">
-                        <a href="/moduleManager/newModule"><button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
+                        <a href="/moduleManager/newModule"><button type="button" class="btn fmb-btn-primary mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
                     </div>
 
                     <div class="d-flex justify-content-center title-box pt-1">
@@ -60,7 +60,7 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title w-100" id="myModalLabel">Rechercher un module :</h4>
+                                    <h4 class="modal-title w-100 pl-2" id="myModalLabel">Rechercher un module :</h4>
                                 </div>
                                 <!--Body-->
                                 <div class="modal-body">
@@ -70,12 +70,13 @@
                                         <label for="form2">Module name</label>
                                     </div>
 
-                                    <ul id="example-1">
-                                        <li v-for="module in modules">
-                                            {{ module.name }}
-                                        </li>
-                                    </ul>
 
+                                    <div class="list-group fmb-border-item">
+                                        <a v-for="module in modules" class="list-group-item flex-column align-items-start fmb-bg-item">
+                                            <div class="d-flex w-100 align-items-start">
+                                                {{ module.name }}
+                                            </div>
+                                        </a>
                                 </div>
                             </div>
                         </div>
