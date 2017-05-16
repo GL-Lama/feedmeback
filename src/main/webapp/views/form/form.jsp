@@ -1,18 +1,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:useBean id="student" class="servlet.models.StudentModel" scope="request"/>
-
+<jsp:useBean id="formModel" class="servlet.models.FormModel" scope="request"/>
 
 <tag:wrapper>
     <jsp:attribute name="head">
-            <link rel="stylesheet" type="text/css" href="/static/app/form/form.css"></link>
+            <link rel="stylesheet" type="text/css" href="/static/app/form/form/form.css"></link>
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/form/form.js"></script>
+        <script src="/static/app/form/form/form.js"></script>
     </jsp:attribute>
-
 
      <jsp:body>
         <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
@@ -25,7 +24,7 @@
                 </div>
             </div>
 
-            <div class="card-block fmb-card-content">
+            <div id="form" class="card-block fmb-card-content">
 
                 <div class="d-flex justify-content-center fmb-bg-message fmb-border-message">
                     <div class="d-flex w-100 align-items-start">
@@ -35,7 +34,7 @@
                         </div>
                         <div class="w-15 pl-4 pt-1 pb-1">
                             <small>Nom du formulaire</small>
-                            <h3 class="text-truncate m-0">Cybersécurité #1</h3>
+                            <h3 class="text-truncate m-0"><c:out value="${formModel.form.name}"/></h3>
                         </div>
                     </div>
                 </div>
@@ -44,7 +43,7 @@
                     <div class="d-flex w-100 align-items-start pl-4 pt-1 pb-1 ">
                         <div class="w-25">
                             <small class="w-100 text-center">Date</small>
-                            <p class="text-truncate m-0">20/03/2017</p>
+                            <p class="text-truncate m-0">{{getDate(${formModel.form.date})}}</p>
                         </div>
                         <div class="w-25">
                             <small class="w-100 text-center">Horaire de fin</small>
@@ -59,7 +58,7 @@
 
 
                 <div class="text-center mx-auto">
-                    <a href="/form/formQuestion/"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
+                    <a href="/form/formQuestion?id=${formModel.form.idForm}"><button class="fmb-btn-primary fmb-font-sm btn">Commencer</button></a>
                 </div>
 
             </div>

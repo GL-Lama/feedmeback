@@ -1,5 +1,5 @@
-let student = new Vue({
-    el: '#student',
+let form = new Vue({
+    el: '#form',
     data: {},
     methods: {
         modify: function (formName) {
