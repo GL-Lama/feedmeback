@@ -76,6 +76,7 @@ input:focus {
     color: var(--color-text) !important;
 }
 
+body .md-form .prefix.active,
 .md-form input {
     color: var(--color-1);
 }
@@ -145,4 +146,12 @@ input:focus {
 
 #newForm .fmb-btn-primary.active {
     color: var(--color-3) !important;
+}
+
+/*****************/
+/* MODULEMANAGER */
+/*****************/
+
+#searchModule .list-group-item:hover {
+    background-color: var(--color-1);
 }

@@ -52,6 +52,11 @@ p {
     font-size: 3em;
 }
 
+.fmb-btn-back {
+    font-size: 3em;
+}
+
+
 .fmb-btn-logout:hover {
     color: white;
 }
