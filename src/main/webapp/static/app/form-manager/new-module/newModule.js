@@ -16,8 +16,12 @@ let newModule = new Vue({
       },
 
       deleteInput: function(index) {
-          if(this.students.length >1 && this.students[index].name === "" ){
-            this.students.splice(index,1);
+          if(this.students.length > 1 && this.students[index].name === "" ){
+            this.students.splice(index, 1);
+
+            for (let i = 0; i < this.students.length; i++)
+                this.students[i].index = i;
+
             setTimeout(() => {
                 $("#student-"  + (index - 1)).focus();
             }, 100);
