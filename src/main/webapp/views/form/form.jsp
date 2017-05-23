@@ -30,7 +30,7 @@
                     <div class="d-flex w-100 align-items-start">
                         <div class="w-15 pl-4 pt-1 pb-1">
                             <small>Nom du Module</small>
-                            <h3 class="text-truncate m-0">Cybersécurité</h3>
+                            <h3 class="text-truncate m-0"><c:out value="${formModel.module.name}"/></h3>
                         </div>
                         <div class="w-15 pl-4 pt-1 pb-1">
                             <small>Nom du formulaire</small>
