@@ -32,9 +32,6 @@ public class ModuleManager extends Controller {
 
         String[] params = this.getUrlParameters(req, "moduleManager/");
 
-        console.log(params);
-        console.log(params.length);
-
         if (params.length == 0 || params[0].equals("")) {
             this.Index(req, res);
             return;
@@ -46,6 +43,9 @@ public class ModuleManager extends Controller {
                 break;
             case "searchModule":
                 this.SearchModule(req, res);
+                break;
+            case "addModule":
+                this.AddModule(req, res);
                 break;
             default:
                 Error.send404(req, res);
@@ -119,4 +119,34 @@ public class ModuleManager extends Controller {
         out.close();
     }
 
+    private void AddModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String moduleName = req.getParameter("moduleName");
+        Gson gson = new Gson();
+        Student[] students = gson.fromJson(req.getParameter("students"), Student[].class);
+
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        if (access_token == null || !Auth.validate(access_token, req, res))
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+
+        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+            res.sendError(400);
+            return;
+        }
+
+        moduleManagerModel.addModule(moduleName);
+        res.getWriter().close();
+    }
+
+}
+
+class Student {
+    public String name;
+
+    public Student(String name) {
+        this.name = name;
+    }
 }

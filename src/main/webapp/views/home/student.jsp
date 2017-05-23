@@ -39,16 +39,12 @@
 
                             <c:forEach items="${student.forms}" var="form">
 
-                                <a href="/form/">
+                                <a href="/form?id=${form.idForm}">
                                     <div class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
                                         <div class="d-flex w-100 align-items-start">
-                                            <%--<div class="w-25">
-                                                <small>Date</small>
-                                                <p>{{getDate(${form.date})}}</p>
-                                            </div>--%>
                                             <div class="w-25">
                                                 <small>Date</small>
-                                                <p class="text-truncate m-0">20/03/2017</p>
+                                                <p>{{getDate(${form.date})}}</p>
                                             </div>
                                             <div class="w-50 pl-3 pr-3">
                                                 <small>Nom du formulaire</small>
@@ -70,7 +66,7 @@
 
                         <div class="d-flex flex-wrap justify-content-center w-100 text-center">
                             <c:forEach items="${student.modules}" var="module">
-                                <button v-on:click="submit" class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
+                                <button class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
                             </c:forEach>
                         </div>
                     </div>

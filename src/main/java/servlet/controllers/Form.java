@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import servlet.core.Controller;
+import servlet.models.FormModel;
+import utils.Auth;
+import utils.Cookies;
 import utils.Error;
 import utils.console;
 
@@ -49,6 +52,19 @@ public class Form extends Controller {
     }
 
     public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String idForm = req.getParameter("id");
+
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        FormModel formModel = new FormModel();
+
+        if (!formModel.init(this.db, Auth.getTokenClaim(access_token, "username"), idForm)) {
+            res.sendError(400);
+            return;
+        }
+
+        req.setAttribute("formModel", formModel);
 
         req.getRequestDispatcher("/views/form/form.jsp").forward(req, res);
     }
