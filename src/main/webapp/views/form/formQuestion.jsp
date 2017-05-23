@@ -155,6 +155,7 @@
 
                         </div>
                     </div>
+                    <%-- end of 6th question --%>
 
                     <div class="d-flex justify-content-between p-3">
                         <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-left fmb-btn-arrow fa-3x " aria-hidden="true"></i>
@@ -162,7 +163,7 @@
                         <i v-on:click="incrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow fa-3x" aria-hidden="true"></i>
                     </div>
 
-                    <%-- end of 5th question --%>
+
                 </div>
             </div>
     </jsp:body>

@@ -47,12 +47,19 @@ public class FormModel extends Model {
         try{
             tx = session.beginTransaction();
 
-            // Query the Teacher
+            // Query the form
             Map<String, String> params = new HashMap<String, String>();
 
             params.put("idForm", idForm);
 
             this.form = (Form) this.db.selectOne("Form", params);
+
+            // Query the module
+            params = new HashMap<String, String>();
+
+            params.put("idModule", this.form.getIdModule() + "");
+
+            this.module = (Module) this.db.selectOne("Module", params);
 
             tx.commit();
         } catch (HibernateException e) {
@@ -176,6 +183,10 @@ public class FormModel extends Model {
 
     public Form getForm(){
         return this.form;
+    }
+
+    public Module getModule(){
+        return this.module;
     }
 
 }
