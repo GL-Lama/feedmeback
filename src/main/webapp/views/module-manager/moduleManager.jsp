@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="tag" tagdir="/WEB-INF/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:useBean id="teacher" class="servlet.models.TeacherModel" scope="request"/>
 
@@ -31,7 +32,7 @@
                     </div>
 
                     <div class="d-flex justify-content-center title-box pt-1">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules ${teacher.modules.size()}</p>
+                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
                     </div>
 
                     <div class="d-flex justify-content-center">

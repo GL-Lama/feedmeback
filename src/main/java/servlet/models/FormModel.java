@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import database.Database;
 import database.Form.Form;
 import database.Module.Module;
+import database.Question.Question;
 import database.Student.Student;
 import servlet.core.Model;
 import utils.console;
@@ -93,7 +94,7 @@ public class FormModel extends Model {
         this.questions = new ArrayList<Question>();
 
         for (int i = 0; i < table.size(); i++) {
-            this.forms.add((Question) table.get(i));
+            this.questions.add((Question) table.get(i));
         }
     }
 
