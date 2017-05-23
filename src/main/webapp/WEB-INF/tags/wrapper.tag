@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/static/libs/jquery-ui/jquery-ui.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/bootstrap.min.css"></link>
-        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.min.css"></link>
+        <link rel="stylesheet" type="text/css" href="/static/libs/mdbootstrap/css/mdb.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/css/feedmeback.css"></link>
         <link rel="stylesheet" type="text/css" href="/static/css/themes/fmb-theme-${(sessionScope.theme != null)? 0 : 0}.css"></link>
 

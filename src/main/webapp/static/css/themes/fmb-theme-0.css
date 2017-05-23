@@ -81,6 +81,11 @@ body .md-form .prefix.active,
     color: var(--color-1);
 }
 
+.fmb-hl-text-1:hover {
+    color: var(--color-1);
+    cursor: pointer;
+}
+
 /***********/
 /* TEACHER */
 /***********/
