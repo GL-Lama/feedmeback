@@ -31,13 +31,11 @@
                         <a href="/moduleManager/newModule"><button type="button" class="btn fmb-btn-primary mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
                     </div>
 
-                    <div class="d-flex justify-content-center title-box pt-1">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
-                    </div>
-
-                    <div class="d-flex justify-content-center">
+                    <div class="d-flex flex-wrap p-3 mb-1">
                         <c:forEach items="${teacher.modules}" var="module">
-                            <button class="btn px-3 fmb-btn-primary"><c:out value="${module.name}"/></button>
+                            <div class="w-50">
+                                <h4 class="fmb-hl-text-1"><i class="fa fa-circle-o mr-2" aria-hidden="true"></i><c:out value="${module.name}"/></h4>
+                            </div>
                         </c:forEach>
                     </div>
 
