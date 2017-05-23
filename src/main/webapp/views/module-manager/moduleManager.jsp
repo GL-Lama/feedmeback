@@ -74,7 +74,7 @@
                                     <div class="list-group fmb-border-item">
                                         <a v-for="module in modules" class="list-group-item flex-column align-items-start fmb-bg-item">
                                             <div class="d-flex w-100 align-items-start">
-                                                {{ module.name }}
+                                                {{ module.name }} 
                                             </div>
                                         </a>
                                 </div>

@@ -1,7 +1,3 @@
-.fmb-btn-arrow {
-    font-size: 1.4em;
-}
-
 .fmb-btn-arrow:hover {
     color: white;
 }
@@ -9,6 +5,10 @@
 .smiley {
     visibility:hidden;
     display:none;
+}
+
+.compteur {
+    font-size : 1.6rem;
 }
 
 

@@ -27,7 +27,7 @@
                     <div v-if="isThisQuestion(0)" class="card-block fmb-card-content">
                         <div class="d-flex justify-content-center text-center">
                             <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Quel est votre ressenti par rapport au cours ?
-                            <i v-on:click="incrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i></p>
+                            
                         </div>
 
                         <div>
@@ -42,9 +42,8 @@
                                 <input type="radio" name="smiley" id="smiley+1" value="smiley+1" class='smiley'>
                             </form>
                         </div>
-                        <p class="text-center mt-2 "> 1/5 </p>
-
                     </div>
+                    
                     <%-- end of 1st question --%>
 
                     <%-- 2nd question --%>
@@ -63,8 +62,6 @@
 
                         <input class="w-100" type="range" min="0" max="100" step="1" v-model="value"> 
                         <%--<input type="number" v-model="value"/>--%>
-
-                        <p class="text-center mt-2 "> 2/5 </p>
                     </div>
                     <%-- end of 2nd question --%>
 
@@ -97,7 +94,6 @@
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >La réponse D</p>
                             </div>
                         </div>
-                        <p class="text-center mt-2 "> 3/5 </p>
                     </div>
                     <%-- end of 3rd question --%>
 
@@ -144,7 +140,6 @@
                             </div>
 
                         </div>
-                        <p class="text-center mt-2 "> 5/5 </p>
                     </div>
 
                     <%-- end of 5th question --%>
@@ -159,7 +154,12 @@
                             </div>
 
                         </div>
-                        <p class="text-center mt-2 "> 5/5 </p>
+                    </div>
+
+                    <div class="d-flex justify-content-between p-3">
+                        <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-left fmb-btn-arrow fa-3x " aria-hidden="true"></i>
+                        <div class=" compteur text-center m-0 align-self-center"> 1/5 </div>
+                        <i v-on:click="incrNbQuestion()" class="fa fa-arrow-circle-right fmb-btn-arrow fa-3x" aria-hidden="true"></i>
                     </div>
 
                     <%-- end of 5th question --%>
