@@ -6,11 +6,14 @@
 <hibernate-mapping>
    <class name="database.Question.Question" table="question">
       <meta attribute="class-description">
-         This class contains the module detail.
+         This class contains the question detail.
       </meta>
       <id name="idQuestion" type="int" column="idQuestion">
          <generator class="native"/>
       </id>
-      <property name="name" column="name" type="string"/>
+      <property name="idForm" column="idForm" type="int"/>
+      <property name="numQuestion" column="numQuestion" type="int"/>
+      <property name="question" column="question" type="string"/>
+      <property name="idType" column="idType" type="int"/>
    </class>
 </hibernate-mapping>
