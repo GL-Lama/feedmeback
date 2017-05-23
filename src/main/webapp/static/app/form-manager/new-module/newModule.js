@@ -47,7 +47,7 @@ let newModule = new Vue({
                 fetch('/moduleManager/addModule', params).then(
                     res => console.log(res),
                     err => err
-                )
+                );
       }
   }
 });

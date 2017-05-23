@@ -12,7 +12,6 @@ import org.hibernate.Transaction;
 import database.Database;
 import database.Form.Form;
 import database.Module.Module;
-import database.Student.Student;
 import database.Teacher.Teacher;
 import servlet.controllers.ModuleManager;
 import servlet.core.Model;
@@ -75,16 +74,38 @@ public class ModuleManagerModel extends Model {
         return this.modules;
     }
 
-    public void addModule(String moduleName){
+    public void addModule(String moduleName, utils.Student[] students){
         Session session = Database.factory.openSession();
         Transaction tx = null;
+
         Module module = new Module(moduleName);
+
+        List table = null;
 
         try{
             tx = session.beginTransaction();
-
         
             this.db.insert("Module", module);
+
+            Map<String, String> params = new HashMap<String, String>();
+            params.put("name", module.getName());
+            module = (Module) this.db.selectOne("Module", params);
+
+            String query = "INSERT into joinmodule (idStudent, idModule) SELECT idStudent, idModule from student, module where username IN (";
+
+            for (int i = 0; i < students.length; i++) {
+                query += "'" + students[i].name;
+                if (i != students.length - 1)
+                    query += "', ";
+                else
+                    query += "' ";
+            }
+
+            query += ") AND IdModule = '" + module.getIdModule() + "'";
+
+            console.log("Query :", query);
+
+            session.createSQLQuery(query).executeUpdate();
 
             tx.commit();
         } catch (HibernateException e) {

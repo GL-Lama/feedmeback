@@ -123,7 +123,7 @@ public class ModuleManager extends Controller {
 
         String moduleName = req.getParameter("moduleName");
         Gson gson = new Gson();
-        Student[] students = gson.fromJson(req.getParameter("students"), Student[].class);
+        utils.Student[] students = gson.fromJson(req.getParameter("students"), utils.Student[].class);
 
         String access_token = Cookies.getCookieValue(req, "access_token");
 
@@ -137,16 +137,8 @@ public class ModuleManager extends Controller {
             return;
         }
 
-        moduleManagerModel.addModule(moduleName);
+        moduleManagerModel.addModule(moduleName, students);
         res.getWriter().close();
     }
 
-}
-
-class Student {
-    public String name;
-
-    public Student(String name) {
-        this.name = name;
-    }
 }
