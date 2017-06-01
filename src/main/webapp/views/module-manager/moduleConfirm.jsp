@@ -17,34 +17,42 @@
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
+                
 
                 <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Création d'un module<p>
+                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Votre module a été créé avec succès !<p>
                 </div>
 
-                <div class="d-flex justify-content-center fmb-bg-message fmb-border-message">
-                    <div class="d-flex w-100 align-items-start">
+                <div class="card-block fmb-card-content">
+
+
+                <div class="fmb-bg-message fmb-border-item ">
+                    <div class="md-form d-flex w-100 align-items-start">
                         <div class="w-15 pl-4 pt-1 pb-1">
                             <small>Nom du Module</small>
-                            <h3 class="text-truncate m-0"><c:out value="${moduleManager.module.name}"/></h3>
+                            <h1 class="text-truncate m-0"><c:out value="${moduleManager.module.name}"/></h1>
                         </div>
                     </div>
                 </div>
 
-                
+                <div class="md-form d-flex w-100 justify-content-center pt-2">
+                    <div class="fmb-bg-message fmb-border-item p-2 pl-4 pr-4 pt-1">
+                        
+                            <small>Liste des élèves</small>
+                            <c:forEach items="${moduleManager.students}" var="student">
+                            <h3 class="text-truncate m-0"><c:out value="${student.username}"/></h3>
+                            </c:forEach>
+            
+                    </div>
+                </div>
 
-                <c:forEach items="${moduleManager.students}" var="student">
+                <div class="d-flex justify-content-center title-box pt-3">
+                    <a href="/moduleManager"><button v-on:click="addModule" type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Terminer</button></a>
+                </div>
 
-                    <div>${student.username}</div>
-                    
-                    
-                </c:forEach>
-
-                <div>${moduleManager.module.name}</div>
-
-               
             </div>
         </div>
+    
 
     </jsp:body>
 
