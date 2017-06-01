@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.Question.Question;
 import servlet.core.Controller;
 import servlet.models.FormModel;
 import utils.Auth;
@@ -86,6 +87,10 @@ public class Form extends Controller {
         FormModel formModel = new FormModel();
 
         formModel.fetchQuestions(idForm);
+        for (Question question : formModel.getQuestions()){
+            formModel.fetchPropositions(question.getIdQuestion() + "");
+        }
+        
 
         req.setAttribute("formModel", formModel);
 
