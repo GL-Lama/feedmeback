@@ -8,6 +8,7 @@ import javax.persistence.Table;
 public class SubscribeModule {
    private int idModule;
    private int idTeacher;
+   private int idSm;
 
    public SubscribeModule() {}
    public SubscribeModule(int idModule, int idTeacher) {
@@ -29,5 +30,13 @@ public class SubscribeModule {
 
    public void setIdTeacher(int idTeacher) {
       this.idTeacher = idTeacher;
+   }
+
+   public void setIdSm(int idSm){
+       this.idSm = idSm;
+   }
+
+   public int getIdSm() {
+       return idSm;
    }
 }

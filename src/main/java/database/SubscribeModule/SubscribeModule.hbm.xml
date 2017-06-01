@@ -8,9 +8,10 @@
       <meta attribute="class-description">
          This class contains the module detail.
       </meta>
-      <id name="idModule" type="int" column="idModule">
+      <id name="idSm" type="int" column="idSm">
          <generator class="native"/>
       </id>
       <property name="idTeacher" type="int" column="idTeacher"/>
+      <property name="idModule" type="int" column="idModule"/>
    </class>
 </hibernate-mapping>

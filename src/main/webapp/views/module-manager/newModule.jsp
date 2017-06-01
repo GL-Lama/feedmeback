@@ -10,7 +10,7 @@
     </jsp:attribute>
 
     <jsp:attribute name="scripts">
-        <script src="/static/app/form-manager/new-module/newModule.js"></script>
+        <script src="/static/app/module-manager/new-module/newModule.js"></script>
     </jsp:attribute>
 
     <jsp:body>
@@ -57,7 +57,7 @@
 
 
                     <div class="d-flex justify-content-center title-box pt-3">
-                        <button v-on:click="addModule" type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Créer</button>
+                        <a><button v-on:click="addModule" type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Créer</button></a>
                     </div>
 
                 </div>
