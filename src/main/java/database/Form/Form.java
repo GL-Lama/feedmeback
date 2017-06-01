@@ -10,7 +10,7 @@ public class Form {
    private String name;
    private int date;
    private int idTeacher;
-    private int idModule;
+   private int idModule;
 
    public Form() {}
    public Form(int idForm, String name, int idTeacher, int date) {
