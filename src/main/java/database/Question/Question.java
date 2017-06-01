@@ -23,6 +23,14 @@ public class Question {
       this.idType = idType;
    }
 
+    public int getIdQuestion() {
+        return idQuestion;
+    }
+
+    public void setIdQuestion(int idQuestion){
+        this.idQuestion = idQuestion;
+    }
+
     public int getIdForm() {
         return idForm;
     }

@@ -29,11 +29,13 @@ new Vue({
         return nb == this.nbQuestion;
       },
 
-      incrNbQuestion: function() {
-          this.nbQuestion++;
+      incrNbQuestion: function(max) {
+          if (this.nbQuestion < max - 1)
+            this.nbQuestion++;
       },
 
       decrNbQuestion: function() {
+        if (this.nbQuestion > 0)
           this.nbQuestion--;
       }
   }

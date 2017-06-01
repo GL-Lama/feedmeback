@@ -81,6 +81,14 @@ public class Form extends Controller {
 
     public void FormQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
+        String idForm = req.getParameter("id");
+
+        FormModel formModel = new FormModel();
+
+        formModel.fetchQuestions(idForm);
+
+        req.setAttribute("formModel", formModel);
+
         req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
     }
 

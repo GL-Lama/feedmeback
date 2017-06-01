@@ -82,7 +82,7 @@ public class FormModel extends Model {
             tx = session.beginTransaction();
 
             // String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.username + "')";
-            String query = "FROM Question fo WHERE fo.idForm ='" + idForm;
+            String query = "FROM Question fo WHERE fo.idForm ='" + idForm + "'";
 
             console.log("Query :", query);
 
@@ -187,6 +187,10 @@ public class FormModel extends Model {
 
     public Module getModule(){
         return this.module;
+    }
+
+    public ArrayList<Question> getQuestions(){
+        return this.questions;
     }
 
 }
