@@ -33,9 +33,10 @@
                                 <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${question.question}</p>
                             </div>
 
+                            <%--if ${question.idType} == 1--%>
                             <%-- Question de type smiley (type 1) --%>
 
-                            <div>
+                            <div v-if="${question.idType} === 1">
                                 <form class="d-flex justify-content-around">
                                     <label for="smiley-1"><img src="/static/pictures/graySmiley/smiley-1.png"></label>
                                     <input type="radio" name="smiley" id="smiley-1" value="smiley-1" class='smiley'>
@@ -48,40 +49,46 @@
                                 </form>
                             </div>
 
+                            <%--if ${question.idType} == 2--%>
                             <%-- Question de type jauge (type 2) --%>
 
-                            <%--<div class="d-flex justify-content-center text-center">
-                                <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" v-text="getTextDifficulty"></p>
+                            <div v-if="${question.idType} === 2">
+                                <div class="d-flex justify-content-center text-center">
+                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" v-text="getTextDifficulty"></p>
+                                </div>
+
+                                <input class="w-100" type="range" min="0" max="100" step="1" v-model="value">--%>
                             </div>
 
-                            <input class="w-100" type="range" min="0" max="100" step="1" v-model="value">--%>
-
+                            <%--if ${question.idType} == 3 --%>
                             <%-- Question de type QCM (type 3) --%>
+                            
+                            <div v-if="${question.idType} === 3">
+                                <div class="row d-flex justify-content-center text-center">
+                                    <div class="d-flex justify-content-center text-center col-lg-4">
+                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Trop de théorie pas assez de pratique</p>
+                                    </div>
 
-                            <%--<div class="row d-flex justify-content-center text-center">
-                                <div class="d-flex justify-content-center text-center col-lg-4">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Trop de théorie pas assez de pratique</p>
+                                    <div class="d-flex justify-content-center text-center col-lg-4">
+                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un équilibre parfait</p>
+                                    </div>
                                 </div>
 
-                                <div class="d-flex justify-content-center text-center col-lg-4">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un équilibre parfait</p>
+
+                                <div class="row d-flex justify-content-center text-center">
+                                    <div class="d-flex justify-content-center text-center col-lg-4">
+                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Peu de contenu théorique</p>
+                                    </div>
+                                    <div class="d-flex justify-content-center text-center col-lg-4">
+                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >La réponse D</p>
+                                    </div>
                                 </div>
-                            </div>--%>
+                            </div>
 
-
-                            <%--<div class="row d-flex justify-content-center text-center">
-                                <div class="d-flex justify-content-center text-center col-lg-4">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Peu de contenu théorique</p>
-                                </div>
-
-                                <div class="d-flex justify-content-center text-center col-lg-4">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >La réponse D</p>
-                                </div>
-                            </div>--%>
-
+                            <%--if ${question.idType} == 4 --%>
                             <%-- Question de type Oui/Non (type 4) --%>
                             
-                            <%--<div class="row d-flex justify-content-center text-center">
+                            <div v-if="${question.idType} === 4" class="row d-flex justify-content-center text-center">
                                 <div class="d-flex justify-content-center text-center col-lg-3">
                                     <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >OUI</p>
                                 </div>
@@ -89,11 +96,12 @@
                                 <div class="d-flex justify-content-center text-center col-lg-3">
                                     <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >NON</p>
                                 </div>
-                            </div>--%>
-
+                            </div>
+                            
+                            <%--if ${question.idType} == 5--%>
                             <%-- Question de type libre (type 5) --%>
 
-                            <%--<div class="row d-flex justify-content-center text-center">
+                            <div v-if="${question.idType} === 5" class="row d-flex justify-content-center text-center">
 
                                 <div class="d-flex justify-content-center text-center ">
                                     <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Un cours passionnant, dommage que certains élèves bavardaient durant vos explications ...</p>
@@ -103,7 +111,7 @@
                                     <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
                                 </div>
 
-                            </div>--%>
+                            </div>
 
                         </div>
  
