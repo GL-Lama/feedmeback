@@ -12,6 +12,7 @@ import org.hibernate.Transaction;
 import database.Database;
 import database.Form.Form;
 import database.Module.Module;
+import database.SubscribeModule.SubscribeModule;
 import database.Teacher.Teacher;
 import servlet.controllers.ModuleManager;
 import servlet.core.Model;
@@ -28,6 +29,15 @@ public class ModuleManagerModel extends Model {
 
         this.db = db;
         this.username = username;
+
+        // Query the student
+        Map<String, String> params = new HashMap<String, String>();
+
+        params.put("username", username);
+        this.teacher = (Teacher) this.db.selectOne("Teacher", params);
+
+        if (this.teacher == null)
+            return false;
 
         return true;
     }
@@ -106,6 +116,31 @@ public class ModuleManagerModel extends Model {
             console.log("Query :", query);
 
             session.createSQLQuery(query).executeUpdate();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null)
+                tx.rollback();
+
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+       
+    }
+
+    public void joinModule(String idModule){
+        Session session = Database.factory.openSession();
+        Transaction tx = null;
+
+        try{
+            tx = session.beginTransaction();
+
+            SubscribeModule sm = new SubscribeModule(Integer.parseInt(idModule), teacher.getIdTeacher());
+
+            console.log(Integer.parseInt(idModule), teacher.getIdTeacher());
+
+            this.db.insert("SubscribeModule", sm);
 
             tx.commit();
         } catch (HibernateException e) {
