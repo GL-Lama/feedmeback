@@ -2,6 +2,7 @@ package servlet.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
+import database.Module.Module;
+import database.Student.Student;
 import servlet.core.Controller;
 import servlet.models.ModuleManagerModel;
 import servlet.models.TeacherModel;
@@ -38,6 +43,9 @@ public class ModuleManager extends Controller {
         }
 
         switch (params[0]) {
+            case "moduleConfirm":
+                this.ModuleConfirm(req, res);
+                break;
             case "newModule":
                 this.NewModule(req, res);
                 break;
@@ -76,6 +84,31 @@ public class ModuleManager extends Controller {
 
 
         req.getRequestDispatcher("/views/module-manager/moduleManager.jsp").forward(req, res);
+
+    }
+
+    private void ModuleConfirm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String idModule = req.getParameter("idModule");
+
+        String access_token = Cookies.getCookieValue(req, "access_token");
+
+        if (access_token == null || !Auth.validate(access_token, req, res))
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+
+        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+            res.sendError(400);
+            return;
+        }
+
+        moduleManagerModel.loadModule(idModule);
+        moduleManagerModel.loadStudents(moduleManagerModel.module);
+
+        req.setAttribute("moduleManager", moduleManagerModel);
+
+        req.getRequestDispatcher("/views/module-manager/moduleConfirm.jsp").forward(req, res);
 
     }
 
@@ -137,8 +170,20 @@ public class ModuleManager extends Controller {
             return;
         }
 
-        moduleManagerModel.addModule(moduleName, students);
-        res.getWriter().close();
+        int idModule = moduleManagerModel.addModule(moduleName, students);
+
+        if (idModule != 0) {
+            JsonObject ret = new JsonObject();
+
+            ret.addProperty("idModule", idModule);
+
+            PrintWriter out = res.getWriter();
+            out.println(ret);
+            out.close();
+        }
+
+        else
+            res.sendError(400);
     }
 
 }
