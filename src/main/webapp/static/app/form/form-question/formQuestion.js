@@ -2,6 +2,7 @@ new Vue({
   el: '#formQuestion',
   data: {
     nbQuestion: 0,
+    nbProposition: 0,
     value: 50
   },
 
@@ -37,6 +38,20 @@ new Vue({
       decrNbQuestion: function() {
         if (this.nbQuestion > 0)
           this.nbQuestion--;
+      },
+
+      isThisProposition: function(nb) {
+        return nb == this.nbProposition;
+      },
+
+      incrNbProposition: function(max) {
+          if (this.nbProposition < max - 1)
+            this.nbProposition++;
+      },
+
+      decrNbProposition: function() {
+        if (this.nbProposition > 0)
+          this.nbProposition--;
       }
   }
 });

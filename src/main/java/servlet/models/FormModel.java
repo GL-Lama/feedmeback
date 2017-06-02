@@ -13,6 +13,7 @@ import database.Database;
 import database.Form.Form;
 import database.Module.Module;
 import database.Question.Question;
+import database.Proposition.Proposition;
 import database.Student.Student;
 import servlet.core.Model;
 import utils.console;
@@ -26,7 +27,10 @@ public class FormModel extends Model {
     public String username;
     public Module module;
     public Form form;
+    public Question question;
+    public Proposition proposition;
     public ArrayList<Question> questions;
+    public ArrayList<ArrayList<Proposition>> propositions;
 
     public Boolean init(Database db, String username, String idForm) {
 
@@ -78,10 +82,11 @@ public class FormModel extends Model {
 
         List table = null;
 
+        this.propositions = new ArrayList<ArrayList<Proposition>>();
+
         try{
             tx = session.beginTransaction();
 
-            // String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.username + "')";
             String query = "FROM Question fo WHERE fo.idForm ='" + idForm + "'";
 
             console.log("Query :", query);
@@ -169,6 +174,40 @@ public class FormModel extends Model {
         }
     }
 
+    public void fetchPropositions(String idQuestion) {
+        Session session = Database.factory.openSession();
+        Transaction tx = null;
+
+        List table = null;
+
+        try{
+            tx = session.beginTransaction();
+
+            String query = "FROM Proposition fo WHERE fo.idQuestion ='" + idQuestion + "'";
+
+            console.log("Query :", query);
+
+            table = session.createQuery(query).list();
+
+            tx.commit();
+        } catch (HibernateException e) {
+            if (tx!=null)
+                tx.rollback();
+
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        ArrayList<Proposition> props = new ArrayList<Proposition>();
+
+        for (int i = 0; i < table.size(); i++) {
+            props.add((Proposition) table.get(i));
+        }
+
+        this.propositions.add(props);
+    }
+
     public String getUsername(){
         return this.username;
     }
@@ -191,6 +230,10 @@ public class FormModel extends Model {
 
     public ArrayList<Question> getQuestions(){
         return this.questions;
+    }
+
+    public ArrayList<Proposition> getPropositions(int index) {
+        return this.propositions.get(index);
     }
 
 }
