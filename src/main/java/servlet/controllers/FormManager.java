@@ -8,11 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.annotations.Check;
-
 import servlet.core.Controller;
-import utils.Error;
-import utils.console;
 
 
 @WebServlet(
@@ -25,25 +21,16 @@ public class FormManager extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String[] params = this.getUrlParameters(req, "formManager");
+        this.initGet(req, res);
 
-        if (params.length == 0 || params[0].equals("")) {
-            this.Index(req, res);
-            return;
-        }
-
-        switch (params[0]) {
-            default:
-                Error.send404(req, res);
-                break;
-        }
+        this.callMethod(this, req, res, "formManager/");
     }
 
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
         this.doGet(req, res);
     }
 
-    public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         req.getRequestDispatcher("/views/form-manager/formManager.jsp").forward(req, res);
     }

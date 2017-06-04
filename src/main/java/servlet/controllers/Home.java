@@ -12,8 +12,6 @@ import servlet.models.AuthModel;
 import servlet.models.StudentModel;
 import servlet.models.TeacherModel;
 import utils.Auth;
-import utils.Cookies;
-import utils.Error;
 
 @WebServlet(
         name = "Home",
@@ -24,27 +22,9 @@ public class Home extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        if (req.getSession().getAttribute("theme") == null)
-            req.getSession().setAttribute("theme", (int) (Math.random() * 4));
+        this.initGet(req, res);
 
-        String[] params = this.getUrlParameters(req, "");
-
-        if (params.length == 0 || params[0].equals("")) {
-            this.Index(req, res);
-            return;
-        }
-
-        switch (params[0]) {
-            case "login":
-                this.Login(req, res);
-                break;
-            case "logout":
-                this.Logout(req, res);
-                break;
-            default:
-                Error.send404(req, res);
-                break;
-        }
+        this.callMethod(this, req, res);
     }
 
     @Override
@@ -52,52 +32,52 @@ public class Home extends Controller {
         this.doGet(req, res);
     }
 
-    private void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String access_token = Cookies.getCookieValue(req, "access_token");
+        System.out.println("Hello INDEX");
 
-        if (access_token == null || !Auth.validate(access_token, req, res))
-            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
+
+        String scope = Auth.getTokenClaim(access_token, "scope");
+
+        if (scope.equals("teacher")) {
+
+            TeacherModel teacherModel = new TeacherModel();
+
+            if (!teacherModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+                res.sendError(400);
+                return;
+            }
+
+            req.setAttribute("teacher", teacherModel);
+
+            req.getRequestDispatcher("/views/home/teacher.jsp").forward(req, res);
+        }
+
+        else if (scope.equals("student")) {
+
+            StudentModel studentModel = new StudentModel();
+
+            if (!studentModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+                res.sendError(400);
+                return;
+            }
+
+            req.setAttribute("student", studentModel);
+
+            req.getRequestDispatcher("/views/home/student.jsp").forward(req, res);
+        }
 
         else {
-            String scope = Auth.getTokenClaim(access_token, "scope");
-
-            if (scope.equals("teacher")) {
-
-                TeacherModel teacherModel = new TeacherModel();
-
-                if (!teacherModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-                    res.sendError(400);
-                    return;
-                }
-
-                req.setAttribute("teacher", teacherModel);
-
-                req.getRequestDispatcher("/views/home/teacher.jsp").forward(req, res);
-            }
-
-            else if (scope.equals("student")) {
-
-                StudentModel studentModel = new StudentModel();
-
-                if (!studentModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-                    res.sendError(400);
-                    return;
-                }
-
-                req.setAttribute("student", studentModel);
-
-                req.getRequestDispatcher("/views/home/student.jsp").forward(req, res);
-            }
-
-            else {
-                res.sendError(400);
-            }
+            res.sendError(400);
         }
 
     }
 
-    private void Login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void login(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         String username = req.getParameter("username");
         String password = req.getParameter("password");
@@ -110,7 +90,7 @@ public class Home extends Controller {
         authModel.doLogin(req, res);
     }
 
-    private void Logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void logout(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         AuthModel authModel = new AuthModel();
         if (!authModel.init(this.db))
