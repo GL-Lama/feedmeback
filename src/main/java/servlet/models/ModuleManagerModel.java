@@ -128,6 +128,11 @@ public class ModuleManagerModel extends Model {
 
             session.createSQLQuery(query).executeUpdate();
 
+            System.out.println(idModule);
+            System.out.println(this.teacher.getIdTeacher());
+
+            this.joinModule(idModule+"");
+
             tx.commit();
         } catch (HibernateException e) {
             if (tx!=null)
