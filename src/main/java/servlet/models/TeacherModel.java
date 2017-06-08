@@ -29,13 +29,13 @@ public class TeacherModel extends Model {
         this.db = db;
         this.username = username;
 
-        this.fetchModules();
-
         // Query the student
         Map<String, String> params = new HashMap<String, String>();
 
         params.put("username", username);
         this.teacher = (Teacher) this.db.selectOne("Teacher", params);
+
+        this.modules = this.teacher.fetchModules();
 
         if (this.teacher == null)
             return false;
@@ -57,40 +57,6 @@ public class TeacherModel extends Model {
         }
 
         return true;
-    }
-
-    public void fetchModules() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
-
-        List table = null;
-
-        try{
-            tx = session.beginTransaction();
-
-            String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Teacher tea, SubscribeModule sm WHERE tea.username='" + this.getUsername() + "' AND sm.idTeacher=tea.idTeacher AND sm.idModule=modu.idModule)";
-
-            console.log("Query :", query);
-
-            table = session.createQuery(query).list();
-
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
-
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        this.modules = new ArrayList<Module>();
-
-        for (int i = 0; i < table.size(); i++) {
-            Module module = (Module) table.get(i);
-            console.log("MODULE NAME", module.getName());
-            this.modules.add((Module) table.get(i));
-        }
     }
 
     public String getUsername() {

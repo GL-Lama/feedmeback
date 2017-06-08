@@ -65,22 +65,23 @@
                                 <div class="modal-body">
                                     <div class="md-form">
                                         <i class="fa fa-search prefix"></i>
-                                        <input type="text" id="form2" class="form-control" v-model="moduleQuery">
+                                        <input type="text" id="form2" class="form-control mySelect" v-model="moduleQuery">
                                         <label for="form2">Module name</label>
                                     </div>
 
 
                                     <div class="list-group fmb-border-item">
-                                        <a v-for="module in modules" class="list-group-item align-items-between fmb-bg-item">
-                                            <div class="d-flex">                     
-                                                {{ module.name }} 
-                                                <i class="fa fa-check pr-5 fmb-btn-logout fa-2x" aria-hidden="true"></i>
+                                        <a v-for="module in modules" class="list-group-item align-items-start fmb-bg-message ">
+                                            <div class="align-self-center">                     
+                                                {{ module.name }}
                                             </div>
-                                            <i v-on:click="joinModule(module.idModule)" class="fa fa-plus ml-auto fmb-btn-logout fa-2x" aria-hidden="true"></i>
-                                            
-                                            <div class ="list-group-item mt-1 fmb-bg-item">
+                                            <div class="d-flex ml-auto">
+                                                <i v-if="module.sub" class="fa fa-check fa-2x" aria-hidden="true"></i>
+                                                <i v-else v-on:click="joinModule(module.idModule)" class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                            </div>
+                                            <%--<div class ="list-group-item mt-1 fmb-bg-item">
                                                 <p class="message fmb-border-message text-center"> Etes-vous sûr de rejoindre ce module ? oui  non  </p>
-                                            </div>
+                                            </div>--%>
                                         </a> 
                                 </div>
                             </div>

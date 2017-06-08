@@ -3,13 +3,13 @@ package database.Module;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import utils.console;
-
 @Entity
 @Table(name = "Module")
 public class Module {
    private int idModule;
    private String name;
+
+   private boolean sub = false;
 
    public Module() {}
    public Module(int idModule, String name) {
@@ -31,5 +31,13 @@ public class Module {
    }
    public void setName(String name) {
       this.name = name;
+   }
+
+   public boolean getSub() {
+       return this.sub;
+   }
+
+   public void setSub(boolean sub) {
+       this.sub = sub;
    }
 }

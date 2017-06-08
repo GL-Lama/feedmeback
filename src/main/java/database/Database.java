@@ -192,6 +192,7 @@ public class Database {
 
             tx.commit();
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
 
