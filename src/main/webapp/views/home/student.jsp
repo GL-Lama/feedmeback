@@ -37,6 +37,10 @@
 
                         <div class="list-group fmb-border-item">
 
+                            <c:if test = "${student.forms.size() == 0}">
+                                <p>Dommage<p>
+                            </c:if>
+
                             <c:forEach items="${student.forms}" var="form">
 
                                 <a href="/form?id=${form.idForm}">
@@ -57,6 +61,8 @@
                                     </div>
                                 </a>
                             </c:forEach>
+
+                            
 
                         </div>
 
