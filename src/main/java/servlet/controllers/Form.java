@@ -7,12 +7,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.Question.Question;
 import servlet.core.Controller;
 import servlet.models.FormModel;
 import utils.Auth;
-import utils.Cookies;
-import utils.Error;
-import utils.console;
 
 @WebServlet(
         name = "Form",
@@ -23,27 +21,9 @@ public class Form extends Controller {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String[] params = this.getUrlParameters(req, "form/");
+        this.initGet(req, res);
 
-        if (params.length == 0 || params[0].equals("")) {
-            this.Index(req, res);
-            return;
-        }
-
-        switch (params[0]) {
-            case "newForm":
-                this.NewForm(req, res);
-                return;
-            case "getForms":
-                this.GetForms(req, res);
-                return;
-            case "formQuestion":
-                this.FormQuestion(req, res);
-                return;
-            default:
-                Error.send404(req, res);
-                break;
-        }
+        this.callMethod(this, req, res, "form/");
     }
 
     @Override
@@ -51,11 +31,14 @@ public class Form extends Controller {
         this.doGet(req, res);
     }
 
-    public void Index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
 
         String idForm = req.getParameter("id");
-
-        String access_token = Cookies.getCookieValue(req, "access_token");
 
         FormModel formModel = new FormModel();
 
@@ -69,30 +52,54 @@ public class Form extends Controller {
         req.getRequestDispatcher("/views/form/form.jsp").forward(req, res);
     }
 
-    public void NewForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void newForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
 
         req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
     }
 
-    public void FormManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void formManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
 
         req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
     }
 
-    public void FormQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void formQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
 
         String idForm = req.getParameter("id");
 
         FormModel formModel = new FormModel();
 
         formModel.fetchQuestions(idForm);
+        for (Question question : formModel.getQuestions()){
+            formModel.fetchPropositions(question.getIdQuestion() + "");
+        }
+
 
         req.setAttribute("formModel", formModel);
 
         req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
     }
 
-    public void GetForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void getForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
 
         res.getWriter().println("hello");
     }

@@ -45,7 +45,10 @@ let newModule = new Vue({
 
             if (this.moduleName != "")
                 fetch('/moduleManager/addModule', params).then(
-                    res => console.log(res),
+                    res => res.json(),
+                    err => err
+                ).then(
+                    res => window.location = '/moduleManager/moduleConfirm?idModule=' + res.idModule,
                     err => err
                 );
       }

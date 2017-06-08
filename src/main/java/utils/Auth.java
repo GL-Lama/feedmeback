@@ -1,10 +1,11 @@
 package utils;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.Cookie;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -52,28 +53,28 @@ public class Auth {
         return claim;
     }
 
-    public static boolean validate(String access_token, HttpServletRequest req, HttpServletResponse res) {
+    public static String validate(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
 
-        Claims claims = null;
+        String access_token = Cookies.getCookieValue(req, "access_token");
 
-        try {
-            claims = Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(access_token).getBody();
-        } catch (Exception e) {
-            return false;
-            // String db_access_token = getAccessToken(getTokenClaim(access_token, "username"));
-
-            // if (access_token != db_access_token) {
-            //     if (!validateUsername(access_token, db_access_token))
-            //         return false;
-
-            //     else {
-            //         res.addCookie(new Cookie("access_token", createToken(req)));
-            //         return true;
-            //     }
-            // }
+        if (access_token == null) {
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+            return null;
         }
 
-        return true;
+        try {
+
+            Jwts.parser().setSigningKey(Conf.getProperty("jwt_key")).parseClaimsJws(access_token);
+
+        } catch (Exception e) {
+
+            req.getRequestDispatcher("/views/home/login.jsp").forward(req, res);
+
+            return null;
+
+        }
+
+        return access_token;
     }
 
     private static String getAccessToken(String username) {

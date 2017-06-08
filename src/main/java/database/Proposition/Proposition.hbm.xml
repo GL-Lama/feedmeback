@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+   <class name="database.Proposition.Proposition" table="proposition">
+      <meta attribute="class-description">
+         This class contains the proposition detail.
+      </meta>
+      <id name="idProposition" type="int" column="idProposition">
+         <generator class="native"/>
+      </id>
+      <property name="idQuestion" column="idQuestion" type="int"/>
+      <property name="proposition" column="proposition" type="string"/>
+      <property name="numProposition" column="numProposition" type="int"/>
+   </class>
+</hibernate-mapping>
