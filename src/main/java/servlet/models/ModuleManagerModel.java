@@ -10,11 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import database.Database;
-import database.Form.Form;
 import database.Module.Module;
 import database.SubscribeModule.SubscribeModule;
 import database.Teacher.Teacher;
-import servlet.controllers.ModuleManager;
 import servlet.core.Model;
 import utils.console;
 
@@ -24,6 +22,7 @@ public class ModuleManagerModel extends Model {
     public Teacher teacher;
     public String username;
     public ArrayList<Module> modules;
+    public ArrayList<Integer> joinedModules;
 
     public Boolean init(Database db, String username) {
 
@@ -52,6 +51,10 @@ public class ModuleManagerModel extends Model {
             tx = session.beginTransaction();
 
             String query = "FROM Module mod WHERE mod.name LIKE '%" + moduleName + "%'";
+            // String query2 = "SELECT module.idModule from module, subscribemodule WHERE subscribemodule.idModule = module.idModule AND subscribemodule.idTeacher='" + this.teacher.getIdTeacher() + "'";
+
+            //String query = "SELECT module.name FROM Module mod, subscribemodule subs WHERE mod.name LIKE '%" + moduleName + "%' AND subs.idModule = mod.idModule";
+            //Select * from module modu, teacher tea, subscribemodule sm where modu.name like '%geni%' OR (sm.idTeacher='3')
 
             console.log("Query :", query);
 
@@ -67,11 +70,19 @@ public class ModuleManagerModel extends Model {
             session.close();
         }
 
+        ArrayList<Module> subModules = this.teacher.fetchModules();
+
         this.modules = new ArrayList<Module>();
 
         if (table != null)
             for (int i = 0; i < table.size(); i++) {
-                this.modules.add((Module) table.get(i));
+                Module module = (Module) table.get(i);
+                
+                for (Module mod : subModules)
+                    if (mod.getIdModule() == module.getIdModule())
+                        module.setSub(true);
+
+                this.modules.add(module);
             }
 
     }
