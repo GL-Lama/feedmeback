@@ -61,6 +61,7 @@
                                     </button>
                                     <h4 class="modal-title w-100 pl-2" id="myModalLabel">Rechercher un module :</h4>
                                 </div>
+                                
                                 <!--Body-->
                                 <div class="modal-body">
                                     <div class="md-form">
@@ -77,14 +78,43 @@
                                             </div>
                                             <div class="d-flex ml-auto">
                                                 <i v-if="module.sub" class="fa fa-check fa-2x" aria-hidden="true"></i>
-                                                <i v-else v-on:click="joinModule(module.idModule)" class="fa fa-plus fa-2x" aria-hidden="true"></i>
+                                                <i v-else  class="fa fa-plus fa-2x" aria-hidden="true" data-toggle="modal" data-target="#basicExample"></i>
                                             </div>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <!--Content-->
+                                                    <div class="modal-content fmb-bg-primary">
+                                                        <!--Header-->
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <%--<h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>--%>
+                                                        </div>
+                                                        <!--Body-->
+                                                        <div class="modal-body">
+                                                            Etes-vous sûr de rejoindre ce module ?
+                                                        </div>
+                                                        <!--Footer-->
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button v-on:click="joinModule(module.idModule)" type="button" class="btn btn-primary">Oui</button>
+                                                            <button type="button" class="btn btn-primary">Non</button>
+                                                        </div>
+                                                    </div>
+                                                    <!--/.Content-->
+                                                </div>
+                                            </div>
+                                            <!-- Modal -->
+
                                             <%--<div class ="list-group-item mt-1 fmb-bg-item">
                                                 <p class="message fmb-border-message text-center"> Etes-vous sûr de rejoindre ce module ? oui  non  </p>
                                             </div>--%>
                                         </a> 
-                                </div>
-                            </div>
+                                    </div>
+                               </div>
                         </div>
                     </div>
 
