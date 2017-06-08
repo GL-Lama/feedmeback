@@ -26,91 +26,109 @@
                         <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Cybersécurité #3</p>
                     </div>
 
-                    <%-- Questions --%>
-                    <c:forEach items="${formModel.questions}" var="question" varStatus="loop">
-                        <div v-if="isThisQuestion(${loop.index})" class="card-block fmb-card-content">
-                            <div class="d-flex justify-content-center text-center">
-                                <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${question.question}</p>
-                            </div>
-
-                            <%-- Question de type smiley (type 1) --%>
-
-                            <div v-if="${question.idType} === 1">
-                                <form class="d-flex justify-content-around">
-                                    <label for="smiley-1"><img src="/static/pictures/graySmiley/smiley-1.png"></label>
-                                    <input type="radio" name="smiley" id="smiley-1" value="smiley-1" class='smiley'>
-
-                                    <label for="smiley0"><img src="/static/pictures/graySmiley/smiley0.png"></label>
-                                    <input type="radio" name="smiley" id="smiley0" value="smiley0" class='smiley'>
-
-                                    <label for="smiley+1"><img src="/static/pictures/graySmiley/smiley+1.png"></label>
-                                    <input type="radio" name="smiley" id="smiley+1" value="smiley+1" class='smiley'>
-                                </form>
-                            </div>
-
-                            <%-- Question de type jauge (type 2) --%>
-
-                            <div v-if="${question.idType} === 2">
+                    <form method="post" action="">
+                        <%-- Questions --%>
+                        <c:forEach items="${formModel.questions}" var="question" varStatus="loop">
+                            <div v-if="isThisQuestion(${loop.index})" class="card-block fmb-card-content">
                                 <div class="d-flex justify-content-center text-center">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" v-text="getTextDifficulty"></p>
+                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${question.question}</p>
                                 </div>
 
-                                <input class="w-100" type="range" min="0" max="100" step="1" v-model="value">
-                            </div>
+                                <%-- Question de type smiley (type 1) --%>
 
-                            <%-- Question de type QCM (type 3) --%>
-                            
-                            <div v-if="${question.idType} === 3">
-                                <%-- Propositions --%>
-                                <div class="d-flex flex-wrap">
-                                <c:forEach items="${formModel.getPropositions(loop.index)}" var="proposition" varStatus="loopProp">
-                                    <div class="card-block fmb-card-content col-md-6">
-                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${proposition.proposition}</p>
+                                <div v-if="${question.idType} === 1">
+                                    <div class="d-flex justify-content-around">
+                                        <label for="smiley-1"><img src="/static/pictures/graySmiley/smiley-1.png" id="img-smiley-1"></label>
+                                        <input v-on:click="changeSmiley('-1')" type="radio" name="smiley" id="smiley-1" value="smiley-1" class="proposition">
+
+                                        <label for="smiley0"><img src="/static/pictures/graySmiley/smiley0.png" id="img-smiley0"></label>
+                                        <input v-on:click="changeSmiley('0')" type="radio" name="smiley" id="smiley0" value="smiley0" class="proposition">
+
+                                        <label for="smiley+1"><img src="/static/pictures/graySmiley/smiley+1.png" id="img-smiley+1"></label>
+                                        <input v-on:click="changeSmiley('+1')"type="radio" name="smiley" id="smiley+1" value="smiley+1" class="proposition">
                                     </div>
-                                </c:forEach>
-                            </div>
-                            </div>
-
-                            <%-- Question de type Oui/Non (type 4) --%>
-                            
-                            <div v-if="${question.idType} === 4" class="row d-flex justify-content-center text-center">
-                                <div class="d-flex justify-content-center text-center col-lg-3">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >OUI</p>
                                 </div>
 
-                                <div class="d-flex justify-content-center text-center col-lg-3">
-                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >NON</p>
-                                </div>
-                            </div>
-                            
-                            <%-- Question de type libre (type 5) --%>
+                                <%-- Question de type jauge (type 2) --%>
 
-                            <div v-if="${question.idType} === 5" class="row d-flex justify-content-center text-center">                                
-                                <div class="d-flex flex-column">
-                                    <div class="p-2 d-flex justify-content-center text-center">
-                                        <div class="fmb-border-message fmb-bg-message p-2 pt-2 pr-4">
-                                            <div class="md-form">
-                                                <i class="fa fa-pencil prefix"></i>
-                                                <textarea type="text" id="form8" class="md-textarea"></textarea>
-                                                <label for="form8">Votre réponse</label>
+                                <div v-if="${question.idType} === 2">
+                                    <div class="d-flex justify-content-center text-center">
+                                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" v-text="getTextDifficulty"></p>
+                                    </div>
+
+                                    <input class="w-100" type="range" min="0" max="100" step="1" v-model="value">
+                                </div>
+
+                                <%-- Question de type QCM (type 3) --%>
+                                
+                                <div v-if="${question.idType} === 3">
+                                    <%-- Propositions --%>
+                                    <div class="d-flex flex-wrap">
+                                        <c:forEach items="${formModel.getPropositions(loop.index)}" var="proposition" varStatus="loopProp">
+                                            <div class="card-block fmb-card-content col-md-6">
+                                                <label for="${proposition.numProposition}">
+                                                    <input type="radio" name="proposition" id="${proposition.numProposition}" value="${proposition.proposition}" class="proposition">
+                                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${proposition.proposition}</p>
+                                                </label>
+                                            </div>
+                                        </c:forEach>                   
+                                    </div>
+                                </div>
+
+                                <%-- Question de type Oui/Non (type 4) --%>
+                                
+                                <div v-if="${question.idType} === 4" class="row d-flex justify-content-center text-center">
+                                    <div class="d-flex justify-content-center text-center col-lg-3">
+                                        <label for="oui">
+                                            <input type="radio" name="ouinon" id="oui" value="oui" class="proposition">
+                                            <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >OUI</p>
+                                        </label>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center text-center col-lg-3">
+                                        <label for="non">
+                                            <input type="radio" name="ouinon" id="non" value="non" class="proposition">
+                                            <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >NON</p>
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <%-- Question de type libre (type 5) --%>
+
+                                <div v-if="${question.idType} === 5" class="row d-flex justify-content-center text-center">                                
+                                    <div class="d-flex flex-column">
+                                        <div class="p-2 d-flex justify-content-center text-center">
+                                            <div class="fmb-border-message fmb-bg-message p-2 pt-2 pr-4">
+                                                <div class="md-form">
+                                                    <i class="fa fa-pencil prefix"></i>
+                                                    <input type="text" id="form8" class="md-textarea"/>
+                                                    <label for="form8">Votre réponse</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="p-2 text-center mx-auto">
-                                        <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
+                                        <div class="p-2 text-center mx-auto">
+                                            <label for="submit">
+                                                <a href="/"><button class="fmb-btn-primary fmb-font-sm btn">Terminer</button></a>
+                                            </label>
+                                            <input type="submit" id="submit" value="Submit" class="proposition">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                        </c:forEach>
+
+                        <div class="d-flex justify-content-between p-3">
+                            <!--<div v-if="{{nbQuestion}} !== 0">
+                                {{nbQuestion}}
+                                ${formModel.questions.size()}-->
+                                <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-left fmb-btn-arrow fa-3x " aria-hidden="true"></i>
+                            <!--</div>-->
+                            <div class=" compteur text-center m-0 align-self-center"> {{nbQuestion + 1}}/${formModel.questions.size()} </div>
+                            <i v-on:click="incrNbQuestion(${formModel.questions.size()})" class="fa fa-arrow-circle-right fmb-btn-arrow fa-3x" aria-hidden="true"></i>
                         </div>
-
-                    </c:forEach>
-
-                    <div class="d-flex justify-content-between p-3">
-                        <i v-on:click="decrNbQuestion()" class="fa fa-arrow-circle-left fmb-btn-arrow fa-3x " aria-hidden="true"></i>
-                        <div class=" compteur text-center m-0 align-self-center"> {{nbQuestion + 1}}/${formModel.questions.size()} </div>
-                        <i v-on:click="incrNbQuestion(${formModel.questions.size()})" class="fa fa-arrow-circle-right fmb-btn-arrow fa-3x" aria-hidden="true"></i>
-                    </div>
+                    </form>
                 </div>
             </div>
     </jsp:body>

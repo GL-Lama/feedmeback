@@ -2,10 +2,12 @@
     color: white;
 }
 
-.smiley {
+.proposition {
     visibility:hidden;
     display:none;
 }
+
+input[type="radio"]:checked + p { color: red }
 
 .compteur {
     font-size : 1.6rem;
