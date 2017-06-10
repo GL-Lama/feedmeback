@@ -35,11 +35,13 @@
                             <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1 ">En attente<p>
                         </div>
 
-                        <div class="list-group fmb-border-item">
+                        <c:if test = "${student.forms.size() == 0}">
+                                <div class="d-flex justify-content-center">
+                                    <p>Détendez-vous, vous n'avez aucun formulaire à remplir ! ;)<p>
+                                </div>          
+                         </c:if>
 
-                            <c:if test = "${student.forms.size() == 0}">
-                                <p>Dommage<p>
-                            </c:if>
+                        <div class="list-group fmb-border-item">
 
                             <c:forEach items="${student.forms}" var="form">
 
@@ -60,13 +62,13 @@
                                         </div>
                                     </div>
                                 </a>
+
                             </c:forEach>
 
                             
-
                         </div>
 
-                        <div class="d-flex justify-content-center w-100 mt-3 mb-2">
+                        <div class="d-flex justify-content-center w-100 mt-1 ">
                             <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes modules</p>
                         </div>
 
