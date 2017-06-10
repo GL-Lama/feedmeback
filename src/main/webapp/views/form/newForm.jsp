@@ -43,11 +43,12 @@
                         <!--Footer-->
                     <div class="modal-footer">
                         <div class="options d-flex justify-content-end">
-                        <p>
+                    
                             <!-- Button trigger modal -->
                             <button type="button" class="btn  btn-md fmb-btn-primary" data-toggle="modal" data-target="#myModal">
                                 Utiliser un formulaire existant
                             </button>
+
 
                     <!-- Modal -->
                     <div class="modal fade scroll" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -134,11 +135,13 @@
                     <!--Footer-->
                     <div class="modal-footer">
                         <div class="options d-flex justify-content-end">
+
                             <p>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn  btn-md fmb-btn-primary" data-toggle="modal" data-target="#myModal">
                                     Utiliser un formulaire existant
                                 </button>
+
                             </p>
                             <i class="fa fa-arrow-circle-right fmb-btn-arrow" aria-hidden="true"></i>
                         </div>

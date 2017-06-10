@@ -32,6 +32,12 @@
                         <a href="/form/newForm/"> <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button></a>
                     </div>
 
+                    <c:if test = "${teacher.forms.size() == 0}">
+                        <div class="d-flex justify-content-center">
+                            <h4>Aucun formulaire n'a été encore créé, ${teacher.username}... Essayez d'en créer un nouveau en cliquant sur le bouton ci-dessus ! ;)</h4>
+                        </div>          
+                    </c:if>
+
 
                     <div class="list-group fmb-border-item">
 
