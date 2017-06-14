@@ -12,6 +12,6 @@
          <generator class="native"/>
       </id>
       <property name="idStudent" type="int" column="idStudent"/>
-      <property name="idModule" type="int" column="idStudent"/>
+      <property name="idModule" type="int" column="idModule"/>
    </class>
 </hibernate-mapping>
