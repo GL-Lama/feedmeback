@@ -3,15 +3,11 @@
     width:800px;
 }
 
-.fmb-btn-arrow {
-    font-size: 3em;
-}
-
 .fmb-btn-arrow:hover {
     color: white;
 }
 
 .scroll {
-    height: 500px;
+    height: 100vh;
     overflow: scroll;
 }

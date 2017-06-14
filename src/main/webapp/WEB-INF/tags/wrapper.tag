@@ -23,6 +23,7 @@
     </head>
 
     <script src="/static/libs/vue/dist/vue.js"></script>
+    <script src="/static/app/feedmeback.js"></script>
 
     <body>
         <jsp:doBody/>
