@@ -106,7 +106,7 @@
                                                         </div>
                                                         <!--Footer-->
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            
                                                             <button v-on:click="joinModule(module.idModule)" type="button" class="btn btn-primary">Oui</button>
                                                             <button type="button" class="btn btn-primary">Non</button>
                                                         </div>
