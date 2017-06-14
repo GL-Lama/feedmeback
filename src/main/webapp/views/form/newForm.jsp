@@ -38,25 +38,18 @@
                         <div class="md-form d-flex w-100 justify-content-center">
                             <div class="w-50 relative">
                                 <input type="text" id="datepicker" class="form-control">
-                                <label for="datepicker" class="">Date</label>
+                                <label for="datepicker" class="">Date de début</label>
+                            </div>
+                        </div>
+
+                        <div class="md-form d-flex w-100 justify-content-center">
+                            <div class="w-50 relative">
+                                <input type="text" id="datepicker" class="form-control">
+                                <label for="datepicker" class="">Date d'expiration</label>
                             </div>
                         </div>
                     </form>
 
-                    <form v-if="isThisState(1)">
-                        <div class="md-form d-flex w-100 justify-content-center">
-                            <div class="w-50 relative">
-                                <input type="text" id="form1" class="form-control">
-                                <label for="form1" class="">Nom du formulaire</label>
-                            </div>
-                        </div>
-                        <div class="md-form d-flex w-100 justify-content-center">
-                            <div class="w-50 relative">
-                                <input type="text" id="datepicker" class="form-control">
-                                <label for="datepicker" class="">Date</label>
-                            </div>
-                        </div>
-                    </form>
 
                     <!--Footer-->
                     <div class="modal-footer justify-content-between">
