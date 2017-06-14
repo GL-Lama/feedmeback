@@ -50,6 +50,25 @@ p {
     right: 0;
     top: 0;
     font-size: 3em;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
+}
+
+.fmb-btn-previous {
+    position: absolute;
+    left: 0;
+    top: 2.2em;
+    font-size: 3em;
+    -o-transition:.5s;
+    -ms-transition:.5s;
+    -moz-transition:.5s;
+    -webkit-transition:.5s;
+    /* ...and now for the proper property */
+    transition:.5s;
 }
 
 .fmb-btn-back {
@@ -58,6 +77,10 @@ p {
 
 
 .fmb-btn-logout:hover {
+    color: white;
+}
+
+.fmb-btn-previous:hover {
     color: white;
 }
 

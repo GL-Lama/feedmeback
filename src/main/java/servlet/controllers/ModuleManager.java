@@ -176,4 +176,32 @@ public class ModuleManager extends Controller {
 
     }
 
+    public void viewModule (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+
+        String access_token = Auth.validate(req, res);
+
+        if (access_token == null)
+            return;
+
+        String idModule = req.getParameter("idModule");
+
+        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+
+        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
+            res.sendError(400);
+            return;
+        }
+
+        moduleManagerModel.loadModule(idModule);
+
+        moduleManagerModel.loadStudents(moduleManagerModel.getModule());
+
+        req.setAttribute("moduleManager", moduleManagerModel);
+
+        req.getRequestDispatcher("/views/module-manager/viewModule.jsp").forward(req, res);
+
+    }
+
+
+
 }
