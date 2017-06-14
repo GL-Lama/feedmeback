@@ -20,6 +20,7 @@
             <div id="moduleManager" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
+                <a href="/"><i class="fa fa-arrow-circle-left fmb-btn-previous mt-3 ml-4" aria-hidden="true"></i></a>
 
                 <div class="d-flex justify-content-center ">
                     <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Gestionnaire de modules<p>
@@ -31,10 +32,16 @@
                         <a href="/moduleManager/newModule"><button type="button" class="btn fmb-btn-primary mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-3 "></i>Créer un nouveau module</button></a>
                     </div>
 
+                    <c:if test = "${teacher.modules.size() == 0}">
+                        <div class="d-flex justify-content-center">
+                            <p>Vous n'avez pas encore créé de modules... Essayez d'en créer un en cliquant sur le bouton du dessus ! ;)<p>
+                        </div>          
+                    </c:if>
+
                     <div class="d-flex flex-wrap p-3 mb-1">
                         <c:forEach items="${teacher.modules}" var="module">
                             <div class="w-50">
-                                <h4 class="fmb-hl-text-1"><i class="fa fa-circle-o mr-2" aria-hidden="true"></i><c:out value="${module.name}"/></h4>
+                                <a href="/moduleManager/viewModule?idModule=${module.idModule}"><button type="button" class="btn fmb-bg-secondary mb-1 bt-1 mt-0 fmb-border-new"><c:out value="${module.name}"/></button></a>
                             </div>
                         </c:forEach>
                     </div>
