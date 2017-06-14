@@ -128,7 +128,13 @@
                     <div class="md-form d-flex w-100 justify-content-center">
                         <div class="w-50 relative">
                             <input type="text" id="datepicker" class="form-control">
-                            <label for="datepicker" class="">Date</label>
+                            <label for="datepicker" class="">Date de début</label>
+                        </div>
+                    </div>
+                    <div class="md-form d-flex w-100 justify-content-center">
+                        <div class="w-50 relative">
+                            <input type="text" id="datepicker" class="form-control">
+                            <label for="datepicker" class="">Date d'expiration</label>
                         </div>
                     </div>
 
