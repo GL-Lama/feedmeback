@@ -8,7 +8,7 @@
       <meta attribute="class-description">
          This class contains the module detail.
       </meta>
-      <id name="idJm" type="int" column="idModule">
+      <id name="idJm" type="int" column="idJm">
          <generator class="native"/>
       </id>
       <property name="idStudent" type="int" column="idStudent"/>

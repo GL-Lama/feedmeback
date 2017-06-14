@@ -8,11 +8,21 @@ import javax.persistence.Table;
 public class JoinModule {
    private int idModule;
    private int idStudent;
+   private int idJm;
 
    public JoinModule() {}
-   public JoinModule(int idModule, int idStudent) {
+   public JoinModule(int idJm, int idModule, int idStudent) {
       this.idModule = idModule;
       this.idStudent = idStudent;
+      this.idJm = idJm;
+   }
+
+   public int getIdJm() {
+      return idJm;
+   }
+
+   public void setIdJm(int idJm) {
+      this.idJm = idJm;
    }
 
    public int getIdModule() {
