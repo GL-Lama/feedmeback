@@ -23,7 +23,8 @@
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                     <div class="d-flex justify-content-center text-center">
-                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Sciences fondamentales</p>
+                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${formModel.form.name}</p>
+                        <%--<p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Cybersécurité</p>--%>
                     </div>
 
                     <form method="post" action="">
