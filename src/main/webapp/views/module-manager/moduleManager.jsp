@@ -16,7 +16,7 @@
 
     <jsp:body>
 
-        <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div class="card pr-0 pl-0 fmb-bg-primary mt-1 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div id="moduleManager" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
@@ -35,7 +35,7 @@
                     <c:if test = "${teacher.modules.size() == 0}">
                         <div class="d-flex justify-content-center">
                             <p>Vous n'avez pas encore créé de modules... Essayez d'en créer un en cliquant sur le bouton du dessus ! ;)<p>
-                        </div>          
+                        </div>
                     </c:if>
 
                     <div class="d-flex flex-wrap p-3 mb-1">
@@ -68,7 +68,7 @@
                                     </button>
                                     <h4 class="modal-title w-100 pl-2" id="myModalLabel">Rechercher un module :</h4>
                                 </div>
-                                
+
                                 <!--Body-->
                                 <div class="modal-body">
                                     <div class="md-form">
@@ -80,7 +80,7 @@
 
                                     <div class="list-group fmb-border-item">
                                         <a v-for="module in modules" class="list-group-item align-items-start fmb-bg-message ">
-                                            <div class="align-self-center">                     
+                                            <div class="align-self-center">
                                                 {{ module.name }}
                                             </div>
                                             <div class="d-flex ml-auto">
@@ -106,7 +106,7 @@
                                                         </div>
                                                         <!--Footer-->
                                                         <div class="modal-footer">
-                                                            
+
                                                             <button v-on:click="joinModule(module.idModule)" type="button" class="btn btn-primary">Oui</button>
                                                             <button type="button" class="btn btn-primary">Non</button>
                                                         </div>
@@ -119,7 +119,7 @@
                                             <%--<div class ="list-group-item mt-1 fmb-bg-item">
                                                 <p class="message fmb-border-message text-center"> Etes-vous sûr de rejoindre ce module ? oui  non  </p>
                                             </div>--%>
-                                        </a> 
+                                        </a>
                                     </div>
                                </div>
                         </div>

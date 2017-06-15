@@ -15,7 +15,7 @@
     </jsp:attribute>
 
     <jsp:body>
-            <div class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+            <div class="card pr-0 pl-0 fmb-bg-primary mt-1 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
                 <div id="formQuestion" class="card-block pr-0 pl-0 pb-0">
 
                     <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
@@ -61,7 +61,7 @@
                                 </div>
 
                                 <%-- Question de type QCM (type 3) --%>
-                                
+
                                 <div v-if="${question.idType} === 3">
                                     <%-- Propositions --%>
                                     <div class="d-flex flex-wrap">
@@ -72,12 +72,12 @@
                                                     <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4 lol w-100" >${proposition.proposition}</p>
                                                 </label>
                                             </div>
-                                        </c:forEach>                   
+                                        </c:forEach>
                                     </div>
                                 </div>
 
                                 <%-- Question de type Oui/Non (type 4) --%>
-                                
+
                                 <div v-if="${question.idType} === 4" class="row d-flex justify-content-center text-center">
                                     <div class="d-flex justify-content-center text-center col-lg-3">
                                         <label for="oui">
@@ -93,10 +93,10 @@
                                         </label>
                                     </div>
                                 </div>
-                                
+
                                 <%-- Question de type libre (type 5) --%>
 
-                                <div v-if="${question.idType} === 5" class="row d-flex justify-content-center text-center">                                
+                                <div v-if="${question.idType} === 5" class="row d-flex justify-content-center text-center">
                                     <div class="d-flex flex-column">
                                         <div class="p-2 d-flex justify-content-center text-center">
                                             <div class="fmb-border-message fmb-bg-message p-2 pt-2 pr-4">

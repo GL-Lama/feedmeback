@@ -16,7 +16,7 @@
 
     <jsp:body>
 
-        <div class="d-flex justify-content-center mt-6">
+        <div class="d-flex justify-content-center mt-1">
 
             <div id="student" class="card pr-0 pl-0 fmb-bg-primary col-xl-8 col-md-8 col-sm-4 col-12">
 
@@ -38,7 +38,7 @@
                         <c:if test = "${student.forms.size() == 0}">
                                 <div class="d-flex justify-content-center">
                                     <p>Détendez-vous, vous n'avez aucun formulaire à remplir ! ;)<p>
-                                </div>          
+                                </div>
                          </c:if>
 
                         <div class="list-group fmb-border-item">
@@ -65,7 +65,7 @@
 
                             </c:forEach>
 
-                            
+
                         </div>
 
                         <div class="d-flex justify-content-center w-100 mt-1 ">

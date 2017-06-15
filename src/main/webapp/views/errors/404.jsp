@@ -9,7 +9,7 @@
 
     <jsp:body>
 
-            <div class="mt-6 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-12 fmb-bg-primary card">
+            <div class="mt-1 col-xl-4 offset-xl-4 col-md-6 offset-md-3 col-sm-10 offset-sm-1 col-12 fmb-bg-primary card">
 
                 <div class="card-block">
 

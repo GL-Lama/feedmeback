@@ -15,7 +15,7 @@
 
     <jsp:body>
 
-        <div id="newForm" class="card pr-0 pl-0 fmb-bg-primary mt-6 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+        <div id="newForm" class="card pr-0 pl-0 fmb-bg-primary mt-1 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
             <div id="newModule" class="card-block pr-0 pl-0 pb-0">
                 <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
                 <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
