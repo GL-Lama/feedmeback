@@ -83,6 +83,11 @@ public class Form extends Controller {
 
         FormModel formModel = new FormModel();
 
+        if (!formModel.init(this.db, Auth.getTokenClaim(access_token, "username"), idForm)) {
+            res.sendError(400);
+            return;
+        }
+
         formModel.fetchQuestions(idForm);
         for (Question question : formModel.getQuestions()){
             formModel.fetchPropositions(question.getIdQuestion() + "");

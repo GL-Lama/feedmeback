@@ -23,7 +23,8 @@
                     <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
                     <div class="d-flex justify-content-center text-center">
-                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Sciences fondamentales</p>
+                        <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${formModel.form.name}</p>
+                        <%--<p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >Cybersécurité</p>--%>
                     </div>
 
                     <form method="post" action="">
@@ -65,10 +66,10 @@
                                     <%-- Propositions --%>
                                     <div class="d-flex flex-wrap">
                                         <c:forEach items="${formModel.getPropositions(loop.index)}" var="proposition" varStatus="loopProp">
-                                            <div class="card-block fmb-card-content col-md-6">
-                                                <label for="${proposition.numProposition}">
+                                            <div class="card-block fmb-card-content col-md-6 w-50">
+                                                <label for="${proposition.numProposition}" class="w-100">
                                                     <input type="radio" name="proposition" id="${proposition.numProposition}" value="${proposition.proposition}" class="proposition">
-                                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4" >${proposition.proposition}</p>
+                                                    <p class="fmb-border-message fmb-bg-message p-2 pr-4 pl-4 lol w-100" >${proposition.proposition}</p>
                                                 </label>
                                             </div>
                                         </c:forEach>                   

@@ -7,10 +7,12 @@
     display:none;
 }
 
-input[type="radio"]:checked + p { color: red }
+input[type="radio"]:checked + p { color: green }
 
 .compteur {
     font-size : 1.6rem;
 }
 
-
+.lol {
+    height: 100px;
+}
