@@ -54,6 +54,20 @@ public class AuthModel extends Model {
 
         String access_token;
 
+		// LDAPAccess access = new LDAPAccess();
+		// try {
+		// 	//Enter login and password Here
+		//     LDAPObject ldap = access.LDAPget(username, password);
+
+        //     if (ldap == null)
+        //         System.out.println("login invalide");
+
+        //     System.out.println(ldap.toString());
+
+        // } catch(Exception e) {
+		// 	System.err.println(e.getMessage());
+		// }
+
         if (isTeacher) {
 
             // Query the Teacher
