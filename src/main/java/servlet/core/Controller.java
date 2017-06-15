@@ -27,7 +27,12 @@ public abstract class Controller extends HttpServlet {
         try {
             String[] params = this.getUrlParameters(req, "");
 
-            if (params.length == 0 || params[0].equals("")) {
+            if (params.length != 0 && params[0].equals("favicon.ico")) {
+                Error.send404(req, res);
+            }
+
+
+            else if (params.length == 0 || params[0].equals("")) {
                 Method method = controller.getClass().getMethod("index", HttpServletRequest.class, HttpServletResponse.class);
                 method.invoke(controller, req, res);
             }
