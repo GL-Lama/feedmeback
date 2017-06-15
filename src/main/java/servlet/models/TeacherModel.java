@@ -5,24 +5,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-
 import database.Database;
 import database.Form.Form;
 import database.Module.Module;
 import database.Teacher.Teacher;
 import servlet.core.Model;
-import utils.console;
 
 public class TeacherModel extends Model {
 
     public Database db;
-    public Teacher teacher;
     public ArrayList<Form> forms;
     public String username;
     public ArrayList<Module> modules;
+
+    public TeacherModel() {}
+    public TeacherModel(Database db) {
+        super(db);
+    }
 
     public Boolean init(Database db, String username) {
 
@@ -52,7 +51,6 @@ public class TeacherModel extends Model {
 
         for (Object form: table) {
             Form _form = (Form) form;
-            console.log(_form.getDate());
             this.forms.add((Form) form);
         }
 

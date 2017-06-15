@@ -11,3 +11,21 @@
     height: 100vh;
     overflow: scroll;
 }
+
+textarea {
+    min-height: 0rem !important;
+    color: white;
+    margin-top: 10px;
+}
+
+.validate-question {
+    max-width: 75%;
+}
+
+.question-list p {
+    font-size: 0.9rem;
+}
+
+i:hover {
+    color: white;
+}

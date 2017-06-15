@@ -44,7 +44,7 @@
                     <div class="d-flex w-100 align-items-start pl-4 pt-1 pb-1 ">
                         <div class="w-25">
                             <small class="w-100 text-center">Date</small>
-                            <p class="text-truncate m-0">{{getDate(${formModel.form.date})}}</p>
+                            <p class="text-truncate m-0">{{getDate(${formModel.form.endDate})}}</p>
                         </div>
                         <div class="w-25">
                             <small class="w-100 text-center">Horaire de fin</small>

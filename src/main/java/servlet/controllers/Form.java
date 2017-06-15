@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import database.Question.Question;
 import servlet.core.Controller;
 import servlet.models.FormModel;
+import servlet.models.TeacherModel;
 import utils.Auth;
 
 @WebServlet(
@@ -40,12 +41,13 @@ public class Form extends Controller {
 
         String idForm = req.getParameter("id");
 
-        FormModel formModel = new FormModel();
+        FormModel formModel = new FormModel(this.db);
+        formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
 
-        if (!formModel.init(this.db, Auth.getTokenClaim(access_token, "username"), idForm)) {
-            res.sendError(400);
-            return;
-        }
+        formModel.getForm(idForm);
+
+        System.out.println("Helllooo");
+        System.out.println(formModel.username);
 
         req.setAttribute("formModel", formModel);
 
@@ -58,6 +60,14 @@ public class Form extends Controller {
 
         if (access_token == null)
             return;
+
+        TeacherModel teacherModel = new TeacherModel(this.db);
+        teacherModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
+        teacherModel.modules = teacherModel.teacher.fetchModules();
+
+        System.out.println(teacherModel.modules.size());
+
+        req.setAttribute("teacherModel", teacherModel);
 
         req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
     }
@@ -81,31 +91,34 @@ public class Form extends Controller {
 
         String idForm = req.getParameter("id");
 
-        FormModel formModel = new FormModel();
+        FormModel formModel = new FormModel(this.db);
+        formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
 
-        if (!formModel.init(this.db, Auth.getTokenClaim(access_token, "username"), idForm)) {
-            res.sendError(400);
-            return;
-        }
+        formModel.getForm(idForm);
 
         formModel.fetchQuestions(idForm);
         for (Question question : formModel.getQuestions()){
             formModel.fetchPropositions(question.getIdQuestion() + "");
         }
 
-
         req.setAttribute("formModel", formModel);
 
         req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
     }
 
-    public void getForms(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+    public void addForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
         String access_token = Auth.validate(req, res);
 
         if (access_token == null)
             return;
 
-        res.getWriter().println("hello");
+        FormModel formModel = new FormModel(this.db);
+        formModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
+
+        boolean done = formModel.addForm(req);
+
+        if (!done)
+            res.sendError(400);
     }
 }

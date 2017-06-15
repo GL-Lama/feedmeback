@@ -16,8 +16,9 @@
 
       <property name="name" column="name" type="string"/>
       <property name="idModule" column="idModule" type="int"/>
-
-      <property name="date" column="date" type="int"/>
+      <property name="idTeacher" column="idTeacher" type="int"/>
+      <property name="startDate" column="startDate" type="int"/>
+      <property name="endDate" column="endDate" type="int"/>
 
    </class>
 </hibernate-mapping>

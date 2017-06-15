@@ -20,6 +20,11 @@ public class Proposition {
       this.proposition = proposition;
       this.numProposition = numProposition;
    }
+   public Proposition(int idQuestion, String proposition, int numProposition) {
+      this.idQuestion = idQuestion;
+      this.proposition = proposition;
+      this.numProposition = numProposition;
+   }
 
     public int getIdProposition() {
         return idProposition;

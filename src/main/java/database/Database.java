@@ -88,8 +88,10 @@ public class Database {
             Set<String> keys = params.keySet();
 
             for (String key : keys) {
-                query += key + " = " + params.get(key);
+                query += key + " = '" + params.get(key) + "' AND ";
             }
+
+            query = query.substring(0, query.length() - 5);
 
             console.log("Query :", query);
 
@@ -157,8 +159,10 @@ public class Database {
             Set<String> keys = params.keySet();
 
             for (String key : keys) {
-                query += key + " = '" + params.get(key) +"' ";
+                query += key + " = '" + params.get(key) +"' AND ";
             }
+
+            query = query.substring(0, query.length() - 5);
 
             console.log("Query :", query);
 

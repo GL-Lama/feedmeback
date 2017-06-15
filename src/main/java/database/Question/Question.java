@@ -3,8 +3,6 @@ package database.Question;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import utils.console;
-
 @Entity
 @Table(name = "Question")
 public class Question {

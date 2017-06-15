@@ -81,7 +81,7 @@ public class ModuleManagerModel extends Model {
         if (table != null)
             for (int i = 0; i < table.size(); i++) {
                 Module module = (Module) table.get(i);
-                
+
                 for (Module mod : subModules)
                     if (mod.getIdModule() == module.getIdModule())
                         module.setSub(true);
@@ -117,7 +117,7 @@ public class ModuleManagerModel extends Model {
 
         try{
             tx = session.beginTransaction();
-        
+
             this.db.insert("Module", module);
 
             Map<String, String> params = new HashMap<String, String>();
@@ -163,8 +163,8 @@ public class ModuleManagerModel extends Model {
 
         Map<String, String> params = new HashMap<String, String>();
         params.put("idModule", idModule);
-        
-        
+
+
         this.module = (Module) this.db.selectOne("Module", params);
     }
 
@@ -222,7 +222,7 @@ public class ModuleManagerModel extends Model {
         } finally {
             session.close();
         }
-       
+
     }
 
 }

@@ -50,7 +50,7 @@
                                         <div class="d-flex w-100 align-items-start">
                                             <div class="w-25">
                                                 <small>Date</small>
-                                                <p>{{getDate(${form.date})}}</p>
+                                                <p>{{getDate(${form.endDate})}}</p>
                                             </div>
                                             <div class="w-50 pl-3 pr-3">
                                                 <small>Nom du formulaire</small>

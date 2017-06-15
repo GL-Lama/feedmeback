@@ -5,9 +5,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import com.google.gson.Gson;
 
 import database.Database;
 import database.Form.Form;
@@ -16,11 +20,11 @@ import database.Question.Question;
 import database.Proposition.Proposition;
 import database.Student.Student;
 import servlet.core.Model;
+import servlet.models.form.FrontQuestion;
 import utils.console;
 
 public class FormModel extends Model {
 
-    public Database db;
     public Student student;
     public ArrayList<Module> modules;
     public ArrayList<Form> forms;
@@ -32,14 +36,9 @@ public class FormModel extends Model {
     public ArrayList<Question> questions;
     public ArrayList<ArrayList<Proposition>> propositions;
 
-    public Boolean init(Database db, String username, String idForm) {
-
-        this.db = db;
-        this.username = username;
-
-        this.getForm(idForm);
-
-        return true;
+    public FormModel() {}
+    public FormModel(Database db) {
+        super(db);
     }
 
     public void getForm(String idForm){
@@ -206,6 +205,54 @@ public class FormModel extends Model {
         }
 
         this.propositions.add(props);
+    }
+
+    public boolean addForm(HttpServletRequest req) {
+
+        String _formName = req.getParameter("formName");
+        int _startDate = Integer.parseInt(req.getParameter("startDate"));
+        int _endDate = Integer.parseInt(req.getParameter("endDate"));
+        int _idModule = Integer.parseInt(req.getParameter("idModule"));
+        String _questions = req.getParameter("questions");
+
+        Gson gson = new Gson();
+        FrontQuestion[] questions = gson.fromJson(_questions, FrontQuestion[].class);
+
+        Form form = new Form(_formName, this.teacher.getIdTeacher(), _startDate, _endDate, _idModule);
+
+        this.db.insert("Form", form);
+
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("name", _formName);
+        params.put("startDate", ""+ _startDate);
+        params.put("endDate", ""+ _endDate);
+        form = (Form) this.db.selectOne("Form", params);
+
+        int idForm = form.getIdForm();
+
+        for (int i = 0; i < questions.length; i++) {
+            Question question = questions[i].getDbQuestion(i + 1, idForm);
+            this.db.insert("Question", question);
+
+            if (question.getIdType() != 3)
+                continue;
+
+            Map<String, String> paramsQuestion = new HashMap<String, String>();
+            paramsQuestion.put("idForm", idForm+"");
+            paramsQuestion.put("numQuestion", (i + 1)+"");
+            question = (Question) this.db.selectOne("Question", paramsQuestion);
+
+            int idQuestion = question.getIdQuestion();
+
+            for (int j = 0; j < questions[i].props.length; j++) {
+                String prop = questions[i].props[j];
+                Proposition proposition = new Proposition(idQuestion, prop, j + 1);
+
+                this.db.insert("Proposition", proposition);
+            }
+        }
+
+        return true;
     }
 
     public String getUsername(){
