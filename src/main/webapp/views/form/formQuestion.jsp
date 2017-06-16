@@ -117,7 +117,7 @@
 						{{nbQuestion + 1}}/${formModel.questions.size()}
 					</div>
 
-					<button v-if="isThisEnd(${formModel.questions.size()})" class="fmb-btn-primary fmb-font-sm btn">Terminer</button>
+					<button v-on:click="sendForm()" v-if="isThisEnd(${formModel.questions.size()})" class="fmb-btn-primary fmb-font-sm btn">Terminer</button>
 
 					<i v-else v-on:click="incrNbQuestion(${formModel.questions.size()})" class="fa fa-arrow-circle-right fmb-btn-arrow fa-3x" aria-hidden="true"></i>
 				</div>

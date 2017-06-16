@@ -54,9 +54,9 @@
 										<small>Nom du formulaire</small>
 										<p class="text-truncat m-0">${form.name}</p>
 									</div>
-									<div class="d-flex w-25">
-										<div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-										<div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+									<div class="d-flex w-25 ml-auto">
+										<%--<div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>--%>
+										<%--<div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>--%>
 									</div>
 								</div>
 							</a>

@@ -69,6 +69,37 @@ new Vue({
 
 			let image = document.getElementById('img-smiley' + index);
 			image.src = "/static/pictures/yellowSmiley/smiley" + index + ".png";
+		},
+
+		checkForm: function() {
+			return true;
+		},
+
+		sendForm: function() {
+
+			window.location = "/";
+
+			// if (!this.checkForm())
+			// 	return;
+
+			// var myHeaders = new Headers();
+
+			// myHeaders.append("Content-type", "application/x-www-form-urlencoded");
+
+			// var params = {
+			// 	method: 'POST',
+			// 	headers: myHeaders,
+			// 	body: jQuery.param({
+			// 		formName: this.formName,
+			// 		startDate: this.convertDate(this.startDate),
+			// 		endDate: this.convertDate(this.endDate),
+			// 		idModule: this.idModule,
+			// 		questions: JSON.stringify(this.questions)
+			// 	}),
+			// 	credentials: "include",
+			// 	redirect: "follow"
+			// };
+
 		}
 	}
 });

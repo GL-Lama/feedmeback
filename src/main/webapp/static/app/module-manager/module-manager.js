@@ -49,7 +49,7 @@ let moduleManager = new Vue({
 
 
 			fetch('/moduleManager/joinModule', params).then(
-				res => console.log(res),//window.location = "/moduleManager",
+				res => window.location = "/moduleManager",
 				err => console.log(err)
 			);
 		}
