@@ -29,3 +29,7 @@ textarea {
 i:hover {
 	color: white;
 }
+
+.custom-select {
+	min-width: 200px;
+}
