@@ -4,13 +4,13 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.Module.Module" table="module">
-      <meta attribute="class-description">
-         This class contains the module detail.
-      </meta>
-      <id name="idModule" type="int" column="idModule">
-         <generator class="native"/>
-      </id>
-      <property name="name" column="name" type="string"/>
-   </class>
+	<class name="database.Module.Module" table="module">
+		<meta attribute="class-description">
+		 This class contains the module detail.
+		</meta>
+		<id name="idModule" type="int" column="idModule">
+			<generator class="native"/>
+		</id>
+		<property name="name" column="name" type="string"/>
+	</class>
 </hibernate-mapping>

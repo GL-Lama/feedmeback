@@ -1,12 +1,12 @@
 .modal-footer .btn + .btn {
-    margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 .fmb-btn-primary.active {
-    background-color: #33b67d;
+	background-color: #33b67d;
 }
 
 .fmb-btn-primary.selected {
-    background-color: white !important;
-    color: #33b67d !important;
+	background-color: white !important;
+	color: #33b67d !important;
 }

@@ -9,30 +9,38 @@ import database.Teacher.Teacher;
 
 public abstract class Model {
 
-    public Database db;
-    public Teacher teacher;
-    public Student student;
+	public Database db;
+	public Teacher teacher;
+	public Student student;
 
-    public Model() {}
+	public Model() {}
 
-    public Model(Database db) {
-        this.db = db;
-    }
+	public Model(Database db) {
+		this.db = db;
+	}
 
-    public void loadStudent(String username) {
+	public void loadStudent(String username) {
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("username", username);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", username);
 
-        this.student = (Student) this.db.selectOne("Student", params);
-    }
+		this.student = (Student) this.db.selectOne("Student", params);
+	}
 
-    public void loadTeacher(String username) {
+	public void loadTeacher(String username) {
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("username", username);
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("username", username);
 
-        this.teacher = (Teacher) this.db.selectOne("Teacher", params);
-    }
+		this.teacher = (Teacher) this.db.selectOne("Teacher", params);
+	}
+
+	public Student getStudent() {
+		return this.student;
+	}
+
+	public Teacher getTeacher() {
+		return this.teacher;
+	}
 
 }

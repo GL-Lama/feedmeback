@@ -4,21 +4,21 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.Form.Form" table="form">
+	<class name="database.Form.Form" table="form">
 
-      <meta attribute="class-description">
-         This class contains the module detail.
-      </meta>
+		<meta attribute="class-description">
+			This class contains the module detail.
+		</meta>
 
-      <id name="idForm" type="int" column="idForm">
-         <generator class="native"/>
-      </id>
+		<id name="idForm" type="int" column="idForm">
+			<generator class="native"/>
+		</id>
 
-      <property name="name" column="name" type="string"/>
-      <property name="idModule" column="idModule" type="int"/>
-      <property name="idTeacher" column="idTeacher" type="int"/>
-      <property name="startDate" column="startDate" type="int"/>
-      <property name="endDate" column="endDate" type="int"/>
+		<property name="name" column="name" type="string"/>
+		<property name="idModule" column="idModule" type="int"/>
+		<property name="idTeacher" column="idTeacher" type="int"/>
+		<property name="startDate" column="startDate" type="int"/>
+		<property name="endDate" column="endDate" type="int"/>
 
-   </class>
+	</class>
 </hibernate-mapping>

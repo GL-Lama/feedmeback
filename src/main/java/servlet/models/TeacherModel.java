@@ -13,63 +13,41 @@ import servlet.core.Model;
 
 public class TeacherModel extends Model {
 
-    public Database db;
-    public ArrayList<Form> forms;
-    public String username;
-    public ArrayList<Module> modules;
+	public ArrayList<Form> forms;
+	public ArrayList<Module> modules;
 
-    public TeacherModel() {}
-    public TeacherModel(Database db) {
-        super(db);
-    }
+	public TeacherModel() {}
+	public TeacherModel(Database db) {
+		super(db);
+	}
 
-    public Boolean init(Database db, String username) {
+	public void fetchModules() {
+		this.modules = this.teacher.fetchModules();
+	}
 
-        this.db = db;
-        this.username = username;
+	public void fetchForms() {
+		List table;
 
-        // Query the student
-        Map<String, String> params = new HashMap<String, String>();
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("idTeacher", "" + this.teacher.getIdTeacher());
 
-        params.put("username", username);
-        this.teacher = (Teacher) this.db.selectOne("Teacher", params);
+		table = this.db.select("Form", params);
 
-        this.modules = this.teacher.fetchModules();
+		this.forms = new ArrayList<Form>();
 
-        if (this.teacher == null)
-            return false;
+		for (Object form: table)
+			this.forms.add((Form) form);
+	}
 
-        List table;
+	public Teacher getTeacher() {
+		return this.teacher;
+	}
 
-        // Query the teacher
-        Map<String, String> paramsForm = new HashMap<String, String>();
-        paramsForm.put("idTeacher", "" + this.teacher.getIdTeacher());
+	public ArrayList<Form> getForms() {
+		return this.forms;
+	}
 
-        table = this.db.select("Form", paramsForm);
-
-        this.forms = new ArrayList<Form>();
-
-        for (Object form: table) {
-            Form _form = (Form) form;
-            this.forms.add((Form) form);
-        }
-
-        return true;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public Teacher getTeacher() {
-        return this.teacher;
-    }
-
-    public ArrayList<Form> getForms() {
-        return this.forms;
-    }
-
-    public ArrayList<Module> getModules(){
-        return this.modules;
-    }
+	public ArrayList<Module> getModules(){
+		return this.modules;
+	}
 }

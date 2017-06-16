@@ -4,15 +4,15 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.Teacher.Teacher" table="teacher">
-      <meta attribute="class-description">
-         This class contains the teacher detail.
-      </meta>
-      <id name="idTeacher" type="int" column="idTeacher">
-         <generator class="native"/>
-      </id>
-      <property name="username" column="username" type="string"/>
-      <property name="password" column="password" type="string"/>
-      <property name="accessToken" column="access_token" type="string"/>
-   </class>
+	<class name="database.Teacher.Teacher" table="teacher">
+		<meta attribute="class-description">
+			This class contains the teacher detail.
+		</meta>
+		<id name="idTeacher" type="int" column="idTeacher">
+			<generator class="native"/>
+		</id>
+		<property name="username" column="username" type="string"/>
+		<property name="password" column="password" type="string"/>
+		<property name="accessToken" column="access_token" type="string"/>
+	</class>
 </hibernate-mapping>

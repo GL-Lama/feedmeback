@@ -19,268 +19,274 @@ import database.Module.Module;
 import database.Question.Question;
 import database.Proposition.Proposition;
 import database.Student.Student;
+import database.Teacher.Teacher;
 import servlet.core.Model;
 import servlet.models.form.FrontQuestion;
 import utils.console;
 
 public class FormModel extends Model {
 
-    public Student student;
-    public ArrayList<Module> modules;
-    public ArrayList<Form> forms;
-    public String username;
-    public Module module;
-    public Form form;
-    public Question question;
-    public Proposition proposition;
-    public ArrayList<Question> questions;
-    public ArrayList<ArrayList<Proposition>> propositions;
+	public ArrayList<Module> modules;
+	public ArrayList<Form> forms;
+	public Module module;
+	public Form form;
+	public Question question;
+	public Proposition proposition;
+	public ArrayList<Question> questions;
+	public ArrayList<ArrayList<Proposition>> propositions;
 
-    public FormModel() {}
-    public FormModel(Database db) {
-        super(db);
-    }
+	public FormModel() {}
+	public FormModel(Database db) {
+		super(db);
+	}
 
-    public void getForm(String idForm){
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+	public void loadForm(String idForm){
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        List table = null;
+		List table = null;
 
-        try{
-            tx = session.beginTransaction();
+		try{
+			tx = session.beginTransaction();
 
-            // Query the form
-            Map<String, String> params = new HashMap<String, String>();
+			// Query the form
+			Map<String, String> params = new HashMap<String, String>();
 
-            params.put("idForm", idForm);
+			params.put("idForm", idForm);
 
-            this.form = (Form) this.db.selectOne("Form", params);
+			this.form = (Form) this.db.selectOne("Form", params);
 
-            // Query the module
-            params = new HashMap<String, String>();
+			// Query the teacher
+			params = new HashMap<String, String>();
 
-            params.put("idModule", this.form.getIdModule() + "");
+			params.put("idTeacher", this.form.getIdTeacher()+"");
 
-            this.module = (Module) this.db.selectOne("Module", params);
+			this.teacher = (Teacher) this.db.selectOne("Teacher", params);
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			// Query the module
+			params = new HashMap<String, String>();
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
+			params.put("idModule", this.form.getIdModule() + "");
 
-    public void fetchQuestions(String idForm) {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			this.module = (Module) this.db.selectOne("Module", params);
 
-        List table = null;
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-        this.propositions = new ArrayList<ArrayList<Proposition>>();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+	}
 
-        try{
-            tx = session.beginTransaction();
+	public void fetchQuestions(String idForm) {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-            String query = "FROM Question fo WHERE fo.idForm ='" + idForm + "'";
+		List table = null;
 
-            console.log("Query :", query);
+		this.propositions = new ArrayList<ArrayList<Proposition>>();
 
-            table = session.createQuery(query).list();
+		try{
+			tx = session.beginTransaction();
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			String query = "FROM Question fo WHERE fo.idForm ='" + idForm + "'";
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			console.log("Query :", query);
 
-        this.questions = new ArrayList<Question>();
+			table = session.createQuery(query).list();
 
-        for (int i = 0; i < table.size(); i++) {
-            this.questions.add((Question) table.get(i));
-        }
-    }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-    public void fetchModules() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-        List table = null;
+		this.questions = new ArrayList<Question>();
 
-        try{
-            tx = session.beginTransaction();
+		for (int i = 0; i < table.size(); i++) {
+			this.questions.add((Question) table.get(i));
+		}
+	}
 
-            String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Student stu, JoinModule jm WHERE stu.username='" + this.getUsername() + "' AND jm.idStudent=stu.idStudent AND jm.idModule=modu.idModule)";
+	public void fetchModules() {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-            console.log("Query :", query);
+		List table = null;
 
-            table = session.createQuery(query).list();
+		try{
+			tx = session.beginTransaction();
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Student stu, JoinModule jm WHERE stu.username='" + this.student.getUsername() + "' AND jm.idStudent=stu.idStudent AND jm.idModule=modu.idModule)";
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			console.log("Query :", query);
 
-        this.modules = new ArrayList<Module>();
+			table = session.createQuery(query).list();
 
-        for (int i = 0; i < table.size(); i++) {
-            this.modules.add((Module) table.get(i));
-        }
-    }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-    public void fetchForms() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-        List table = null;
+		this.modules = new ArrayList<Module>();
 
-        try{
-            tx = session.beginTransaction();
+		for (int i = 0; i < table.size(); i++) {
+			this.modules.add((Module) table.get(i));
+		}
+	}
 
-            String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.username + "')";
+	public void fetchForms() {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-            console.log("Query :", query);
+		List table = null;
 
-            table = session.createQuery(query).list();
+		try{
+			tx = session.beginTransaction();
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.student.getUsername() + "')";
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			console.log("Query :", query);
 
-        this.forms = new ArrayList<Form>();
+			table = session.createQuery(query).list();
 
-        for (int i = 0; i < table.size(); i++) {
-            this.forms.add((Form) table.get(i));
-        }
-    }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-    public void fetchPropositions(String idQuestion) {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-        List table = null;
+		this.forms = new ArrayList<Form>();
 
-        try{
-            tx = session.beginTransaction();
+		for (int i = 0; i < table.size(); i++) {
+			this.forms.add((Form) table.get(i));
+		}
+	}
 
-            String query = "FROM Proposition fo WHERE fo.idQuestion ='" + idQuestion + "'";
+	public void fetchPropositions(String idQuestion) {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-            console.log("Query :", query);
+		List table = null;
 
-            table = session.createQuery(query).list();
+		try{
+			tx = session.beginTransaction();
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			String query = "FROM Proposition fo WHERE fo.idQuestion ='" + idQuestion + "'";
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			console.log("Query :", query);
 
-        ArrayList<Proposition> props = new ArrayList<Proposition>();
+			table = session.createQuery(query).list();
 
-        for (int i = 0; i < table.size(); i++) {
-            props.add((Proposition) table.get(i));
-        }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-        this.propositions.add(props);
-    }
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-    public boolean addForm(HttpServletRequest req) {
+		ArrayList<Proposition> props = new ArrayList<Proposition>();
 
-        String _formName = req.getParameter("formName");
-        int _startDate = Integer.parseInt(req.getParameter("startDate"));
-        int _endDate = Integer.parseInt(req.getParameter("endDate"));
-        int _idModule = Integer.parseInt(req.getParameter("idModule"));
-        String _questions = req.getParameter("questions");
+		for (int i = 0; i < table.size(); i++) {
+			props.add((Proposition) table.get(i));
+		}
 
-        Gson gson = new Gson();
-        FrontQuestion[] questions = gson.fromJson(_questions, FrontQuestion[].class);
+		this.propositions.add(props);
+	}
 
-        Form form = new Form(_formName, this.teacher.getIdTeacher(), _startDate, _endDate, _idModule);
+	public boolean addForm(HttpServletRequest req) {
 
-        this.db.insert("Form", form);
+		String _formName = req.getParameter("formName");
+		int _startDate = Integer.parseInt(req.getParameter("startDate"));
+		int _endDate = Integer.parseInt(req.getParameter("endDate"));
+		int _idModule = Integer.parseInt(req.getParameter("idModule"));
+		String _questions = req.getParameter("questions");
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("name", _formName);
-        params.put("startDate", ""+ _startDate);
-        params.put("endDate", ""+ _endDate);
-        form = (Form) this.db.selectOne("Form", params);
+		Gson gson = new Gson();
+		FrontQuestion[] questions = gson.fromJson(_questions, FrontQuestion[].class);
 
-        int idForm = form.getIdForm();
+		Form form = new Form(_formName, this.teacher.getIdTeacher(), _startDate, _endDate, _idModule);
 
-        for (int i = 0; i < questions.length; i++) {
-            Question question = questions[i].getDbQuestion(i + 1, idForm);
-            this.db.insert("Question", question);
+		this.db.insert("Form", form);
 
-            if (question.getIdType() != 3)
-                continue;
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("name", _formName);
+		params.put("startDate", ""+ _startDate);
+		params.put("endDate", ""+ _endDate);
+		form = (Form) this.db.selectOne("Form", params);
 
-            Map<String, String> paramsQuestion = new HashMap<String, String>();
-            paramsQuestion.put("idForm", idForm+"");
-            paramsQuestion.put("numQuestion", (i + 1)+"");
-            question = (Question) this.db.selectOne("Question", paramsQuestion);
+		int idForm = form.getIdForm();
 
-            int idQuestion = question.getIdQuestion();
+		for (int i = 0; i < questions.length; i++) {
+			Question question = questions[i].getDbQuestion(i + 1, idForm);
+			this.db.insert("Question", question);
 
-            for (int j = 0; j < questions[i].props.length; j++) {
-                String prop = questions[i].props[j];
-                Proposition proposition = new Proposition(idQuestion, prop, j + 1);
+			if (question.getIdType() != 3)
+				continue;
 
-                this.db.insert("Proposition", proposition);
-            }
-        }
+			Map<String, String> paramsQuestion = new HashMap<String, String>();
+			paramsQuestion.put("idForm", idForm+"");
+			paramsQuestion.put("numQuestion", (i + 1)+"");
+			question = (Question) this.db.selectOne("Question", paramsQuestion);
 
-        return true;
-    }
+			int idQuestion = question.getIdQuestion();
 
-    public String getUsername(){
-        return this.username;
-    }
+			for (int j = 0; j < questions[i].props.length; j++) {
+				String prop = questions[i].props[j];
 
-    public ArrayList<Module> getModules(){
-        return this.modules;
-    }
+				if (prop.length() == 0)
+					continue;
 
-    public ArrayList<Form> getForms(){
-        return this.forms;
-    }
+				Proposition proposition = new Proposition(idQuestion, prop, j + 1);
 
-    public Form getForm(){
-        return this.form;
-    }
+				this.db.insert("Proposition", proposition);
+			}
+		}
 
-    public Module getModule(){
-        return this.module;
-    }
+		return true;
+	}
 
-    public ArrayList<Question> getQuestions(){
-        return this.questions;
-    }
+	public ArrayList<Module> getModules(){
+		return this.modules;
+	}
 
-    public ArrayList<Proposition> getPropositions(int index) {
-        return this.propositions.get(index);
-    }
+	public ArrayList<Form> getForms(){
+		return this.forms;
+	}
+
+	public Form getForm(){
+		return this.form;
+	}
+
+	public Module getModule(){
+		return this.module;
+	}
+
+	public ArrayList<Question> getQuestions(){
+		return this.questions;
+	}
+
+	public ArrayList<Proposition> getPropositions(int index) {
+		return this.propositions.get(index);
+	}
 
 }

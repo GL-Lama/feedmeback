@@ -4,14 +4,14 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.SubscribeModule.SubscribeModule" table="subscribeModule">
-      <meta attribute="class-description">
-         This class contains the module detail.
-      </meta>
-      <id name="idSm" type="int" column="idSm">
-         <generator class="native"/>
-      </id>
-      <property name="idTeacher" type="int" column="idTeacher"/>
-      <property name="idModule" type="int" column="idModule"/>
-   </class>
+	<class name="database.SubscribeModule.SubscribeModule" table="subscribeModule">
+		<meta attribute="class-description">
+			This class contains the module detail.
+		</meta>
+		<id name="idSm" type="int" column="idSm">
+			<generator class="native"/>
+		</id>
+		<property name="idTeacher" type="int" column="idTeacher"/>
+		<property name="idModule" type="int" column="idModule"/>
+	</class>
 </hibernate-mapping>

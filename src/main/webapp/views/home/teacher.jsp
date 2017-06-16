@@ -6,75 +6,78 @@
 
 <tag:wrapper>
 
-    <jsp:attribute name="head">
-        <link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
-    </jsp:attribute>
+	<jsp:attribute name="head">
+		<link rel="stylesheet" type="text/css" href="/static/app/home/teacher/teacher.css"></link>
+	</jsp:attribute>
 
-    <jsp:attribute name="scripts">
-        <script src="/static/app/home/teacher/teacher.js"></script>
-    </jsp:attribute>
+	<jsp:attribute name="scripts">
+		<script src="/static/app/home/teacher/teacher.js"></script>
+	</jsp:attribute>
 
-    <jsp:body>
+	<jsp:body>
 
-        <div class="card pr-0 pl-0 fmb-bg-primary mt-1 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
-            <div id="teacher" class="card-block pr-0 pl-0 pb-0">
-                <p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
-                <a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
+		<div class="card pr-0 pl-0 fmb-bg-primary mt-1 col-md-8 offset-md-2 col-sm-10 offset-sm-1 col-12">
+			<div id="teacher" class="card-block pr-0 pl-0 pb-0">
+				<p class="fmb-font-title text-center">FEED<span>ME</span>BACK</p>
+				<a href="/logout"><i class="fa fa-power-off fmb-btn-logout mt-3 mr-5" aria-hidden="true"></i></a>
 
-                <div class="d-flex justify-content-center ">
-                    <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmi nous, ${teacher.username} !<p>
-                </div>
+				<div class="d-flex justify-content-center ">
+					<p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Bon retour parmi nous, ${teacher.teacher.username} !<p>
+				</div>
 
-                <div class="card-block fmb-card-content">
+				<div class="card-block fmb-card-content">
 
-                    <div class="d-flex justify-content-center pt-2 title-box ">
-                        <p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
-                        <a href="/form/newForm/"> <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button></a>
-                    </div>
+					<div class="d-flex justify-content-center pt-2 title-box ">
+						<p class="fmb-bg-message fmb-border-message text-center pl-4 pr-4 p-1">Mes formulaires</p>
+						<a href="/form/newForm/"> <button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-new"><i class="fa fa-plus pr-4 "></i>Nouveau</button></a>
+					</div>
 
-                    <c:if test = "${teacher.forms.size() == 0}">
-                        <div class="d-flex justify-content-center">
-                            <h4>Aucun formulaire n'a été encore créé, ${teacher.username}... Essayez d'en créer un nouveau en cliquant sur le bouton ci-dessus ! ;)</h4>
-                        </div>
-                    </c:if>
+					<c:if test = "${teacher.forms.size() == 0}">
+						<div class="d-flex justify-content-center">
+							<h4>Aucun formulaire n'a été encore créé, ${teacher.teacher.username}...
+								Essayez d'en créer un nouveau en cliquant sur le bouton ci-dessus ! ;)
+							</h4>
+						</div>
+					</c:if>
 
 
-                    <div class="list-group fmb-border-item">
+					<div class="list-group fmb-border-item">
 
-                        <c:forEach items="${teacher.forms}" var="form">
-                            <a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
-                                <div class="d-flex w-100 align-items-start">
-                                    <div class="w-25">
-                                        <small>Date</small>
-                                        <p>{{getDate(${form.endDate})}}</p>
-                                    </div>
-                                    <div class="w-50 pl-3 pr-3">
-                                        <small>Nom du formulaire</small>
-                                        <p class="text-truncat m-0">${form.name}</p>
-                                    </div>
-                                    <div class="d-flex w-25">
-                                        <div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
-                                        <div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
-                                    </div>
-                                </div>
-                            </a>
-                        </c:forEach>
+						<c:forEach items="${teacher.forms}" var="form">
+							<a class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-item">
+								<div class="d-flex w-100 align-items-start">
+									<div class="w-25">
+										<small>Date</small>
+										<p>{{getDate(${form.endDate})}}</p>
+									</div>
+									<div class="w-50 pl-3 pr-3">
+										<small>Nom du formulaire</small>
+										<p class="text-truncat m-0">${form.name}</p>
+									</div>
+									<div class="d-flex w-25">
+										<div class="w-50 text-center"><i v-on:click="modify('Hello')" class="fa fa-pencil fa-3x" aria-hidden="true"></i></div>
+										<div class="w-50 text-center"><i class="fa fa-eye fa-3x" aria-hidden="true"></i></div>
+									</div>
+								</div>
+							</a>
+						</c:forEach>
 
-                    </div>
+					</div>
 
-                    <br>
+					<br>
 
-                    <div class="d-flex justify-content-center title-box ">
-                        <a href="/moduleManager/"><button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Gestionnaire de modules</button></a>
-                    </div>
+					<div class="d-flex justify-content-center title-box ">
+						<a href="/moduleManager/">
+							<button type="button" class="btn color-button mb-1 bt-1 mt-0 fmb-border-message">Gestionnaire de modules</button>
+						</a>
+					</div>
 
-                    <br>
+					<br>
+				</div>
 
-                </div>
+			</div>
+		</div>
 
-            </div>
-        </div>
-
-    </jsp:body>
+	</jsp:body>
 
 </tag:wrapper>

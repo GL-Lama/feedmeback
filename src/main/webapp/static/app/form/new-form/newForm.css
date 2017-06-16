@@ -1,31 +1,31 @@
 .modal-footer .btn + .btn {
-    margin-bottom: 0px;
-    width:800px;
+	margin-bottom: 0px;
+	width:800px;
 }
 
 .fmb-btn-arrow:hover {
-    color: white;
+	color: white;
 }
 
 .scroll {
-    height: 100vh;
-    overflow: scroll;
+	height: 100vh;
+	overflow: scroll;
 }
 
 textarea {
-    min-height: 0rem !important;
-    color: white;
-    margin-top: 10px;
+	min-height: 0rem !important;
+	color: white;
+	margin-top: 10px;
 }
 
 .validate-question {
-    max-width: 75%;
+	max-width: 75%;
 }
 
 .question-list p {
-    font-size: 0.9rem;
+	font-size: 0.9rem;
 }
 
 i:hover {
-    color: white;
+	color: white;
 }

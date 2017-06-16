@@ -17,75 +17,83 @@ import utils.console;
 @Entity
 @Table(name = "Teacher")
 public class Teacher {
-   private int idTeacher;
-   private String username;
-   private String password;
-   private String accessToken;
+	private int idTeacher;
+	private String username;
+	private String password;
+	private String accessToken;
 
-   public Teacher() {}
-   public Teacher(String username, String password, String accessToken) {
-      this.username = username;
-      this.password = password;
-      this.accessToken = accessToken;
-   }
-   public int getIdTeacher() {
-      return this.idTeacher;
-   }
-   public void setIdTeacher( int idTeacher ) {
-      this.idTeacher = idTeacher;
-   }
-   public String getUsername() {
-      return username;
-   }
-   public void setUsername( String username ) {
-      this.username = username;
-   }
-   public String getPassword() {
-      return password;
-   }
-   public void setPassword( String password ) {
-      this.password = password;
-   }
-   public String getAccessToken() {
-      return accessToken;
-   }
-   public void setAccessToken( String accessToken ) {
-      this.accessToken = accessToken;
-   }
+	public Teacher() {}
+	public Teacher(String username, String password, String accessToken) {
+		this.username = username;
+		this.password = password;
+		this.accessToken = accessToken;
+	}
 
-    public ArrayList<Module> fetchModules() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+	public int getIdTeacher() {
+		return this.idTeacher;
+	}
 
-        List table = null;
+	public void setIdTeacher( int idTeacher ) {
+		this.idTeacher = idTeacher;
+	}
 
-        try{
-            tx = session.beginTransaction();
+	public String getUsername() {
+		return username;
+	}
 
-            String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Teacher tea, SubscribeModule sm WHERE tea.username='" + this.getUsername() + "' AND sm.idTeacher=tea.idTeacher AND sm.idModule=modu.idModule)";
+	public void setUsername( String username ) {
+		this.username = username;
+	}
 
-            console.log("Query :", query);
+	public String getPassword() {
+		return password;
+	}
 
-            table = session.createQuery(query).list();
+	public void setPassword( String password ) {
+		this.password = password;
+	}
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+	public String getAccessToken() {
+		return accessToken;
+	}
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+	public void setAccessToken( String accessToken ) {
+		this.accessToken = accessToken;
+	}
 
-        ArrayList<Module> modules = new ArrayList<Module>();
+	 public ArrayList<Module> fetchModules() {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        for (int i = 0; i < table.size(); i++) {
-            Module module = (Module) table.get(i);
-            console.log("MODULE NAME", module.getName());
-            modules.add((Module) table.get(i));
-        }
+		List table = null;
 
-        return modules;
-    }
+		try{
+			tx = session.beginTransaction();
+
+			String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Teacher tea, SubscribeModule sm WHERE tea.username='" + this.getUsername() + "' AND sm.idTeacher=tea.idTeacher AND sm.idModule=modu.idModule)";
+
+			console.log("Query :", query);
+
+			table = session.createQuery(query).list();
+
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
+
+			e.printStackTrace();
+		} finally {
+				session.close();
+		}
+
+		ArrayList<Module> modules = new ArrayList<Module>();
+
+		for (int i = 0; i < table.size(); i++) {
+			Module module = (Module) table.get(i);
+			console.log("MODULE NAME", module.getName());
+			modules.add((Module) table.get(i));
+		}
+
+		return modules;
+	 }
 }

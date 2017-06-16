@@ -10,105 +10,90 @@ import org.hibernate.Transaction;
 import database.Database;
 import database.Form.Form;
 import database.Module.Module;
-import database.Student.Student;
 import servlet.core.Model;
 import utils.console;
 
 public class StudentModel extends Model {
 
-    public Database db;
-    public Student student;
-    public ArrayList<Module> modules;
-    public ArrayList<Form> forms;
-    public String username;
-    public Module module;
+	public ArrayList<Module> modules;
+	public ArrayList<Form> forms;
+	public Module module;
 
-    public Boolean init(Database db, String username) {
+	public StudentModel() {}
+	public StudentModel(Database db) {
+		super(db);
+	}
 
-        this.db = db;
-        this.username = username;
+	public void fetchModules() {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        this.fetchModules();
+		List table = null;
 
-        this.fetchForms();
+		try{
+			tx = session.beginTransaction();
 
-        return true;
-    }
+			String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Student stu, JoinModule jm WHERE stu.username='" + this.student.getUsername() + "' AND jm.idStudent=stu.idStudent AND jm.idModule=modu.idModule)";
 
-    public void fetchModules() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			console.log("Query :", query);
 
-        List table = null;
+			table = session.createQuery(query).list();
 
-        try{
-            tx = session.beginTransaction();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-            String query = "FROM Module mod WHERE mod.idModule IN (SELECT modu.idModule FROM Module modu, Student stu, JoinModule jm WHERE stu.username='" + this.getUsername() + "' AND jm.idStudent=stu.idStudent AND jm.idModule=modu.idModule)";
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-            console.log("Query :", query);
+		this.modules = new ArrayList<Module>();
 
-            table = session.createQuery(query).list();
+		for (int i = 0; i < table.size(); i++) {
+			this.modules.add((Module) table.get(i));
+		}
+	}
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+	public void fetchForms() {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+		List table = null;
 
-        this.modules = new ArrayList<Module>();
+		try{
+			tx = session.beginTransaction();
 
-        for (int i = 0; i < table.size(); i++) {
-            this.modules.add((Module) table.get(i));
-        }
-    }
+			String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.student.getUsername() + "')";
 
-    public void fetchForms() {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+			console.log("Query :", query);
 
-        List table = null;
+			table = session.createQuery(query).list();
 
-        try{
-            tx = session.beginTransaction();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-            String query = "FROM Form fo WHERE fo.idModule IN (SELECT jm.idModule FROM JoinModule jm, Student stu WHERE jm.idStudent=stu.idStudent AND stu.username='" + this.username + "')";
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-            console.log("Query :", query);
+		this.forms = new ArrayList<Form>();
 
-            table = session.createQuery(query).list();
+		for (int i = 0; i < table.size(); i++) {
+			this.forms.add((Form) table.get(i));
+		}
+	}
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+	public ArrayList<Module> getModules(){
+		return this.modules;
+	}
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        this.forms = new ArrayList<Form>();
-
-        for (int i = 0; i < table.size(); i++) {
-            this.forms.add((Form) table.get(i));
-        }
-    }
-
-    public String getUsername(){
-        return this.username;
-    }
-
-    public ArrayList<Module> getModules(){
-        return this.modules;
-    }
-
-    public ArrayList<Form> getForms(){
-        return this.forms;
-    }
+	public ArrayList<Form> getForms(){
+		return this.forms;
+	}
 
 }

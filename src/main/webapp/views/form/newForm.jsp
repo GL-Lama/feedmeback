@@ -43,6 +43,7 @@
 								<label for="form1" class="">Nom du formulaire</label>
 							</div>
 						</div>
+
 						<div class="md-form d-flex w-100 justify-content-center">
 							<div class="w-50 relative">
 								<input v-model="startDate" type="text" id="datepickerStart" class="form-control">
@@ -66,24 +67,34 @@
 						</div>
 					</form>
 
-					<form v-for="(question, index) in questions" v-if="isThisState(index + 1)" class="px-3">
+					<form v-for="(question, index) in questions" v-show="isThisState(index + 1)" class="px-3">
 
 						<div class="md-form">
-							<textarea type="text" v-bind:id="'question' + index" class="md-textarea">{{question.question}}</textarea>
+							<textarea type="text" v-model="question.question" v-bind:id="'question' + index" class="md-textarea">{{question.question}}</textarea>
 							<label v-bind:for="'question' + index">1 - Question :</label>
 						</div>
 
 						<div>2 - Type :</div>
 
 						<select v-model="question.idType" class="custom-select ml-5 mt-1 pr-5">
-							<option v-bind:value="fmb.FmbQuestionTypeSmiley" v-bind:selected="isType(index, fmb.FmbQuestionTypeSmiley)">Smileys</option>
-							<option v-bind:value="fmb.FmbQuestionTypeGauge" v-bind:selected="isType(index, fmb.FmbQuestionTypeGauge)">Gauge</option>
-							<option v-bind:value="fmb.FmbQuestionTypeMCQ" v-bind:selected="isType(index, fmb.FmbQuestionTypeMCQ)">MQC</option>
-							<option v-bind:value="fmb.FmbQuestionTypeYesNo" v-bind:selected="isType(index, fmb.FmbQuestionTypeYesNo)">Yes/No</option>
-							<option v-bind:value="fmb.FmbQuestionTypeFree" v-bind:selected="isType(index, fmb.FmbQuestionTypeFree)">Free</option>
+							<option v-bind:value="fmb.FmbQuestionTypeSmiley" v-bind:selected="isType(index, fmb.FmbQuestionTypeSmiley)">
+								Smileys
+							</option>
+							<option v-bind:value="fmb.FmbQuestionTypeGauge" v-bind:selected="isType(index, fmb.FmbQuestionTypeGauge)">
+								Gauge
+							</option>
+							<option v-bind:value="fmb.FmbQuestionTypeMCQ" v-bind:selected="isType(index, fmb.FmbQuestionTypeMCQ)">
+								MQC
+							</option>
+							<option v-bind:value="fmb.FmbQuestionTypeYesNo" v-bind:selected="isType(index, fmb.FmbQuestionTypeYesNo)">
+								Yes/No
+							</option>
+							<option v-bind:value="fmb.FmbQuestionTypeFree" v-bind:selected="isType(index, fmb.FmbQuestionTypeFree)">
+								Free
+							</option>
 						</select>
 
-						<div v-if="isType(index, fmb.FmbQuestionTypeMCQ)">
+						<div v-show="isType(index, fmb.FmbQuestionTypeMCQ)">
 							<div class="mt-2">3 - Propositions :</div>
 
 							<div class="mx-3 mt-1">
@@ -204,12 +215,12 @@
 										</a>
 
 										<a v-for="(question, index) in questions" class="list-group-item list-group-item-action flex-column align-items-start fmb-bg-secondary question-list">
-											<div class="d-flex w-100 justify-content-between">
-												<div>
+											<div class="d-flex w-100 justify-content-start">
+												<div class="pr-3">
 													<small>N°</small>
 													<p class="text-truncate m-0">{{index + 1}}</p>
 												</div>
-												<div>
+												<div class="pr-3">
 													<small>Type</small>
 													<p class="text-truncate m-0">{{fmb.FmbQuestionTypesText[question.idType - 1]}}</p>
 												</div>
@@ -228,6 +239,7 @@
 											</button>
 										</div>
 									</div>
+
 								</div>
 							</div>
 						</div>

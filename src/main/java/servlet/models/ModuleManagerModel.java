@@ -19,210 +19,212 @@ import utils.console;
 
 public class ModuleManagerModel extends Model {
 
-    public Database db;
-    public Teacher teacher;
-    public String username;
-    public ArrayList<Module> modules;
-    public ArrayList<Integer> joinedModules;
+	public String username;
+	public ArrayList<Module> modules;
+	public ArrayList<Integer> joinedModules;
 
-    public Module module;
-    public ArrayList<Student> students;
+	public Module module;
+	public ArrayList<Student> students;
 
-    public Boolean init(Database db, String username) {
+	public ModuleManagerModel() {}
+	public ModuleManagerModel(Database db) {
+		super(db);
+	}
 
-        this.db = db;
-        this.username = username;
+	public Boolean init(Database db, String username) {
 
-        // Query the student
-        Map<String, String> params = new HashMap<String, String>();
+		this.db = db;
+		this.username = username;
 
-        params.put("username", username);
-        this.teacher = (Teacher) this.db.selectOne("Teacher", params);
+		// Query the student
+		Map<String, String> params = new HashMap<String, String>();
 
-        if (this.teacher == null)
-            return false;
+		params.put("username", username);
+		this.teacher = (Teacher) this.db.selectOne("Teacher", params);
 
-        return true;
-    }
+		if (this.teacher == null)
+			return false;
 
-    public void searchModules(String moduleName) {
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+		return true;
+	}
 
-        List table = null;
+	public void searchModules(String moduleName) {
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        try{
-            tx = session.beginTransaction();
+		List table = null;
 
-            String query = "FROM Module mod WHERE mod.name LIKE '%" + moduleName + "%'";
-            // String query2 = "SELECT module.idModule from module, subscribemodule WHERE subscribemodule.idModule = module.idModule AND subscribemodule.idTeacher='" + this.teacher.getIdTeacher() + "'";
+		try{
+			tx = session.beginTransaction();
 
-            //String query = "SELECT module.name FROM Module mod, subscribemodule subs WHERE mod.name LIKE '%" + moduleName + "%' AND subs.idModule = mod.idModule";
-            //Select * from module modu, teacher tea, subscribemodule sm where modu.name like '%geni%' OR (sm.idTeacher='3')
+			String query = "FROM Module mod WHERE mod.name LIKE '%" + moduleName + "%'";
+			// String query2 = "SELECT module.idModule from module, subscribemodule WHERE subscribemodule.idModule = module.idModule AND subscribemodule.idTeacher='" + this.teacher.getIdTeacher() + "'";
 
-            console.log("Query :", query);
+			//String query = "SELECT module.name FROM Module mod, subscribemodule subs WHERE mod.name LIKE '%" + moduleName + "%' AND subs.idModule = mod.idModule";
+			//Select * from module modu, teacher tea, subscribemodule sm where modu.name like '%geni%' OR (sm.idTeacher='3')
 
-            table = session.createQuery(query).list();
+			console.log("Query :", query);
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			table = session.createQuery(query).list();
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-        ArrayList<Module> subModules = this.teacher.fetchModules();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-        this.modules = new ArrayList<Module>();
+		ArrayList<Module> subModules = this.teacher.fetchModules();
 
-        if (table != null)
-            for (int i = 0; i < table.size(); i++) {
-                Module module = (Module) table.get(i);
+		this.modules = new ArrayList<Module>();
 
-                for (Module mod : subModules)
-                    if (mod.getIdModule() == module.getIdModule())
-                        module.setSub(true);
+		if (table != null)
+			for (int i = 0; i < table.size(); i++) {
+				Module module = (Module) table.get(i);
 
-                this.modules.add(module);
-            }
+				for (Module mod : subModules)
+					if (mod.getIdModule() == module.getIdModule())
+						module.setSub(true);
 
-    }
+				this.modules.add(module);
+			}
 
-    public String getUsername(){
-        return this.username;
-    }
+	}
 
-    public ArrayList<Module> getModules() {
-        return this.modules;
-    }
+	public String getUsername(){
+		return this.username;
+	}
 
-    public ArrayList<Student> getStudents() {
-        return this.students;
-    }
+	public ArrayList<Module> getModules() {
+		return this.modules;
+	}
 
-    public Module getModule() {
-        return this.module;
-    }
+	public ArrayList<Student> getStudents() {
+		return this.students;
+	}
 
-    public int addModule(String moduleName, utils.Student[] students){
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+	public Module getModule() {
+		return this.module;
+	}
 
-        Module module = new Module(moduleName);
+	public int addModule(String moduleName, utils.Student[] students){
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        int idModule = 0;
+		Module module = new Module(moduleName);
 
-        try{
-            tx = session.beginTransaction();
+		int idModule = 0;
 
-            this.db.insert("Module", module);
+		try{
+			tx = session.beginTransaction();
 
-            Map<String, String> params = new HashMap<String, String>();
-            params.put("name", module.getName());
-            module = (Module) this.db.selectOne("Module", params);
-            idModule = module.getIdModule();
+			this.db.insert("Module", module);
 
-            String query = "INSERT into joinmodule (idStudent, idModule) SELECT idStudent, idModule from student, module where username IN (";
+			Map<String, String> params = new HashMap<String, String>();
+			params.put("name", module.getName());
+			module = (Module) this.db.selectOne("Module", params);
+			idModule = module.getIdModule();
 
-            for (int i = 0; i < students.length; i++) {
-                query += "'" + students[i].name;
-                if (i != students.length - 1)
-                    query += "', ";
-                else
-                    query += "' ";
-            }
+			String query = "INSERT into joinmodule (idStudent, idModule) SELECT idStudent, idModule from student, module where username IN (";
 
-            query += ") AND IdModule = '" + module.getIdModule() + "'";
+			for (int i = 0; i < students.length; i++) {
+				query += "'" + students[i].name;
+				if (i != students.length - 1)
+					query += "', ";
+				else
+					query += "' ";
+			}
 
-            console.log("Query :", query);
+			query += ") AND IdModule = '" + module.getIdModule() + "'";
 
-            session.createSQLQuery(query).executeUpdate();
+			console.log("Query :", query);
 
-            System.out.println(idModule);
-            System.out.println(this.teacher.getIdTeacher());
+			session.createSQLQuery(query).executeUpdate();
 
-            this.joinModule(idModule+"");
+			System.out.println(idModule);
+			System.out.println(this.teacher.getIdTeacher());
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			this.joinModule(idModule+"");
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-        return idModule;
-    }
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-    public void loadModule(String idModule) {
+		return idModule;
+	}
 
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("idModule", idModule);
+	public void loadModule(String idModule) {
 
+		Map<String, String> params = new HashMap<String, String>();
+		params.put("idModule", idModule);
 
-        this.module = (Module) this.db.selectOne("Module", params);
-    }
+		this.module = (Module) this.db.selectOne("Module", params);
+	}
 
-    public void loadStudents(Module module){
+	public void loadStudents(Module module){
 
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        List table = null;
+		List table = null;
 
-        try{
-            tx = session.beginTransaction();
+		try{
+			tx = session.beginTransaction();
 
-            String query = "Select stu FROM Student stu, JoinModule jm WHERE stu.idStudent=jm.idStudent AND jm.idModule='" + module.getIdModule() + "'";
+			String query = "Select stu FROM Student stu, JoinModule jm WHERE stu.idStudent=jm.idStudent AND jm.idModule='" + module.getIdModule() + "'";
 
-            console.log("Query :", query);
+			console.log("Query :", query);
 
-            table = session.createQuery(query).list();
+			table = session.createQuery(query).list();
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-        this.students = new ArrayList<Student>();
+		this.students = new ArrayList<Student>();
 
-        for (Object obj : table)
-            this.students.add((Student) obj);
-    }
+		for (Object obj : table)
+			this.students.add((Student) obj);
+	}
 
-    public void joinModule(String idModule){
-        Session session = Database.factory.openSession();
-        Transaction tx = null;
+	public void joinModule(String idModule){
+		Session session = Database.factory.openSession();
+		Transaction tx = null;
 
-        try{
-            tx = session.beginTransaction();
+		try{
+			tx = session.beginTransaction();
 
-            SubscribeModule sm = new SubscribeModule(Integer.parseInt(idModule), teacher.getIdTeacher());
+			SubscribeModule sm = new SubscribeModule(Integer.parseInt(idModule), teacher.getIdTeacher());
 
-            console.log(Integer.parseInt(idModule), teacher.getIdTeacher());
+			console.log(Integer.parseInt(idModule), teacher.getIdTeacher());
 
-            this.db.insert("SubscribeModule", sm);
+			this.db.insert("SubscribeModule", sm);
 
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx!=null)
-                tx.rollback();
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx!=null)
+				tx.rollback();
 
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 
-    }
+	}
 
 }

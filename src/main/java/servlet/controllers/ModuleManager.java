@@ -2,7 +2,6 @@ package servlet.controllers;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,190 +17,164 @@ import servlet.models.TeacherModel;
 import utils.Auth;
 
 @WebServlet(
-        name = "ModuleManager",
-        value = "/moduleManager/*"
-    )
+		name = "ModuleManager",
+		value = "/moduleManager/*"
+	)
 public class ModuleManager extends Controller {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        this.initGet(req, res);
+		this.initGet(req, res);
 
-        this.callMethod(this, req, res, "moduleManager/");
-    }
+		this.callMethod(this, req, res, "moduleManager/");
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        this.doGet(req, res);
-    }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		this.doGet(req, res);
+	}
 
-    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String access_token = Auth.validate(req, res);
+		String access_token = Auth.validate(req, res);
 
-        if (access_token == null)
-            return;
+		if (access_token == null)
+			return;
 
-        TeacherModel teacherModel = new TeacherModel();
+		TeacherModel teacherModel = new TeacherModel(this.db);
+		teacherModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
+		teacherModel.fetchModules();
 
-        if (!teacherModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
+		req.setAttribute("teacher", teacherModel);
 
-        req.setAttribute("teacher", teacherModel);
+		req.getRequestDispatcher("/views/module-manager/moduleManager.jsp").forward(req, res);
 
-        req.getRequestDispatcher("/views/module-manager/moduleManager.jsp").forward(req, res);
+	}
 
-    }
+	public void moduleConfirm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-    public void moduleConfirm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String access_token = Auth.validate(req, res);
 
-        String access_token = Auth.validate(req, res);
+		if (access_token == null)
+			return;
 
-        if (access_token == null)
-            return;
+		String idModule = req.getParameter("idModule");
 
-        String idModule = req.getParameter("idModule");
+		ModuleManagerModel moduleManagerModel = new ModuleManagerModel(this.db);
+		moduleManagerModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+		moduleManagerModel.loadModule(idModule);
+		moduleManagerModel.loadStudents(moduleManagerModel.module);
 
-        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
+		req.setAttribute("moduleManager", moduleManagerModel);
 
-        moduleManagerModel.loadModule(idModule);
-        moduleManagerModel.loadStudents(moduleManagerModel.module);
+		req.getRequestDispatcher("/views/module-manager/moduleConfirm.jsp").forward(req, res);
 
-        req.setAttribute("moduleManager", moduleManagerModel);
+	}
 
-        req.getRequestDispatcher("/views/module-manager/moduleConfirm.jsp").forward(req, res);
+	public void newModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-    }
+		String access_token = Auth.validate(req, res);
 
-    public void newModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if (access_token == null)
+			return;
 
-        String access_token = Auth.validate(req, res);
+		req.getRequestDispatcher("/views/module-manager/newModule.jsp").forward(req, res);
 
-        if (access_token == null)
-            return;
+	}
 
-        req.getRequestDispatcher("/views/module-manager/newModule.jsp").forward(req, res);
+	public void searchModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-    }
+		String access_token = Auth.validate(req, res);
 
-    public void searchModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if (access_token == null)
+			return;
 
-        String access_token = Auth.validate(req, res);
+		String moduleName = req.getParameter("moduleName");
 
-        if (access_token == null)
-            return;
+		ModuleManagerModel moduleManagerModel = new ModuleManagerModel(this.db);
+		moduleManagerModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-        String moduleName = req.getParameter("moduleName");
+		res.setContentType("application/json");
+		res.setCharacterEncoding("utf-8");
+		moduleManagerModel.searchModules(moduleName);
 
-        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+		Gson gson = new Gson();
+		String json = gson.toJson(moduleManagerModel.modules);
 
-        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
+		PrintWriter out = res.getWriter();
 
-        res.setContentType("application/json");
-        res.setCharacterEncoding("utf-8");
-        moduleManagerModel.searchModules(moduleName);
+		out.println(json);
 
-        Gson gson = new Gson();
-        String json = gson.toJson(moduleManagerModel.modules);
+		out.close();
+	}
 
-        PrintWriter out = res.getWriter();
+	public void addModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        out.println(json);
+		String access_token = Auth.validate(req, res);
 
-        out.close();
-    }
+		if (access_token == null)
+			return;
 
-    public void addModule(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String moduleName = req.getParameter("moduleName");
+		Gson gson = new Gson();
+		utils.Student[] students = gson.fromJson(req.getParameter("students"), utils.Student[].class);
 
-        String access_token = Auth.validate(req, res);
+		ModuleManagerModel moduleManagerModel = new ModuleManagerModel(this.db);
+		moduleManagerModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-        if (access_token == null)
-            return;
+		int idModule = moduleManagerModel.addModule(moduleName, students);
 
-        String moduleName = req.getParameter("moduleName");
-        Gson gson = new Gson();
-        utils.Student[] students = gson.fromJson(req.getParameter("students"), utils.Student[].class);
+		if (idModule != 0) {
+			JsonObject ret = new JsonObject();
 
-        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+			ret.addProperty("idModule", idModule);
 
-        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
+			PrintWriter out = res.getWriter();
+			out.println(ret);
+			out.close();
+		}
 
-        int idModule = moduleManagerModel.addModule(moduleName, students);
+		else
+			res.sendError(400);
+	}
 
-        if (idModule != 0) {
-            JsonObject ret = new JsonObject();
+	public void joinModule (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-            ret.addProperty("idModule", idModule);
+		String access_token = Auth.validate(req, res);
 
-            PrintWriter out = res.getWriter();
-            out.println(ret);
-            out.close();
-        }
+		if (access_token == null)
+			return;
 
-        else
-            res.sendError(400);
-    }
+		String idModule = req.getParameter("idModule");
 
-    public void joinModule (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		ModuleManagerModel moduleManagerModel = new ModuleManagerModel(this.db);
+		moduleManagerModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-        String access_token = Auth.validate(req, res);
+		moduleManagerModel.joinModule(idModule);
 
-        if (access_token == null)
-            return;
+	}
 
-        String idModule = req.getParameter("idModule");
+	public void viewModule (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
+		String access_token = Auth.validate(req, res);
 
-        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
+		if (access_token == null)
+			return;
 
-        moduleManagerModel.joinModule(idModule);
+		String idModule = req.getParameter("idModule");
 
-    }
+		ModuleManagerModel moduleManagerModel = new ModuleManagerModel(this.db);
+		moduleManagerModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-    public void viewModule (HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		moduleManagerModel.loadModule(idModule);
 
-        String access_token = Auth.validate(req, res);
+		moduleManagerModel.loadStudents(moduleManagerModel.getModule());
 
-        if (access_token == null)
-            return;
+		req.setAttribute("moduleManager", moduleManagerModel);
 
-        String idModule = req.getParameter("idModule");
+		req.getRequestDispatcher("/views/module-manager/viewModule.jsp").forward(req, res);
 
-        ModuleManagerModel moduleManagerModel = new ModuleManagerModel();
-
-        if (!moduleManagerModel.init(this.db, Auth.getTokenClaim(access_token, "username"))) {
-            res.sendError(400);
-            return;
-        }
-
-        moduleManagerModel.loadModule(idModule);
-
-        moduleManagerModel.loadStudents(moduleManagerModel.getModule());
-
-        req.setAttribute("moduleManager", moduleManagerModel);
-
-        req.getRequestDispatcher("/views/module-manager/viewModule.jsp").forward(req, res);
-
-    }
-
-
-
+	}
 }

@@ -1,7 +1,6 @@
 package servlet.controllers;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,27 +11,27 @@ import servlet.core.Controller;
 
 
 @WebServlet(
-        name = "FormManager",
-        value = "/formManager/*"
-    )
+		name = "FormManager",
+		value = "/formManager/*"
+	)
 
 public class FormManager extends Controller {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        this.initGet(req, res);
+		this.initGet(req, res);
 
-        this.callMethod(this, req, res, "formManager/");
-    }
+		this.callMethod(this, req, res, "formManager/");
+	}
 
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        this.doGet(req, res);
-    }
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		this.doGet(req, res);
+	}
 
-    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/form-manager/formManager.jsp").forward(req, res);
-    }
+		req.getRequestDispatcher("/views/form-manager/formManager.jsp").forward(req, res);
+	}
 }
 

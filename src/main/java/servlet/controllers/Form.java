@@ -14,111 +14,106 @@ import servlet.models.TeacherModel;
 import utils.Auth;
 
 @WebServlet(
-        name = "Form",
-        value = "/form/*"
-    )
+		name = "Form",
+		value = "/form/*"
+	)
 public class Form extends Controller {
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        this.initGet(req, res);
+		this.initGet(req, res);
 
-        this.callMethod(this, req, res, "form/");
-    }
+		this.callMethod(this, req, res, "form/");
+	}
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        this.doGet(req, res);
-    }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		this.doGet(req, res);
+	}
 
-    public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public void index(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        String access_token = Auth.validate(req, res);
+		String access_token = Auth.validate(req, res);
 
-        if (access_token == null)
-            return;
+		if (access_token == null)
+			return;
 
-        String idForm = req.getParameter("id");
+		String idForm = req.getParameter("id");
 
-        FormModel formModel = new FormModel(this.db);
-        formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
+		FormModel formModel = new FormModel(this.db);
+		formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
 
-        formModel.getForm(idForm);
+		formModel.loadForm(idForm);
 
-        System.out.println("Helllooo");
-        System.out.println(formModel.username);
+		req.setAttribute("formModel", formModel);
 
-        req.setAttribute("formModel", formModel);
+		req.getRequestDispatcher("/views/form/form.jsp").forward(req, res);
+	}
 
-        req.getRequestDispatcher("/views/form/form.jsp").forward(req, res);
-    }
+	public void newForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-    public void newForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		String access_token = Auth.validate(req, res);
 
-        String access_token = Auth.validate(req, res);
+		if (access_token == null)
+			return;
 
-        if (access_token == null)
-            return;
+		TeacherModel teacherModel = new TeacherModel(this.db);
+		teacherModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
+		teacherModel.modules = teacherModel.teacher.fetchModules();
 
-        TeacherModel teacherModel = new TeacherModel(this.db);
-        teacherModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
-        teacherModel.modules = teacherModel.teacher.fetchModules();
+		req.setAttribute("teacherModel", teacherModel);
 
-        System.out.println(teacherModel.modules.size());
+		req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
+	}
 
-        req.setAttribute("teacherModel", teacherModel);
+	public void formManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/form/newForm.jsp").forward(req, res);
-    }
+		String access_token = Auth.validate(req, res);
 
-    public void formManager(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if (access_token == null)
+			return;
 
-        String access_token = Auth.validate(req, res);
+		req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
+	}
 
-        if (access_token == null)
-            return;
+	public void formQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/formManager/formManager.jsp").forward(req, res);
-    }
+		String access_token = Auth.validate(req, res);
 
-    public void formQuestion(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if (access_token == null)
+			return;
 
-        String access_token = Auth.validate(req, res);
+		String idForm = req.getParameter("id");
 
-        if (access_token == null)
-            return;
+		FormModel formModel = new FormModel(this.db);
+		formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
 
-        String idForm = req.getParameter("id");
+		formModel.loadForm(idForm);
 
-        FormModel formModel = new FormModel(this.db);
-        formModel.loadStudent(Auth.getTokenClaim(access_token, "username"));
+		formModel.fetchQuestions(idForm);
+		for (Question question : formModel.getQuestions()){
+			formModel.fetchPropositions(question.getIdQuestion() + "");
+		}
 
-        formModel.getForm(idForm);
+		req.setAttribute("formModel", formModel);
 
-        formModel.fetchQuestions(idForm);
-        for (Question question : formModel.getQuestions()){
-            formModel.fetchPropositions(question.getIdQuestion() + "");
-        }
+		req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
+	}
 
-        req.setAttribute("formModel", formModel);
+	public void addForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        req.getRequestDispatcher("/views/form/formQuestion.jsp").forward(req, res);
-    }
+		String access_token = Auth.validate(req, res);
 
-    public void addForm(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		if (access_token == null)
+			return;
 
-        String access_token = Auth.validate(req, res);
+		FormModel formModel = new FormModel(this.db);
+		formModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
 
-        if (access_token == null)
-            return;
+		boolean done = formModel.addForm(req);
 
-        FormModel formModel = new FormModel(this.db);
-        formModel.loadTeacher(Auth.getTokenClaim(access_token, "username"));
-
-        boolean done = formModel.addForm(req);
-
-        if (!done)
-            res.sendError(400);
-    }
+		if (!done)
+			res.sendError(400);
+	}
 }

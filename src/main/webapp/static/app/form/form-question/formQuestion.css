@@ -1,18 +1,18 @@
 .fmb-btn-arrow:hover {
-    color: white;
+	color: white;
 }
 
 .proposition {
-    visibility:hidden;
-    display:none;
+	visibility:hidden;
+	display:none;
 }
 
 input[type="radio"]:checked + p { color: green }
 
 .compteur {
-    font-size : 1.6rem;
+	font-size : 1.6rem;
 }
 
 .lol {
-    height: 100px;
+	height: 100px;
 }

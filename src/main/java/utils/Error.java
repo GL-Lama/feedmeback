@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Error {
 
-    public static void send404(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	public static void send404(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 
-        res.setStatus(404);
-        req.getRequestDispatcher("/views/errors/404.jsp").forward(req, res);
-    }
+		res.setStatus(404);
+		req.getRequestDispatcher("/views/errors/404.jsp").forward(req, res);
+	}
 }

@@ -4,14 +4,14 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-   <class name="database.JoinModule.JoinModule" table="joinModule">
-      <meta attribute="class-description">
-         This class contains the module detail.
-      </meta>
-      <id name="idJm" type="int" column="idJm">
-         <generator class="native"/>
-      </id>
-      <property name="idStudent" type="int" column="idStudent"/>
-      <property name="idModule" type="int" column="idModule"/>
-   </class>
+	<class name="database.JoinModule.JoinModule" table="joinModule">
+		<meta attribute="class-description">
+			This class contains the module detail.
+		</meta>
+		<id name="idJm" type="int" column="idJm">
+			<generator class="native"/>
+		</id>
+		<property name="idStudent" type="int" column="idStudent"/>
+		<property name="idModule" type="int" column="idModule"/>
+	</class>
 </hibernate-mapping>
